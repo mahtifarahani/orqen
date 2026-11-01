@@ -119,7 +119,3 @@ For frontend hot reload, run `make dev-web` in a second terminal and open http:/
 | [Implementation decisions](docs/DEVIATIONS.md) | Deliberate differences from the plans |
 
 To check a development change, run `make check`. It covers Go formatting, vet and race tests, web lint and type checks, RTL checks, frontend tests, the web build and OpenAPI drift. Integration tests require the local MongoDB replica set.
-
----
-
-**Orqen چیست؟** یک محیط محلی برای هماهنگ‌کردن فرایند توسعه با ابزارهای هوش مصنوعی است: از دریافت تسک و جمع‌آوری زمینه، تا برنامه‌ریزی، اجرای کد، بازبینی و آماده‌کردن درخواست ادغام. وضعیت کار و شواهد را یک‌جا می‌بینید و تصمیم انتشار در اختیار شماست. رابط فارسی و انگلیسی دارد و فعلاً در مرحلهٔ توسعه و اعتبارسنجی با سرویس‌های شبیه‌سازی‌شده است.
