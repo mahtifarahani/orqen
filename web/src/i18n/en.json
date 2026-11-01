@@ -1,0 +1,2681 @@
+{
+  "app": {
+    "name": "Orqen",
+    "loading": "Loading…"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "close": "Close",
+    "save": "Save",
+    "create": "Create",
+    "retry": "Retry",
+    "back": "Back",
+    "optional": "Optional",
+    "none": "None",
+    "unknown": "Unknown",
+    "unexpectedError": "Something went wrong.",
+    "networkError": "Could not reach the Orqen server.",
+    "edit": "Edit",
+    "remove": "Remove",
+    "archive": "Archive",
+    "actions": "Actions",
+    "download": "Download",
+    "time": "Time",
+    "never": "Never",
+    "help": "Help",
+    "on": "On",
+    "off": "Off"
+  },
+  "theme": {
+    "label": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "locale": {
+    "label": "Language",
+    "fa": "فارسی",
+    "en": "English"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "This page does not exist.",
+    "home": "Go to start"
+  },
+  "live": {
+    "connecting": "Connecting",
+    "live": "Live",
+    "reconnecting": "Reconnecting…"
+  },
+  "nav": {
+    "label": "Main navigation",
+    "overview": "Overview",
+    "projects": "Projects",
+    "tasks": "Tasks",
+    "inbox": "Inbox",
+    "mergeRequests": "Merge Requests",
+    "knowledge": "Knowledge",
+    "graph": "Graph",
+    "models": "Models & catherd",
+    "integrations": "Integrations",
+    "security": "Security",
+    "settings": "Settings",
+    "notAvailable": "Not available yet"
+  },
+  "auth": {
+    "logout": "Sign out",
+    "bootstrap": {
+      "title": "Set up Orqen",
+      "body": "Claim this Orqen installation as its owner. The one-time link was printed by the server when it started.",
+      "token": "Setup token",
+      "tokenHint": "Taken from the link the server printed. You can also paste it here.",
+      "claim": "Claim this Orqen",
+      "claiming": "Claiming…",
+      "alreadyTitle": "Orqen is already set up",
+      "alreadyBody": "This installation already has an owner. Sign in with a login link instead.",
+      "toLogin": "Go to sign in",
+      "toApp": "Open Orqen"
+    },
+    "login": {
+      "title": "Sign in",
+      "body": "This browser is not signed in. On the machine running Orqen, run the command below and open the link it prints.",
+      "command": "orqen login-link",
+      "token": "Login token",
+      "tokenHint": "Or paste the token from the login link here.",
+      "submit": "Sign in",
+      "submitting": "Signing in…"
+    }
+  },
+  "problems": {
+    "invalid_token": "This link is invalid, expired or already used.",
+    "already_bootstrapped": "Orqen is already set up.",
+    "unauthenticated": "Your session has expired. Sign in again.",
+    "revision_conflict": "This was changed elsewhere.",
+    "validation_failed": "Some fields are invalid.",
+    "not_found": "Not found.",
+    "network_error": "Could not reach the Orqen server.",
+    "idempotency_key_reused": "This request was already sent with different data.",
+    "idempotency_in_progress": "The same request is still being processed. Try again in a moment.",
+    "credential_store_unavailable": "The credential store is unavailable.",
+    "precondition_required": "Reload and try again.",
+    "csrf_failed": "The session check failed. Reload the page.",
+    "origin_rejected": "This request came from an untrusted origin.",
+    "provider_mismatch": "The connection is not the right kind of provider for this action.",
+    "credential_required": "The connection has no credential.",
+    "capability_unsupported": "The provider does not support this.",
+    "repo_already_mapped": "This repository is already mapped to another project.",
+    "automation_enabled": "Automation is enabled for this project. Disable it first.",
+    "provider_credential_expired": "The provider rejected the credential.",
+    "provider_permission_denied": "The credential lacks permission for this.",
+    "provider_network_unavailable": "The provider could not be reached.",
+    "provider_rate_limited": "The provider is rate limiting requests. Try again shortly.",
+    "provider_invalid_output": "The provider answered with something unexpected.",
+    "provider_not_found": "The provider does not know this item.",
+    "provider_invalid_configuration": "The connection settings do not allow this request.",
+    "project_not_ready": "The project is not ready for automation yet.",
+    "profile_not_validated": "The draft has not been validated since its last change.",
+    "profile_in_use": "This profile is bound to an active project.",
+    "version_not_published": "That profile version is not published.",
+    "catherd_unavailable": "catherd is not available on this machine.",
+    "catherd_version_unsupported": "The installed catherd version is not supported.",
+    "catherd_failed": "catherd reported an error.",
+    "wizard_step_incomplete": "This step is not complete yet.",
+    "secret_invalid": "This key is not valid.",
+    "run_state_conflict": "The run is not in a state that allows this.",
+    "run_not_startable": "The run cannot start yet.",
+    "inbox_item_stale": "This question was replaced or already answered.",
+    "automation_paused": "Automation is paused for this organization.",
+    "answer_invalid": "This answer is not valid.",
+    "issue_inaccessible": "The issue could not be read.",
+    "jira_mapping_missing": "The project has no Jira mapping.",
+    "workspace_dirty": "The workspace has uncommitted changes.",
+    "allowlist_invalid": "The allowlist is not valid.",
+    "confirm_phrase_mismatch": "The confirmation phrase does not match.",
+    "connection_kind_unsupported": "This connection kind has no write credential.",
+    "database_unavailable": "The database is unavailable.",
+    "env_guard_refused": "This build or environment may only write to a local address.",
+    "external_writes_not_live": "Writes are in dry-run mode.",
+    "external_writes_paused": "Writes are paused.",
+    "finding_not_waivable": "The finding is not an open blocking finding.",
+    "host_not_probed": "Probe the Codex host first.",
+    "host_rejected": "The Codex host rejected the request.",
+    "intent_changed": "The operation changed since you reviewed it. Review it again.",
+    "payload_too_large": "The payload is too large.",
+    "write_credential_missing": "No write credential is set for this connection.",
+    "write_credential_same_as_read": "The write credential must differ from the read credential.",
+    "write_target_not_allowlisted": "This project is not on the write allowlist.",
+    "knowledge_claims_unsupported": "Some claims have no supporting evidence.",
+    "knowledge_conflict_open": "This conflicts with verified knowledge. Resolve the conflict first.",
+    "knowledge_draft_exists": "This record already has an open draft.",
+    "knowledge_version_not_draft": "Only drafts can be verified or rejected."
+  },
+  "shell": {
+    "skipToContent": "Skip to content",
+    "org": "Organization",
+    "switchOrg": "Switch organization",
+    "createOrg": "Create organization",
+    "allOrgs": "All organizations",
+    "noOrg": "No organization"
+  },
+  "orgs": {
+    "title": "Organizations",
+    "subtitle": "Each organization keeps its own connections, credentials and events.",
+    "empty": "No organizations yet. Create the first one to get started.",
+    "loadFailed": "Could not load organizations.",
+    "open": "Open",
+    "fields": {
+      "slug": "Slug",
+      "name": "Name",
+      "locale": "Language",
+      "timezone": "Timezone"
+    },
+    "hints": {
+      "slug": "Lowercase letters, digits and dashes. Cannot be changed later.",
+      "timezone": "IANA name, for example Asia/Tehran."
+    },
+    "create": {
+      "title": "Create organization",
+      "description": "An organization is the scope for connections, projects and events.",
+      "submit": "Create organization",
+      "created": "Organization created"
+    },
+    "settings": {
+      "title": "Organization settings",
+      "save": "Save changes",
+      "saved": "Settings saved",
+      "revision": "Revision",
+      "slugReadonly": "The slug cannot be changed.",
+      "sections": "Settings sections",
+      "tabs": {
+        "general": "General",
+        "policy": "Policy",
+        "rules": "Rules",
+        "publishing": "Publishing"
+      },
+      "setupLink": "Open the setup guide"
+    }
+  },
+  "overview": {
+    "title": "Overview",
+    "pendingSetup": {
+      "title": "Pending setup",
+      "body": "{{count}} setup steps are not finished. Skipped steps stay listed until you do them."
+    }
+  },
+  "pages": {
+    "unavailable": "This area is not part of this build yet."
+  },
+  "providers": {
+    "jira": "Jira",
+    "gitlab": "GitLab",
+    "confluence": "Confluence",
+    "figma": "Figma"
+  },
+  "deployments": {
+    "cloud": "Cloud",
+    "server": "Server",
+    "data_center": "Data Center",
+    "self_managed": "Self-managed"
+  },
+  "authMethods": {
+    "api_token": "API token",
+    "personal_access_token": "Personal access token",
+    "basic": "Basic",
+    "oauth": "OAuth"
+  },
+  "connStatus": {
+    "untested": "Untested",
+    "reachable": "Reachable",
+    "verified": "Verified",
+    "degraded": "Degraded",
+    "unreachable": "Unreachable"
+  },
+  "readiness": {
+    "ready": "Ready for automation",
+    "notReady": "Not ready for automation",
+    "reasons": {
+      "no_api_credential": "No API credential is set.",
+      "not_tested": "The connection has not been tested.",
+      "test_stale": "The connection changed since its last test; test it again.",
+      "auth_failed": "The credential was not accepted by the provider.",
+      "identity_unverified": "The provider identity could not be verified.",
+      "capability_missing": "The credential lacks a required permission.",
+      "sample_access_failed": "A sample read of the provider failed.",
+      "provider_adapter_unavailable": "The provider adapter is not installed in this build."
+    },
+    "blockers": {
+      "primary_repo_missing": "The project has no primary repository.",
+      "repo_connection_not_ready": "The GitLab connection is not ready for automation.",
+      "repo_not_in_catalog": "The repository is not in the refreshed catalog. Refresh the catalog.",
+      "repo_archived": "The repository is archived upstream.",
+      "target_branch_missing": "The primary repository has no target branch.",
+      "jira_mapping_missing": "No Jira project is mapped.",
+      "jira_connection_not_ready": "The Jira connection is not ready for automation.",
+      "jira_filter_missing": "Choose a Jira board or write a JQL filter.",
+      "mapping_not_checked": "The mapping has not been checked yet.",
+      "mapping_check_stale": "The mapping changed since it was last checked.",
+      "mapping_check_failed": "The last mapping check failed.",
+      "test_command_missing": "There is no approved test command.",
+      "command_not_approved": "Some commands are not approved.",
+      "contract_not_imported": "The repository contract has not been imported.",
+      "contract_not_reviewed": "The latest repository contract has not been reviewed.",
+      "profile_not_bound": "No model profile version is bound.",
+      "profile_version_not_published": "The bound profile version is not published.",
+      "profile_not_automation_ready": "The bound profile is not ready for automation.",
+      "bound_profile_missing_in_catherd": "The bound profile is missing from catherd.",
+      "catherd_unavailable": "catherd is missing or its version is unsupported.",
+      "catherd_doctor_missing": "catherd doctor has not been run.",
+      "catherd_doctor_failing": "catherd doctor reports a failing check for this project.",
+      "profile_host_mismatch": "The bound profile version was built for another orchestrator host. Republish it for the current host.",
+      "host_adapter_unavailable": "Orqen has no execution adapter for the selected orchestrator host.",
+      "backend_key_missing": "The isolated {{arg}} harness needs its key, and none is set.",
+      "backend_key_refused": "The key for the isolated {{arg}} harness was refused.",
+      "host_not_probed": "The Codex host has not been probed.",
+      "host_codex_missing": "The Codex CLI is missing.",
+      "host_codex_too_old": "The Codex CLI is too old.",
+      "host_login_missing": "Codex is not logged in.",
+      "host_catherd_mcp_missing": "The catherd MCP tools are missing in the Codex host.",
+      "host_spike_unverified": "Run the real-host spike and attest it.",
+      "host_backend_unsupported": "The {{arg}} backend is not supported on the Codex host."
+    },
+    "warnings": {
+      "confluence_refs_unverified": "Confluence references are not verified yet.",
+      "doctor_warnings": "catherd doctor reported warnings.",
+      "jev_key_missing": "No Jev key is set. Routing falls back to lane kind and difficulty.",
+      "jev_key_refused": "Jev refused the stored key. Routing falls back to lane kind and difficulty.",
+      "backend_key_unverified": "The key for the isolated {{arg}} harness could not be verified.",
+      "publishing_dry_run": "Publishing is in dry-run: the merge request is simulated.",
+      "write_credential_missing": "No write credential is set; live writes will not run.",
+      "write_credential_unchecked": "The write credential has not been checked.",
+      "read_credential_has_write_scope": "The read credential could write; use a read-only token."
+    },
+    "enabled": "Automation enabled.",
+    "disabled": "Automation disabled.",
+    "loadFailed": "Could not evaluate readiness.",
+    "enabledBlocked": "Automation is on, but the project is blocked",
+    "enabledBlockedBody": "Orqen will not start new work until the blockers below are resolved.",
+    "fix": "Fix",
+    "enable": "Enable automation",
+    "disable": "Disable automation",
+    "enableDisabled": "Enabling is unavailable until these are resolved: {{reasons}}",
+    "evaluatedAt": "Evaluated {{time}}"
+  },
+  "connections": {
+    "title": "Connections",
+    "subtitle": "Where Orqen can reach your Jira, GitLab, Confluence and Figma.",
+    "add": "Add connection",
+    "empty": "No connections yet. A connection tells Orqen where a provider lives and how to authenticate; add one, then run a test to see whether it is reachable.",
+    "loadFailed": "Could not load connections.",
+    "columns": {
+      "name": "Name",
+      "provider": "Provider",
+      "baseUrl": "Base URL",
+      "credential": "Credential",
+      "status": "Status",
+      "lastTested": "Last tested",
+      "readiness": "Readiness"
+    },
+    "credential": {
+      "set": "Credential set",
+      "none": "No credential"
+    },
+    "actions": {
+      "setCredential": "Set credential",
+      "test": "Test",
+      "editLabel": "Edit {{name}}",
+      "credentialLabel": "Credential for {{name}}",
+      "testLabel": "Test {{name}}",
+      "archiveLabel": "Archive {{name}}",
+      "discover": "Discover projects",
+      "discoverLabel": "Discover projects on {{name}}"
+    },
+    "form": {
+      "createTitle": "Add connection",
+      "editTitle": "Edit connection",
+      "description": "Base URL, port and path are kept exactly as you enter them.",
+      "name": "Name",
+      "provider": "Provider",
+      "deployment": "Deployment",
+      "baseUrl": "Base URL",
+      "authMethod": "Authentication",
+      "timeoutMs": "Timeout (ms)",
+      "maxConcurrency": "Max concurrency",
+      "allowedHosts": "Allowed redirect hosts",
+      "allowedHostsHint": "Comma separated. Defaults to the base URL host.",
+      "proxyUrl": "Proxy URL",
+      "customCa": "Custom CA certificate (PEM)",
+      "clearHint": "Leave empty for none.",
+      "providerLocked": "The provider cannot be changed.",
+      "created": "Connection created",
+      "saved": "Connection saved",
+      "submitCreate": "Add connection",
+      "nameHint": "Choose an internal label, such as “Engineering Jira”. It does not need to match your account or site name.",
+      "providerHint": "Choose the service you want to connect. Jira supplies issues, GitLab supplies code, Confluence holds documentation, and Figma holds designs.",
+      "baseUrlHint": "Copy the service root from your browser or ask your administrator. Keep any port and installation path (for example /jira); omit project, issue and login paths. Never put a token in this URL.",
+      "username": "Account username or email",
+      "usernameHint": "For Jira Cloud, enter the email of the Atlassian account that created the API token. For Jira Server / Data Center Basic authentication, use your local account username.",
+      "timeoutHint": "1,000–120,000 ms; default 15,000 (15 seconds). Increase for a slow network; a longer timeout also delays reporting an unreachable service.",
+      "concurrencyHint": "1–32 requests at once; default 4. Higher values can speed up work but increase server load and rate-limit errors. Lower this if the service returns 429.",
+      "hostsHint": "Comma-separated hostnames, without a scheme or path. If empty, only the base URL host is allowed. Ask your administrator for redirect destinations; adding hosts broadens where redirects may go.",
+      "proxyHint": "Optional. Ask your network administrator for an http://, https:// or socks5:// proxy address, including its port. Useful for restricted networks; adds a network hop. URLs containing a username or password are not accepted. Leave empty for a direct connection.",
+      "caHint": "Optional. Ask your IT team for the trusted CA certificate in PEM format (BEGIN CERTIFICATE), for example for an internal certificate authority. This adds trust for private TLS certificates; do not paste a private key. Leave empty to use system trust.",
+      "nextStep": "After saving, open “Credential” for this connection to enter the token or password, then run “Test connection”. Creating the connection alone does not grant access.",
+      "guide": {
+        "title": "Guide for your selection",
+        "source": "Where to get the credential",
+        "docs": "Open the official instructions",
+        "unsupportedProvider": "This version can save this provider’s settings and test connectivity, but its authentication, identity, capabilities and sample access checks are not implemented yet.",
+        "unsupportedAuth": "This authentication method is not supported by Orqen for the selected provider and deployment. Choose a compatible method before testing.",
+        "atlassianCloud": "In your Atlassian account, open Security → API tokens → Create API token. Use it with the account email. A token with scopes may require an api.atlassian.com gateway URL; follow the official URL instructions and verify compatibility with Test connection.",
+        "atlassianPat": "In Jira, open your avatar → Profile → Personal Access Tokens → Create token. In Confluence, open your avatar → Settings → Personal Access Tokens. If the option is missing, ask your administrator whether your version and policy allow it.",
+        "gitlab": "In GitLab, open your avatar → Edit profile → Access → Personal access tokens. Choose a name, expiry and scopes. For read-only API access, start with read_api; available data still depends on your project role. Copy the token when created.",
+        "figma": "In Figma, open Settings → Security → Personal access tokens → Generate new token. Choose expiry and the scopes needed for the endpoints you will use. Access remains limited to files available to that account.",
+        "basicSource": "Use the local service username and password supplied by your administrator. For Jira Cloud, use your Atlassian email and an API token instead of your account password.",
+        "oauthSource": "Obtain an access token through an OAuth application registered with the provider, with help from its administrator or developer. This form accepts an existing token later in Credential; it does not start an authorization flow or automatically refresh tokens.",
+        "api_token": "API tokens can be revoked without changing your password. For Jira Cloud they require the account email. For GitLab this option sends the token like a personal access token; for Jira Server / Data Center it sends a Bearer token. Expiry, permissions and server policy still apply.",
+        "personal_access_token": "Personal access tokens avoid sharing your password and can be revoked independently. They inherit account access, further limited by any scopes. They need replacement after expiry or revocation. Jira Cloud uses API token instead.",
+        "basic": "Basic authentication is simple but requires sending the username and secret on every request; use HTTPS. Local passwords may be blocked by SSO or server policy. Jira Cloud uses an API token as the secret. Orqen does not support Basic for GitLab.",
+        "oauth": "OAuth provides delegated, scoped access without sharing an account password, but requires an application and user authorization. Orqen sends an existing access token as Bearer; renewing expired tokens is currently manual.",
+        "cloud": "Cloud: hosted by the service provider, such as gitlab.com or your-team.atlassian.net. No server to maintain; access and rate limits depend on the provider, plan and organization policy. Figma is offered as a cloud service.",
+        "server": "Server: an installation run by your organization. Get the address and version from your administrator; VPN or a custom CA may be required. You control the network, but supported APIs and token types depend on the installed version.",
+        "data_center": "Data Center: Atlassian’s organization-hosted deployment for Jira / Confluence. It offers infrastructure control and clustering, with license and maintenance costs. Ask the administrator for the base URL and allowed authentication methods.",
+        "self_managed": "Self-managed: your organization runs the service, commonly GitLab. It gives control over data and network settings, but your team maintains it. Ask for its base URL, VPN requirements and token policy. For Figma choose Cloud."
+      }
+    },
+    "conflict": {
+      "fields": {
+        "name": "Name",
+        "deployment": "Deployment",
+        "base_url": "Base URL",
+        "auth_method": "Authentication",
+        "timeout_ms": "Timeout (ms)",
+        "max_concurrency": "Max concurrency",
+        "allowed_hosts": "Allowed hosts",
+        "proxy_url": "Proxy URL",
+        "custom_ca_pem": "Custom CA",
+        "auth_username": "Account username or email"
+      }
+    },
+    "credentialDialog": {
+      "title": "Credential",
+      "description": "The secret is stored in the system credential store. It is never shown again.",
+      "secret": "Secret",
+      "secretHint": "Write-only. Paste a new value to replace the current credential.",
+      "save": "Save credential",
+      "saved": "Credential saved",
+      "setAt": "Credential set · {{date}}",
+      "noneYet": "No credential is set.",
+      "remove": "Remove credential",
+      "removed": "Credential removed",
+      "confirmTitle": "Remove this credential?",
+      "confirmBody": "Orqen will no longer be able to authenticate with this connection.",
+      "confirm": "Remove"
+    },
+    "archiveDialog": {
+      "title": "Archive this connection?",
+      "body": "{{name}} will be hidden and its credential deleted. This cannot be undone from the UI.",
+      "confirm": "Archive",
+      "archived": "Connection archived"
+    },
+    "done": "Done with connections"
+  },
+  "test": {
+    "title": "Connection test",
+    "description": "Checks run in a fixed order. Stages that need a provider adapter are not available yet.",
+    "run": "Run test",
+    "running": "Running…",
+    "rerun": "Run again",
+    "started": "Test started",
+    "deduplicated": "A test for this connection is already running; showing it.",
+    "replayed": "This request was already received; showing the existing test.",
+    "overall": "Overall",
+    "downloadReport": "Download report",
+    "failedOperation": "The test could not complete.",
+    "noResult": "No test has run yet.",
+    "duration": "{{ms}} ms",
+    "stageStatus": {
+      "passed": "Passed",
+      "failed": "Failed",
+      "skipped": "Skipped",
+      "not_implemented": "Not available yet",
+      "pending": "Waiting",
+      "running": "Running"
+    },
+    "stages": {
+      "network": "Network",
+      "tls": "TLS",
+      "http": "HTTP reachability",
+      "credential": "Credential",
+      "auth": "Authentication",
+      "identity": "Identity",
+      "capabilities": "Capabilities",
+      "sample_access": "Sample access"
+    },
+    "verified": "What the provider confirmed",
+    "identity": "Identity",
+    "server": "Server",
+    "scopes": "Token scopes",
+    "features": "Capabilities",
+    "featureStates": {
+      "available": "available",
+      "denied": "denied",
+      "unsupported": "unsupported",
+      "unknown": "unknown"
+    }
+  },
+  "overviewPage": {
+    "connections": "Connections",
+    "byStatus": "By status",
+    "total": "Total",
+    "automation": "Ready for automation",
+    "automationBody": "{{count}} connections ready for unattended work",
+    "feed": "Live events",
+    "feedEmpty": "No events yet.",
+    "feedLabel": "Latest events",
+    "projects": "Projects",
+    "projectsEmpty": "No projects yet.",
+    "allProjects": "All projects",
+    "catherd": "catherd",
+    "openHealth": "Open health",
+    "activeRuns": "Active runs",
+    "groups": {
+      "inProgress": "In progress",
+      "waitingOnYou": "Waiting on you",
+      "waitingOther": "Waiting for the network or a dependency",
+      "queued": "Queued"
+    },
+    "candidates": "{{count}} issues wait for Evaluate",
+    "allTasks": "All tasks",
+    "inboxCard": "Inbox",
+    "inboxOpen": "{{count}} open",
+    "openInbox": "Open the Inbox",
+    "intakeCard": "Jira intake",
+    "intakeEmpty": "No project is being polled.",
+    "automationCard": "Automation",
+    "mergeRequests": "Merge requests",
+    "mrReady": "Ready to merge",
+    "mrAwaitingCi": "Waiting for CI",
+    "mrDryRun": "Simulated",
+    "allMergeRequests": "All merge requests",
+    "publishing": "Publishing",
+    "opsAwaiting": "Waiting for your approval",
+    "opsUnknown": "Outcome unknown",
+    "publishingSettings": "Publishing settings",
+    "codingSlot": "Coding slot",
+    "slotBusy": "In use by",
+    "slotFree": "Free",
+    "slotQueued": "{{count}} run(s) waiting for the slot"
+  },
+  "conflict": {
+    "title": "Changed elsewhere",
+    "body": "Someone else saved this after you opened it. Your changes are still here and nothing was overwritten.",
+    "loadLatest": "Load latest",
+    "keepMine": "Keep my changes",
+    "latestValue": "Latest value",
+    "yourValue": "Your value"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Repositories Orqen may work on, each mapped to a Jira project.",
+    "discover": "Discover projects",
+    "searchLabel": "Search projects",
+    "searchPlaceholder": "Search by name",
+    "empty": "No projects yet. Discover the repositories in your GitLab and add the ones Orqen should work on.",
+    "loadFailed": "Could not load projects.",
+    "loadMore": "Load more",
+    "noMatches": "No project matches this search.",
+    "columns": {
+      "name": "Name",
+      "repository": "Repository",
+      "state": "State",
+      "blockers": "Open blockers",
+      "automation": "Automation"
+    },
+    "automation": {
+      "on": "On",
+      "off": "Off"
+    },
+    "state": {
+      "draft": "Draft",
+      "ready": "Ready",
+      "enabled": "Enabled",
+      "enabled_blocked": "Enabled, blocked"
+    },
+    "detail": {
+      "back": "All projects",
+      "loadFailed": "Could not load this project.",
+      "blockers": "Open blockers",
+      "noBlockers": "No open blockers.",
+      "warnings": "Warnings",
+      "tabsLabel": "Project sections",
+      "done": "Done with this project"
+    },
+    "tabs": {
+      "readiness": "Readiness",
+      "mapping": "Mapping",
+      "commands": "Commands",
+      "protected": "Protected paths",
+      "contract": "Contract",
+      "policy": "Policy",
+      "profile": "Model profile",
+      "intake": "Intake",
+      "rules": "Rules"
+    }
+  },
+  "discover": {
+    "title": "Discover projects",
+    "subtitle": "Browse the GitLab projects Orqen can see and add the ones to automate. Nothing is cloned or changed.",
+    "connection": "GitLab connection",
+    "noConnection": "There is no GitLab connection yet. Add one, test it and come back.",
+    "goConnections": "Open connections",
+    "refresh": "Refresh catalog",
+    "refreshing": "Refreshing…",
+    "refreshingProgress": "{{count}} projects seen so far",
+    "refreshed": "Catalog refreshed: {{seen}} projects, {{added}} new, {{gone}} no longer listed.",
+    "refreshFailed": "The catalog refresh failed.",
+    "deduplicated": "A refresh is already running; following it.",
+    "started": "Refresh started.",
+    "projectCount": "{{count}} projects",
+    "lastRefreshed": "Refreshed {{date}}",
+    "neverRefreshed": "Never refreshed",
+    "staleCatalog": "The catalog may be out of date.",
+    "searchLabel": "Search the catalog",
+    "searchPlaceholder": "Search by name or path",
+    "filter": {
+      "label": "Show",
+      "all": "All projects",
+      "selected": "Configured",
+      "unselected": "Not configured"
+    },
+    "includeArchived": "Include archived",
+    "includeGone": "Include removed",
+    "columns": {
+      "select": "Select",
+      "name": "Name",
+      "path": "Path",
+      "branch": "Default branch",
+      "visibility": "Visibility",
+      "activity": "Last activity",
+      "status": "Status"
+    },
+    "selectAll": "Select all loaded projects",
+    "selectRow": "Select {{name}}",
+    "configured": "Configured",
+    "archived": "Archived",
+    "gone": "Removed",
+    "selectedCount": "{{count}} selected",
+    "clear": "Clear selection",
+    "add": "Add selected ({{count}})",
+    "adding": "Adding…",
+    "added": "Added {{created}} projects. {{existing}} were already configured and {{missing}} were not found.",
+    "emptyCatalog": "The catalog is empty.",
+    "emptyCatalogBody": "Refresh the catalog to list the projects this connection can see.",
+    "noResults": "No catalog project matches these filters.",
+    "loadMore": "Load more",
+    "loadFailed": "Could not load the catalog.",
+    "loaded": "{{count}} loaded"
+  },
+  "policy": {
+    "title": "Policy",
+    "loadFailed": "Could not load the policy.",
+    "published": "Policy version {{number}} published.",
+    "saved": "Policy draft saved.",
+    "differs": "Draft differs from the published policy",
+    "noDraft": "No draft yet: product defaults apply",
+    "unsaved": "Unsaved changes",
+    "orgHint": "Organization policy applies to every project unless a project overrides it.",
+    "projectHint": "Project overrides apply on top of the organization policy.",
+    "columns": {
+      "key": "Setting",
+      "effective": "Effective value",
+      "source": "Source",
+      "override": "Override"
+    },
+    "locked": "Locked",
+    "orgOnly": "Set at organization level",
+    "resetKey": "Reset {{key}} to inherited",
+    "saveDraft": "Save draft",
+    "publish": "Publish",
+    "useDefaults": "Use product defaults",
+    "discard": "Discard changes",
+    "versions": "Published versions",
+    "noVersions": "Nothing has been published yet.",
+    "on": "On",
+    "off": "Off",
+    "source": {
+      "product": "Product default",
+      "org": "Organization",
+      "project": "Project"
+    },
+    "values": {
+      "manual": "Manual",
+      "auto": "Automatic",
+      "off": "Off",
+      "codex": "Codex",
+      "claude-code": "Claude Code",
+      "low": "Low",
+      "medium": "Medium",
+      "sensitive": "Sensitive"
+    },
+    "keys": {
+      "automation_intake": {
+        "label": "Intake",
+        "help": "Whether new Jira work is picked up automatically."
+      },
+      "automation_coding_start": {
+        "label": "Start coding",
+        "help": "Whether a coding run starts without a human click."
+      },
+      "automation_plan_approval": {
+        "label": "Plan approval",
+        "help": "Whether plans are approved automatically."
+      },
+      "automation_publish_draft_mr": {
+        "label": "Publish draft merge request",
+        "help": "Whether a draft merge request is opened automatically."
+      },
+      "automation_publish_comments": {
+        "label": "Publish comments",
+        "help": "Whether review comments are posted automatically."
+      },
+      "automation_jira_write": {
+        "label": "Jira write-back",
+        "help": "Whether Orqen may write status and comments to Jira."
+      },
+      "intake_poll_interval_secs": {
+        "label": "Intake poll interval (seconds)",
+        "help": "How often Jira is checked for new work."
+      },
+      "intake_label": {
+        "label": "Intake label",
+        "help": "Only issues with this label are picked up."
+      },
+      "intake_require_assigned_to_me": {
+        "label": "Only issues assigned to me",
+        "help": "Skip issues assigned to someone else."
+      },
+      "review_max_fix_rounds": {
+        "label": "Maximum fix rounds",
+        "help": "How many review-and-fix cycles run before a human steps in."
+      },
+      "review_require_different_model": {
+        "label": "Reviewer must use a different model",
+        "help": "Always on: a model never reviews its own work."
+      },
+      "ci_require_pipeline": {
+        "label": "Require a passing pipeline",
+        "help": "A merge request needs a green pipeline."
+      },
+      "concurrency_coding_runs": {
+        "label": "Parallel coding runs",
+        "help": "How many coding runs may be active at once."
+      },
+      "context_packet_bytes": {
+        "label": "Context packet size (bytes)",
+        "help": "Upper bound for the context handed to a worker."
+      },
+      "orchestrator_host": {
+        "label": "Orchestrator host",
+        "help": "Which host catherd plans and routes for. Changing it needs a republished profile version."
+      },
+      "intake_require_open_sprint": {
+        "label": "Open sprint only",
+        "help": "For a Scrum board, only issues in an active sprint are picked up."
+      },
+      "intake_reconcile_every_polls": {
+        "label": "Full scan every N polls",
+        "help": "How often a full scan also finds issues that left the filter."
+      },
+      "intake_max_issues_per_poll": {
+        "label": "Issues per poll",
+        "help": "The most issues one poll reads."
+      },
+      "decision_jev": {
+        "label": "Ask Jev",
+        "help": "Auto asks Jev during triage when a key is set; Off always uses the fixed rules."
+      },
+      "risk_area_auth": {
+        "label": "Risk: authentication",
+        "help": "How risky work on authentication is."
+      },
+      "risk_area_payment": {
+        "label": "Risk: payments",
+        "help": "How risky work on payments is."
+      },
+      "risk_area_migration": {
+        "label": "Risk: migrations",
+        "help": "How risky data migrations are."
+      },
+      "risk_area_data_deletion": {
+        "label": "Risk: data deletion",
+        "help": "How risky deleting data is."
+      },
+      "risk_area_ci_config": {
+        "label": "Risk: CI configuration",
+        "help": "How risky changing CI or deployment configuration is."
+      },
+      "risk_area_cross_service": {
+        "label": "Risk: cross-service",
+        "help": "How risky changes across services are."
+      },
+      "workspace_min_free_mb": {
+        "label": "Minimum free disk (MB)",
+        "help": "A workspace is not prepared when less space is free."
+      },
+      "workspace_max_retained": {
+        "label": "Retained workspaces",
+        "help": "How many clean finished workspaces are kept."
+      }
+    },
+    "orgTitle": "Organization policy",
+    "orgSubtitle": "Defaults that apply to every project. Publish a version to make changes effective; projects can override only the settings that allow it.",
+    "prefilled": "{{key}} is set to {{value}} in this draft. Review it and publish to apply it."
+  },
+  "mapping": {
+    "saved": "Mapping saved.",
+    "repos": "Repositories",
+    "noRepos": "No repository is mapped yet.",
+    "primaryGroup": "Primary repository",
+    "role": {
+      "primary": "Primary",
+      "related": "Related"
+    },
+    "targetBranch": "Target branch",
+    "branchPlaceholder": "main",
+    "defaultBranch": "default",
+    "branchesFailed": "Could not load branches; type the name instead.",
+    "packagePath": "Package path",
+    "packagePathHint": "For monorepos: the directory commands run in.",
+    "note": "Note",
+    "removeRepo": "Remove {{path}}",
+    "addRepo": "Add repository",
+    "addRepoHelp": "Pick a repository from the refreshed catalog. Related repositories are read for context only.",
+    "add": "Add",
+    "alreadyAdded": "Already added",
+    "jira": "Jira",
+    "jiraConnection": "Jira connection",
+    "chooseJira": "Choose a connection",
+    "noJiraMapping": "No Jira mapping",
+    "noJira": "There is no Jira connection yet. Add one on the Integrations page.",
+    "jiraProject": "Jira project",
+    "jiraSearch": "Search Jira projects",
+    "chooseProject": "Choose a project",
+    "jiraBoard": "Board",
+    "noBoard": "No board",
+    "boardsUnavailable": "Boards are unavailable for this connection; use a JQL filter.",
+    "jql": "JQL filter",
+    "jqlHint": "Used when no board is chosen, or to narrow a board.",
+    "confluence": "Confluence references",
+    "addConfluence": "Add reference",
+    "noConfluence": "There is no Confluence connection. References stay manual and are not verified yet.",
+    "confluenceConnection": "Connection",
+    "confluenceFields": {
+      "space_key": "Space key",
+      "page_id": "Page ID",
+      "title": "Title"
+    },
+    "notVerified": "Not verified",
+    "save": "Save mapping",
+    "check": {
+      "title": "Mapping check",
+      "run": "Check mapping",
+      "running": "Checking…",
+      "saveFirst": "Save your changes before checking.",
+      "at": "Checked {{time}}",
+      "stale": "Out of date",
+      "failed": "The check could not finish.",
+      "status": {
+        "passed": "Passed",
+        "failed": "Failed",
+        "skipped": "Skipped",
+        "not_implemented": "Not available yet"
+      },
+      "names": {}
+    },
+    "acceptanceField": "Acceptance criteria field",
+    "acceptanceFieldHint": "Optional Jira custom field id (for example customfield_10100). When empty, Orqen looks for an Acceptance Criteria section in the description."
+  },
+  "commands": {
+    "title": "Commands",
+    "help": "Commands are stored as argument lists and are never run through a shell. Only approved commands count toward readiness.",
+    "empty": "No commands yet. Add one, or accept a suggestion from the repository contract.",
+    "add": "Add command",
+    "edit": "Edit command",
+    "saved": "Commands saved.",
+    "columns": {
+      "key": "Command",
+      "command": "Arguments",
+      "cwd": "Directory",
+      "approval": "Approval"
+    },
+    "kind": {
+      "setup": "Setup",
+      "lint": "Lint",
+      "typecheck": "Typecheck",
+      "test": "Test",
+      "build": "Build",
+      "custom": "Custom"
+    },
+    "fromContract": "From contract",
+    "approved": "Approved",
+    "notApproved": "Not approved",
+    "approve": "Approve",
+    "revoke": "Revoke",
+    "editCommand": "Edit {{key}}",
+    "removeCommand": "Remove {{key}}",
+    "dialogHelp": "Each argument is its own field, so spaces and quotes are never re-parsed.",
+    "keyDuplicate": "This key is already used.",
+    "fields": {
+      "key": "Key",
+      "keyHint": "Lowercase letters, digits and dashes.",
+      "kind": "Kind",
+      "argv": "Arguments",
+      "argvHint": "The first item is the program.",
+      "argvItem": "Argument {{n}}",
+      "removeArg": "Remove argument {{n}}",
+      "addArg": "Add argument",
+      "cwd": "Directory",
+      "cwdHint": "Relative to the repository root. Empty uses the package path.",
+      "timeout": "Timeout (seconds)",
+      "timeoutHint": "1 to 7200.",
+      "env": "Environment",
+      "envName": "Variable name",
+      "envSource": "Source",
+      "envLiteral": "Literal value",
+      "envHost": "From host environment",
+      "envValue": "Value or host variable",
+      "addEnv": "Add variable",
+      "network": "Needs network",
+      "docker": "Needs Docker",
+      "approved": "Approved"
+    },
+    "revokedOnChange": "Changing what runs revokes the earlier approval. Switch Approved on to approve the new version.",
+    "suggestions": {
+      "title": "Suggestions from the repository contract",
+      "noContract": "Import the repository contract to get suggestions.",
+      "none": "The contract offers no command suggestions. Documents such as AGENTS.md are shown but never parsed.",
+      "help": "Accepting copies the command without approval. Review it, then approve it yourself.",
+      "accept": "Accept",
+      "added": "Already added"
+    }
+  },
+  "protectedPaths": {
+    "title": "Protected paths",
+    "help": "Deny blocks any change to matching files. Review allows the change but requires a human to look at it.",
+    "saved": "Protected paths saved.",
+    "add": "Add rule",
+    "empty": "No rules yet.",
+    "pattern": "Path pattern",
+    "mode": "Mode",
+    "modes": {
+      "deny": "Deny changes",
+      "review": "Require review"
+    },
+    "note": "Note",
+    "remove": "Remove rule {{pattern}}"
+  },
+  "contract": {
+    "title": "Repository contract",
+    "help": "Orqen reads a fixed set of files from the primary repository (read-only) so you can review how the project is built and tested.",
+    "import": "Import contract",
+    "reimport": "Re-import",
+    "importing": "Importing…",
+    "importFailed": "The contract import failed.",
+    "needsRepo": "Map a primary repository first.",
+    "empty": "No contract has been imported yet.",
+    "loadFailed": "Could not load contract snapshots.",
+    "snapshot": "Snapshot",
+    "reviewed": "Reviewed",
+    "notReviewed": "Not reviewed",
+    "latest": "Latest",
+    "markReviewed": "Mark reviewed",
+    "reviewedToast": "Contract marked reviewed.",
+    "commit": "Commit",
+    "ref": "Ref",
+    "files": "Files",
+    "noFiles": "The snapshot has no files.",
+    "truncated": "truncated",
+    "fileFailed": "Could not load this file.",
+    "toCommands": "Open commands"
+  },
+  "profileBinding": {
+    "title": "Model profile",
+    "help": "Bind a published profile version. Rollbacks in the Models area never change what a project uses until you bind again.",
+    "current": "Bound to",
+    "boundAt": "Bound {{time}}",
+    "unbind": "Unbind",
+    "none": "No profile version is bound.",
+    "bound": "Profile version bound.",
+    "unbound": "Profile unbound.",
+    "profile": "Profile",
+    "chooseProfile": "Choose a profile",
+    "version": "Published version",
+    "chooseVersion": "Choose a version",
+    "noPublished": "This profile has no published version.",
+    "bind": "Bind this version",
+    "noProfiles": "There is no model profile yet.",
+    "toModels": "Open Models & catherd"
+  },
+  "independence": {
+    "independent": "Independent reviewer",
+    "same_model": "Reviewer uses the same model",
+    "unknown": "Independence unknown",
+    "reviewer_disabled": "Reviewer disabled"
+  },
+  "models": {
+    "title": "Models & catherd",
+    "subtitle": "Model profiles, the catherd model catalog and catherd maintenance. Profiles are drafts in Orqen until you publish them; your personal catherd settings are never changed.",
+    "sections": "Models sections",
+    "loadFailed": "Could not load model profiles.",
+    "tabs": {
+      "profiles": "Profiles",
+      "catalog": "Catalog",
+      "maintenance": "Maintenance",
+      "orchestrator": "Orchestrator & keys"
+    },
+    "orchestrator": {
+      "title": "Orchestrator host",
+      "host": "Orchestrator host",
+      "hostHelp": "The host catherd plans and routes for. It is an organization policy setting, so every change is versioned and audited when you publish it. Orqen never uses \"auto\".",
+      "effective": "In use",
+      "adapterUnavailable": "No Orqen adapter",
+      "claudeHostUnavailable": "Orqen runs its work on the Codex App Server and has no Claude Code host adapter. You can select claude-code, but every project will then be blocked (host adapter unavailable) until Orqen supports it.",
+      "republishHint": "Changing the host makes every model profile version built for the old host a blocker (profile host mismatch). Each profile has a one-click \"Republish for current host\" that creates a new version and validates it again; older versions are never edited.",
+      "runDoctor": "Run doctor for this host",
+      "loadFailed": "Could not load the orchestrator hosts.",
+      "changeTitle": "Change the host to {{host}}?",
+      "changeBody": "This opens the organization policy draft with the new value filled in. Nothing changes until you review it and publish.",
+      "openDraft": "Open the policy draft"
+    },
+    "keys": {
+      "title": "catherd keys",
+      "note": "Orqen keeps keys in macOS Keychain and passes them only to the catherd process that needs them. Your personal catherd keys are not read or changed. Keys are write-only: they are never shown again.",
+      "loadFailed": "Could not load the keys.",
+      "checking": "Checking…",
+      "checkFailed": "The check could not finish.",
+      "checkedAt": "Checked {{time}}",
+      "cannotVerifyHint": "Orqen cannot verify this key without running a model.",
+      "requiredFor": "Needed only when a profile runs this backend in an isolated harness.",
+      "columns": {
+        "key": "Key",
+        "env": "Environment variable",
+        "usedBy": "Used by",
+        "state": "State",
+        "actions": "Actions"
+      },
+      "state": {
+        "none": "Not set",
+        "set": "Set",
+        "ok": "Valid",
+        "refused": "Refused",
+        "unchecked": "Could not check",
+        "unverifiable": "Cannot verify"
+      },
+      "actions": {
+        "set": "Set",
+        "replace": "Replace",
+        "check": "Check",
+        "remove": "Remove"
+      },
+      "usedBy": {
+        "doctor": "catherd doctor",
+        "catalog_sync": "public catalog sync",
+        "catalog_listings": "catalog listings refresh",
+        "profile_validation": "profile validation",
+        "profile_publish": "profile publish"
+      },
+      "dialog": {
+        "setTitle": "Set the {{name}}",
+        "replaceTitle": "Replace the {{name}}",
+        "description": "The key is sent once, stored in the macOS Keychain and never shown again.",
+        "envHint": "Passed to catherd as",
+        "value": "Key",
+        "valueHint": "Paste the key. It is not stored in the page and is cleared as soon as it is saved.",
+        "invalid": "This key is not valid: it must be one line, without leading or trailing spaces.",
+        "save": "Save key",
+        "saved": "Key saved.",
+        "removeTitle": "Remove the {{name}}?",
+        "removeBody": "The key is deleted from the Keychain. catherd calls that need it will run without it.",
+        "removed": "Key removed.",
+        "confirmRemove": "Remove key"
+      }
+    }
+  },
+  "profiles": {
+    "create": "New profile",
+    "createHelp": "Starts from catherd's built-in defaults. Nothing is published until you validate and publish it.",
+    "created": "Profile created.",
+    "import": "Import personal profile",
+    "importNote": "A copy is made; your personal catherd settings are not changed.",
+    "importAction": "Import a copy",
+    "importing": "Importing…",
+    "imported": "Profile imported.",
+    "importFailed": "The import failed.",
+    "personalFailed": "Could not list personal profiles.",
+    "personalUnavailable": "catherd is not available, so personal profiles cannot be listed.",
+    "personalEmpty": "There are no personal catherd profiles to import.",
+    "personalName": "Personal profile",
+    "choosePersonal": "Choose a profile",
+    "active": "active",
+    "empty": "No model profiles yet. Create one from catherd's defaults, or import a copy of a personal profile.",
+    "columns": {
+      "name": "Name",
+      "slug": "Slug",
+      "source": "Source",
+      "validation": "Status",
+      "updated": "Updated"
+    },
+    "sources": {
+      "blank": "Blank",
+      "version": "From a version",
+      "personal": "Imported",
+      "imported": "Imported"
+    },
+    "hasVersion": "Has a published version",
+    "noVersion": "Not published",
+    "fields": {
+      "name": "Name",
+      "slug": "Slug",
+      "slugHint": "Lowercase letters, digits and dashes. Published versions are named o-<slug>-v<n>.",
+      "description": "Description"
+    }
+  },
+  "profile": {
+    "back": "All profiles",
+    "loadFailed": "Could not load this profile.",
+    "schemaFailed": "Could not load the catherd vocabulary.",
+    "sections": "Profile sections",
+    "actions": "Profile actions",
+    "degraded": "catherd is unavailable",
+    "degradedWhy": "catherd is missing or unsupported, so the editor is read-only and Validate and Publish are disabled.",
+    "saved": "Draft saved.",
+    "saveDraft": "Save draft",
+    "validate": "Validate",
+    "previewDiff": "Preview diff",
+    "done": "Done with this profile",
+    "tabs": {
+      "roles": "Roles",
+      "routing": "Routing",
+      "access": "Access",
+      "billing": "Billing",
+      "lifecycle": "Lifecycle",
+      "advanced": "Advanced"
+    },
+    "roleNames": {
+      "architect": "Architect",
+      "verifier": "Verifier",
+      "worker": "Worker",
+      "reviewer": "Reviewer",
+      "ui-reviewer": "UI reviewer",
+      "artist": "Artist",
+      "writer": "Writer",
+      "researcher": "Researcher"
+    },
+    "roles": {
+      "help": "Each role runs on an ordered ladder of models. The first model is tried first; later ones are fallbacks.",
+      "enabled": "Enable {{role}}",
+      "noRungs": "No models yet",
+      "more": "+{{count}} more",
+      "ladder": "Model ladder",
+      "startsOn": "Starts on",
+      "moveUp": "Move {{rung}} up",
+      "moveDown": "Move {{rung}} down",
+      "removeRung": "Remove {{rung}}",
+      "addModel": "Add model",
+      "addRungTitle": "Add a model for {{role}}",
+      "addRungHelp": "Models that cannot be used are listed with the reason.",
+      "addRung": "Add",
+      "rungAdded": "Already added",
+      "defaultRung": "Start on",
+      "firstRung": "First in the ladder",
+      "network": "Network access",
+      "networkDefault": "catherd default",
+      "timeoutHint": "Minutes; empty uses the profile default.",
+      "networkDefault2": "Default"
+    },
+    "access": {
+      "label": "Access for {{role}}",
+      "modes": {
+        "read-only": "Read-only",
+        "workspace-write": "Workspace write",
+        "full": "Full"
+      },
+      "enforcement": "Enforcement",
+      "enforcementDefault": {
+        "read-only": "no writes",
+        "workspace-write": "writes inside the workspace only",
+        "full": "no restriction"
+      },
+      "isolation": "Harness isolation",
+      "isolationHelp": "An isolated harness runs with its own configuration instead of your personal one.",
+      "explainer": "What the access levels mean"
+    },
+    "routing": {
+      "objective": "Objective",
+      "objectives": {
+        "cost": "Lowest cost",
+        "speed": "Fastest"
+      },
+      "objectiveHelp": "Which ladder position catherd prefers when several models fit.",
+      "jev": "Use just-enough verification",
+      "failover": "Failover",
+      "failoverHelp": "When a model is unavailable, catherd switches to its stand-in. catherd's own defaults may name stand-ins that are not in your catalog.",
+      "noRungs": "Add models to roles to set stand-ins.",
+      "standIn": "Stand-in for {{rung}}",
+      "noStandIn": "No stand-in"
+    },
+    "billing": {
+      "modes": "Billing mode per backend",
+      "default": "catherd default",
+      "budget": "Budget",
+      "minutes": "Minutes",
+      "tokens": "Tokens",
+      "usd": "US dollars",
+      "noCap": "No cap: I accept that runs under this profile may spend without a limit.",
+      "chooseBudget": "Set at least one budget value, or tick the no-cap box. Publishing is blocked until you choose."
+    },
+    "lifecycle": {
+      "idleMin": "Idle timeout (minutes)",
+      "wallMin": "Wall-clock timeout (minutes)",
+      "preflightConfirm": "Ask for confirmation before a run starts",
+      "lockHeavy": "Heavy-job slots",
+      "lockHint": "A positive whole number, or cpus/2.",
+      "notify": "Notifications",
+      "notifyItems": {
+        "milestone": "Milestones",
+        "finish": "Finish",
+        "blocked": "Blocked"
+      }
+    },
+    "advanced": {
+      "help": "The raw profile document. Fields catherd cannot set are listed below and block validation. Invalid JSON blocks saving; leaving this tab discards text that does not parse.",
+      "json": "Profile JSON",
+      "notObject": "The document must be a JSON object.",
+      "invalid": "Invalid JSON.",
+      "parseError": "Cannot save: {{message}}",
+      "blocksSave": "Fix the JSON to save.",
+      "unsupported": "These fields are not supported by catherd's patch interface:",
+      "removeUnsupported": "Remove unsupported fields"
+    },
+    "issues": {
+      "title": "Issues",
+      "none": "No issues found.",
+      "saveToRefresh": "Save the draft to refresh these checks.",
+      "severity": {
+        "error": "Error",
+        "warning": "Warning"
+      },
+      "codes": {
+        "unsupported_field": "This field cannot be set through catherd.",
+        "unknown_value": "This value is not allowed.",
+        "bad_value": "This value is not valid.",
+        "bad_rung": "A model is written <backend>:<model>#<effort>.",
+        "worker_disabled": "The worker role cannot be disabled.",
+        "claude_native_unsupported": "Native claude models are not supported: Orqen cannot hand them to a Claude Code session. Use claude-code: models.",
+        "rung_not_in_catalog": "This model is not in the catalog.",
+        "rungs_required": "An enabled role needs at least one model.",
+        "default_rung_not_in_rungs": "The start model must be one of the role's models.",
+        "reviewer_not_independent": "The reviewer shares a model family with the coders.",
+        "independence_unknown": "Reviewer independence cannot be established.",
+        "budget_not_chosen": "Set a budget or explicitly choose no cap.",
+        "catalog_missing": "No model catalog has been loaded; refresh it in the Catalog tab."
+      }
+    },
+    "validation": {
+      "title": "Last validation",
+      "never": "This draft has not been validated.",
+      "valid": "Valid",
+      "invalid": "Invalid",
+      "stale": "Out of date",
+      "at": "Checked {{time}}",
+      "staleHelp": "The draft changed after this check. Validate again before publishing.",
+      "running": "Validating…",
+      "failedRun": "The validation could not finish."
+    },
+    "publish": {
+      "action": "Publish",
+      "running": "Publishing…",
+      "done": "Version published.",
+      "dirty": "Save your changes first.",
+      "notValidated": "Validate the draft first.",
+      "stale": "The draft changed since the last validation. Validate again.",
+      "invalid": "The last validation found errors.",
+      "failed": "Publishing failed",
+      "failedHelp": "The version was not published. Check the versions list for the reason."
+    },
+    "versions": {
+      "title": "Versions",
+      "empty": "No version has been published yet.",
+      "loadFailed": "Could not load versions.",
+      "number": "Version",
+      "name": "catherd name",
+      "state": "State",
+      "published": "Published",
+      "states": {
+        "publishing": "Publishing",
+        "published": "Published",
+        "failed": "Failed"
+      },
+      "diff": "Diff",
+      "rollback": "Roll back",
+      "rollbackTitle": "Roll back to version {{number}}",
+      "rollbackBody": "This publishes a new version with the content of the chosen one. Existing versions and projects bound to them are not changed.",
+      "rollbackConfirm": "Roll back",
+      "rolledBack": "Rolled back to a new version.",
+      "builtFor": "Built for {{host}}",
+      "republish": "Republish for current host",
+      "republishTitle": "Republish version {{number}} for {{host}}",
+      "republishBody": "This publishes a new version with the content of the chosen one and validates it again under the current orchestrator host. The existing version is not changed.",
+      "republishConfirm": "Republish"
+    },
+    "diff": {
+      "title": "Draft changes",
+      "help": "Compares the saved draft with another version.",
+      "compareWith": "Compare with",
+      "latest": "Latest version",
+      "unsaved": "Unsaved changes are not included; save the draft first.",
+      "failed": "Could not compute the diff.",
+      "none": "No differences.",
+      "path": "Path",
+      "kind": "Change",
+      "before": "Before",
+      "after": "After",
+      "kinds": {
+        "added": "Added",
+        "removed": "Removed",
+        "changed": "Changed"
+      }
+    }
+  },
+  "catalog": {
+    "search": "Search models",
+    "searchPlaceholder": "Search by name or id",
+    "role": "Role",
+    "allRoles": "All roles",
+    "backend": "Backend",
+    "allBackends": "All backends",
+    "availableOnly": "Available only",
+    "scoredOnly": "Scored only",
+    "refresh": "Refresh catalog",
+    "refreshing": "Refreshing…",
+    "refreshedAt": "Refreshed {{time}}",
+    "stale": "may be out of date",
+    "neverBadge": "Never refreshed",
+    "never": "The catalog has not been loaded yet. Refresh it from catherd to see models.",
+    "noMatches": "No model matches these filters.",
+    "count": "{{count}} models",
+    "loadFailed": "Could not load the model catalog.",
+    "refreshFailed": "The catalog refresh failed.",
+    "catherdUnavailable": "catherd is unavailable, so the catalog cannot be refreshed. The last snapshot is shown.",
+    "notListed": "Not listed by account",
+    "context": "{{count}} tokens of context",
+    "modes": {
+      "list": {
+        "label": "List",
+        "help": "Read the models catherd already knows."
+      },
+      "listings": {
+        "label": "Refresh listings",
+        "help": "Ask the backends which models your account can use."
+      },
+      "sync": {
+        "label": "Sync",
+        "help": "Update catherd's score data, then list."
+      }
+    },
+    "chips": {
+      "usable": "Usable",
+      "treatedLike": "treated like",
+      "source": {
+        "shipped": "shipped",
+        "user": "yours"
+      },
+      "unscored": "Unscored",
+      "inferredOnly": "Inferred scores only",
+      "costTier": "Cost tier",
+      "notOffered": "Not offered by this account"
+    },
+    "availability": {
+      "available": "Available.",
+      "unknown_listing": "The account listing is unknown; it may not be offered.",
+      "not_offered": "Not offered by this account.",
+      "no_score": "No score data for this model.",
+      "backend_missing": "The backend for this model is not installed.",
+      "role_incompatible": "Not suitable for this role.",
+      "unscoredNeedsMapping": "Unscored. It needs a treat-like mapping, which Orqen cannot edit yet."
+    }
+  },
+  "catherd": {
+    "loadFailed": "Could not load catherd status.",
+    "unavailable": "catherd is not available",
+    "unavailableHelp": "Install catherd 1.5 or point ORQEN_CATHERD_BIN to it, then reload. Orqen only shows commands; it never installs anything.",
+    "unsupported": "This catherd version is not supported",
+    "unsupportedHelp": "Orqen supports catherd 1.5.x. Profiles stay read-only until a supported version is found.",
+    "status": "catherd",
+    "version": "Version",
+    "supported": "Supported",
+    "notSupported": "Not supported",
+    "binary": "Binary",
+    "home": "Orqen's catherd home",
+    "pathSource": "PATH source",
+    "catalog": "Catalog",
+    "catalogSummary": "{{count}} models, refreshed {{time}}",
+    "inventory": "Profiles in Orqen's home",
+    "doctor": {
+      "title": "catherd doctor",
+      "help": "Runs catherd's own checks against Orqen's isolated home. It may start catherd's helper process and refresh model listings, so it only runs when you ask.",
+      "run": "Run doctor",
+      "running": "Running…",
+      "failed": "The doctor run failed.",
+      "never": "Doctor has not been run.",
+      "ready": "Ready",
+      "notReady": "Not ready",
+      "at": "Checked {{time}}",
+      "checks": "Doctor checks",
+      "fix": "Fix",
+      "states": {
+        "ok": "OK",
+        "warn": "Warning",
+        "fail": "Failing",
+        "skip": "Skipped",
+        "info": "Info"
+      }
+    }
+  },
+  "health": {
+    "title": "Health",
+    "subtitle": "Whether Orqen's own parts are working: MongoDB, the job queue and runner, your connections and catherd.",
+    "link": "Health",
+    "loadFailed": "Could not load health.",
+    "mongo": "MongoDB",
+    "ok": "OK",
+    "down": "Not reachable",
+    "replicaSet": "Replica set",
+    "noReplicaSet": "No replica set name reported.",
+    "runner": "Runner",
+    "alive": "Running",
+    "stopped": "Not running",
+    "runnerHelp": "The runner executes background jobs such as connection tests and catalog refreshes.",
+    "queue": "Job queue",
+    "queueFields": {
+      "queued": "Queued",
+      "leased": "Running",
+      "failed_24h": "Failed in the last 24 hours",
+      "dead_24h": "Gave up in the last 24 hours",
+      "oldest": "Oldest waiting job"
+    },
+    "seconds": "{{count}} s",
+    "connections": "Connections",
+    "noConnections": "No connections yet.",
+    "openConnections": "Open connections",
+    "catherd": "catherd",
+    "catherdDown": "catherd is not available. Model profiles are read-only and automation cannot be enabled.",
+    "catherdUnsupported": "catherd {{version}} is not a supported version (1.5.x is).",
+    "catherdOk": "catherd is available:",
+    "openMaintenance": "Open catherd maintenance"
+  },
+  "wizard": {
+    "title": "Setup",
+    "subtitle": "A guided path through everything Orqen needs. Every step can be skipped and revisited; skipping never marks anything ready.",
+    "stepsLabel": "Setup steps",
+    "loadFailed": "Could not load the setup guide.",
+    "newOrgHelp": "Create the organization Orqen will work for. Connections and the rest follow.",
+    "skippedNote": "You skipped this step. It stays on the Overview until you complete it.",
+    "attentionNote": "This step was done, but something it relies on has since changed.",
+    "stillMissing": "Still missing",
+    "incomplete": "This step is not complete yet",
+    "goToSection": "Show me the section",
+    "otherProviders": "Confluence and Figma adapters are not available yet and are never required.",
+    "backToList": "Back to the project list",
+    "backToProfiles": "Back to profiles",
+    "configure": "Configure",
+    "toOverview": "Leave setup and open the Overview",
+    "configureHint": "Configure",
+    "steps": {
+      "organization": {
+        "title": "Organization",
+        "description": "Name, language and time zone of your organization."
+      },
+      "connections": {
+        "title": "Connections",
+        "description": "Connect GitLab and Jira, store a credential and run the connection test until both are verified."
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "Pick repositories, map each to Jira, check the mapping, review the repository contract and approve a test command."
+      },
+      "profile": {
+        "title": "Model profile",
+        "description": "Create or import a profile, validate and publish it, then bind it to your projects."
+      },
+      "policy": {
+        "title": "Policy",
+        "description": "Choose how much Orqen may do on its own. Using the product defaults is fine."
+      },
+      "system": {
+        "title": "System check",
+        "description": "Detect what this machine has and what is missing. Nothing is installed or changed."
+      },
+      "review": {
+        "title": "Review",
+        "description": "See where every project stands, then finish. Automation is switched on per project from its Readiness tab."
+      }
+    },
+    "status": {
+      "todo": "To do",
+      "done": "Done",
+      "skipped": "Skipped",
+      "attention": "Needs attention"
+    },
+    "actions": {
+      "back": "Back",
+      "next": "Next",
+      "continue": "Continue",
+      "skip": "Skip this step",
+      "reopen": "Mark as to do",
+      "finish": "Finish",
+      "saveExit": "Save and exit",
+      "hide": "Hide the setup guide",
+      "resume": "Resume setup"
+    },
+    "skipDialog": {
+      "title": "Skip {{step}}?",
+      "body": "You can come back any time. Here is what skipping means.",
+      "consequences": "If you skip",
+      "none": "Nothing breaks if you skip this step.",
+      "missing": "Still missing right now",
+      "readiness": "Skipping only changes this guide. It never makes anything ready and never changes any setting.",
+      "reason": "Reason (optional)",
+      "confirm": "Skip this step"
+    },
+    "consequence": {
+      "discovery_unavailable": "Project discovery is unavailable until a GitLab connection is verified.",
+      "automation_blocked": "Automation stays blocked for the projects this step prepares.",
+      "no_runs": "No model runs can start without a published, bound profile.",
+      "defaults_apply": "Product defaults apply: every automatic step stays manual.",
+      "issues_undetected": "Problems with this machine will not be detected ahead of time.",
+      "jev_fallback_rules": "Without a Jev key, routing uses the lanes' kind and difficulty."
+    },
+    "missing": {
+      "no_ready_gitlab": "No verified GitLab connection.",
+      "no_ready_jira": "No verified Jira connection.",
+      "no_configured_project": "No project is fully configured yet.",
+      "no_ready_profile_bound": "No automation-ready profile version is bound to a configured project.",
+      "no_org_policy_version": "The organization policy has no published version. \"Use product defaults\" publishes one.",
+      "no_recent_preflight": "No system check from the last 24 hours.",
+      "required_check_failed": "A required system check failed."
+    },
+    "bind": {
+      "title": "Bind to projects",
+      "help": "Bind the latest published version",
+      "needsPublished": "Publish a version first, then bind it to your projects here.",
+      "noProjects": "There are no projects to bind yet."
+    },
+    "review": {
+      "projects": "Projects",
+      "blockers": "{{count}} blockers",
+      "openReadiness": "Open readiness",
+      "enableHelp": "Automation is enabled per project from its Readiness tab, once it has no blockers.",
+      "pending": "Steps still pending",
+      "allDone": "Every step is done."
+    },
+    "fix": {
+      "mongo_not_replica_set": "MongoDB must run as a single-node replica set. Start it with scripts/dev-mongo.sh or Docker.",
+      "credential_store_unavailable": "The OS credential store is unavailable. Use a build with Keychain support, or accept that secrets are lost on restart (memory store).",
+      "ca_expiring": "The custom CA certificate expires soon; replace it.",
+      "vpn_required_maybe": "The host looks like a private address that did not answer. A VPN may be required.",
+      "dns_failed": "The host name did not resolve. Check the URL, DNS and VPN.",
+      "proxy_failed": "The proxy did not answer. Check its address.",
+      "binary_missing": "{{name}} was not found on the PATH Orqen uses. Install it, then Re-check.",
+      "binary_unreadable": "{{name}} did not report a version. Check that it runs.",
+      "binary_too_old": "{{name}} is older than the supported version. Upgrade it, then Re-check.",
+      "catherd_missing": "catherd was not found. Install catherd 1.5 and make sure its folder is on the PATH.",
+      "docker_missing": "Docker was not found. It is only needed for commands that use Docker.",
+      "launchd_not_installed": "The launchd file does not exist yet. Use the commands below if you want it.",
+      "launchd_not_loaded": "The file exists but is not loaded. Use the commands below.",
+      "dir_not_creatable": "This folder cannot be created. Check permissions.",
+      "dir_not_writable": "This folder is not writable. Check permissions.",
+      "disk_low": "Less than 2 GiB is free here.",
+      "con_expired": "The connection's certificate has expired.",
+      "catherd_version_unsupported": "This catherd version is outside the supported 1.5.x window. Install a 1.5 release.",
+      "claude_logged_out": "claude is installed but not logged in. Run the command yourself, then Re-check.",
+      "codex_logged_out": "codex is installed but not logged in. Run the command yourself, then Re-check.",
+      "credential_store_memory": "Credentials are kept in memory and are lost when Orqen restarts. Use the keychain store for normal use.",
+      "docker_not_running": "Docker is installed but its engine is not running. It is only needed for commands that use Docker.",
+      "ca_expired": "The custom CA certificate has expired; replace it.",
+      "jev_key_missing": "Enter a Jev key under Models, Orchestrator & keys, or set jev.use to off in the profile.",
+      "jev_key_refused": "Jev refused the key. Replace it under Models, Orchestrator & keys.",
+      "backend_key_missing": "Enter the missing key under Models, Orchestrator & keys.",
+      "unexpected_credentials_file": "Orqen never writes this file. Check who created it; it holds keys in plain text.",
+      "opencode_logged_out": "Log in to opencode yourself; Orqen only detects the login."
+    },
+    "hostAndKeys": "Orchestrator host and keys"
+  },
+  "system": {
+    "copy": "Copy",
+    "copied": "Copied. Nothing was run.",
+    "checking": "Checking…",
+    "recheck": "Re-check",
+    "checkedAt": "Checked {{time}}",
+    "detectOnly": "This check only looks. Orqen installs nothing, changes no system setting and runs no fix for you; commands are shown for you to run yourself.",
+    "failedRun": "The system check could not finish.",
+    "loadFailed": "Could not load the system check.",
+    "empty": "No system check has been run yet. Press Re-check.",
+    "required": "Required",
+    "blocks": "Without this",
+    "status": {
+      "pass": "Pass",
+      "warn": "Warning",
+      "fail": "Fail",
+      "skipped": "Skipped"
+    },
+    "groups": {
+      "binaries": "Tools",
+      "database": "Database",
+      "credentials": "Credential storage",
+      "network": "Network",
+      "docker": "Docker",
+      "storage": "Folders",
+      "service": "Start at login",
+      "catherd": "catherd keys"
+    },
+    "features": {
+      "everything": "Orqen cannot run",
+      "commands_needing_docker": "commands that need Docker",
+      "compose_mongo": "the Docker MongoDB setup",
+      "credential_persistence": "saved credentials after a restart",
+      "profile_publish": "publishing model profiles",
+      "automation": "automation",
+      "coding_runs": "coding runs (later sprint)",
+      "claude_code_roles": "claude-code roles",
+      "managed_workspaces": "managed workspaces (later sprint)",
+      "mcp_connectors": "MCP connectors (later)",
+      "artifacts": "stored reports",
+      "start_at_login": "starting at login",
+      "connection": "this connection",
+      "jev_routing": "Jev routing",
+      "isolated_harness": "isolated harnesses",
+      "opencode_roles": "opencode roles"
+    },
+    "keychainWarn": "\"Test write\" stores and deletes one temporary item in your Keychain. macOS may ask for permission.",
+    "keychainTest": "Test write",
+    "launchd": {
+      "title": "Start at login (optional)",
+      "help": "Orqen can show you the launchd file and the commands that would start it at login. It never writes into ~/Library/LaunchAgents and never runs launchctl.",
+      "loadFailed": "Could not load the launchd plan.",
+      "optIn": "Show me the start-at-login setup",
+      "path": "File location",
+      "install": "To install, run these yourself",
+      "uninstall": "To remove it later",
+      "never": "Orqen only displays these commands."
+    },
+    "openKeys": "Open Orchestrator & keys"
+  },
+  "secrets": {
+    "kind": {
+      "jev": "Jev key",
+      "artificial_analysis": "Artificial Analysis key",
+      "gemini": "Gemini key (antigravity)",
+      "cursor": "Cursor key",
+      "xai": "xAI key (grok)"
+    }
+  },
+  "preflight": {
+    "check": {
+      "catherd": {
+        "jev_key": "Jev key",
+        "backend_keys": "Backend keys",
+        "credentials_file": "catherd credentials file"
+      },
+      "bin": {
+        "opencode_login": "opencode login"
+      }
+    }
+  },
+  "run": {
+    "state": {
+      "discovered": "Discovered",
+      "gathering_context": "Gathering context",
+      "triaging": "Triaging",
+      "planned": "Planned",
+      "queued": "Queued",
+      "coding": "Coding",
+      "verifying": "Verifying",
+      "publishing_draft": "Publishing draft",
+      "reviewing": "Reviewing",
+      "awaiting_ci": "Awaiting CI",
+      "ready_for_merge": "Ready for merge",
+      "merged": "Merged",
+      "needs_input": "Needs input",
+      "waiting_dependency": "Waiting for a dependency",
+      "waiting_network": "Waiting for the network",
+      "fixing": "Fixing",
+      "failed": "Failed",
+      "cancelled": "Cancelled",
+      "superseded": "Superseded"
+    },
+    "stage": {
+      "context": "Context",
+      "triage": "Triage",
+      "plan": "Plan",
+      "plan_gate": "Plan approval",
+      "start_gate": "Start gate",
+      "workspace": "Workspace",
+      "queued": "Queued"
+    },
+    "hold": {
+      "automation_paused": "Automation paused",
+      "left_filter": "Left the filter",
+      "coding_start": "Waiting for Start",
+      "project_not_ready": "Project not ready",
+      "project_not_enabled": "Project not enabled",
+      "stale": "Issue changed",
+      "awaiting_coding_slot": "Waiting for the coding slot",
+      "dry_run": "Dry-run",
+      "external_writes_paused": "Writes paused"
+    },
+    "holdBody": {
+      "coding_start": "Coding starts only when you press Start.",
+      "automation_paused": "The organization is paused. The run continues when automation is resumed.",
+      "project_not_enabled": "Enable automation for the project, then resume.",
+      "stale": "The issue changed after coding began; it needs a new triage.",
+      "awaiting_coding_slot": "Only a limited number of runs code at the same time. This run starts when a slot is free.",
+      "dry_run": "Publishing is in dry-run. The merge request is simulated; nothing is written to GitLab.",
+      "external_writes_paused": "External writes are paused. Resume them in Settings, Publishing."
+    },
+    "eligibility": {
+      "eligible": "Eligible",
+      "left_filter": "No longer matches the intake filter",
+      "left_filterBody": "The issue left the intake filter. The run is held; cancel it explicitly if it should stop."
+    },
+    "stale": "Issue changed",
+    "staleBody": "The issue changed after coding began, so the work may no longer match it.",
+    "actions": {
+      "evaluate": "Evaluate",
+      "start": "Start",
+      "resume": "Resume",
+      "retry": "Retry",
+      "cancel": "Cancel run"
+    },
+    "cancelDialog": {
+      "title": "Cancel this run?",
+      "body": "The run stops, its open question is closed and its workspace is cleaned up if it has no changes.",
+      "reason": "Reason (optional)",
+      "confirm": "Cancel run",
+      "keep": "Keep running"
+    },
+    "cancellation": {
+      "requested": "Cancellation requested; waiting for the running step to stop.",
+      "confirmed": "Cancellation confirmed."
+    },
+    "startBlocked": "This run cannot start yet",
+    "checkAgain": "Check again",
+    "started": "Run started",
+    "resumed": "Run resumed",
+    "retried": "Run reopened",
+    "cancelled": "Run cancelled",
+    "openQuestion": "Open the question",
+    "waitingNetworkBody": "A provider could not be reached. Orqen retries with a growing delay; Resume tries again now.",
+    "event": {
+      "run_created": "Run created",
+      "run_state_changed": "State changed",
+      "run_stage_completed": "Stage completed",
+      "run_held": "Held",
+      "run_resumed": "Resumed",
+      "run_needs_input": "Needs input",
+      "run_answered": "Answered",
+      "run_cancel_requested": "Cancel requested",
+      "run_cancel_confirmed": "Cancel confirmed",
+      "run_superseded": "Superseded",
+      "run_retried": "Retried",
+      "run_failed": "Failed",
+      "run_workspace_ready": "Workspace ready",
+      "run_repinned": "Limit raised",
+      "inbox_opened": "Question opened",
+      "inbox_answered": "Question answered",
+      "inbox_superseded": "Question replaced",
+      "inbox_cancelled": "Question cancelled",
+      "context_packet_built": "Context packet built",
+      "decision_recorded": "Decision recorded",
+      "workspace_ready": "Workspace ready",
+      "workspace_preserved": "Workspace preserved",
+      "workspace_removed": "Workspace removed"
+    },
+    "actor": {
+      "system": "System",
+      "owner": "You"
+    }
+  },
+  "triage": {
+    "outcome": {
+      "execute": "Execute",
+      "needs_input": "Needs input",
+      "waiting_dependency": "Waiting for a dependency",
+      "already_addressed": "Already addressed"
+    },
+    "risk": {
+      "low": "Low risk",
+      "medium": "Medium risk",
+      "sensitive": "Sensitive"
+    },
+    "source": {
+      "jev": "Jev",
+      "fixed_rules": "Fixed rules",
+      "guard": "Hard guard",
+      "user": "Your decision"
+    },
+    "riskReason": {
+      "auth": "authentication",
+      "payment": "payments",
+      "migration": "data migration",
+      "data_deletion": "data deletion",
+      "ci_config": "CI configuration",
+      "cross_service": "cross-service change",
+      "protected_review": "protected path under review",
+      "many_acceptance_items": "many acceptance items",
+      "many_links": "many linked issues"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "subtitle": "Jira issues Orqen found, and the run working on each.",
+    "loadFailed": "Could not load tasks.",
+    "empty": "No tasks yet. Enable a project with a Jira mapping, or use Poll now on the project's Intake tab.",
+    "emptyFiltered": "No task matches these filters.",
+    "filters": {
+      "project": "Project",
+      "allProjects": "All projects",
+      "state": "State",
+      "allStates": "All states",
+      "search": "Issue key",
+      "searchPlaceholder": "ORQ-1"
+    },
+    "columns": {
+      "key": "Issue",
+      "summary": "Summary",
+      "project": "Project",
+      "state": "State",
+      "risk": "Risk",
+      "updated": "Updated",
+      "actions": "Actions"
+    },
+    "candidate": "Candidate",
+    "noRun": "No run",
+    "evaluate": "Evaluate",
+    "evaluateLabel": "Evaluate {{key}}",
+    "evaluated": "{{key}} evaluated",
+    "loadMore": "Load more",
+    "ambiguousProject": "Matches two projects",
+    "inaccessible": "Not accessible",
+    "leftFilter": "Left the filter"
+  },
+  "taskDetail": {
+    "back": "Back to tasks",
+    "loadFailed": "Could not load this task.",
+    "tabsLabel": "Task sections",
+    "tabs": {
+      "overview": "Overview",
+      "plan": "Plan",
+      "timeline": "Timeline",
+      "context": "Context",
+      "workspace": "Workspace",
+      "history": "History",
+      "roles": "Roles",
+      "verification": "Verification",
+      "diff": "Changes",
+      "review": "Review",
+      "mergeRequest": "Merge request",
+      "publishing": "Publishing"
+    },
+    "openInJira": "Open {{key}} in Jira",
+    "acceptance": "Acceptance criteria",
+    "acceptanceSource": "Source",
+    "acceptanceSources": {
+      "field": "Jira field",
+      "section": "Description section",
+      "none": "None found"
+    },
+    "noAcceptance": "No acceptance criteria were found.",
+    "sources": "Sources of this run",
+    "sourceKind": {
+      "jira_issue": "Jira issue",
+      "user_answer": "Your answer",
+      "constraint": "Constraint"
+    },
+    "carried": "carried over",
+    "revisionAdded": "added at revision {{n}}",
+    "noSources": "No sources yet.",
+    "triage": "Triage",
+    "outcome": "Outcome",
+    "risk": "Risk",
+    "riskReasons": "Why",
+    "decisionSource": "Decided by",
+    "noTriage": "Not triaged yet.",
+    "description": "Description",
+    "noDescription": "No description.",
+    "descriptionTruncated": "Description shortened",
+    "parent": "Parent",
+    "noSnapshot": "The issue has not been read yet.",
+    "noRun": "This task has no run.",
+    "noPlan": "No plan yet.",
+    "planFailed": "Could not read the plan.",
+    "planGoal": "Goal and acceptance",
+    "planApproved": "Approved",
+    "planNotApproved": "Not approved",
+    "planTests": "Test contract and scope",
+    "planNoTests": "No approved commands.",
+    "planProtected": "Protected paths named",
+    "planConstraints": "Constraints",
+    "planOutOfScope": "Out of scope",
+    "planArchitect": "A fuller plan from the architect arrives with coding.",
+    "timelineEmpty": "No events yet.",
+    "timelineFailed": "Could not load the timeline.",
+    "attempts": "Attempts",
+    "attemptReason": {
+      "initial": "Initial",
+      "retry": "Retry"
+    },
+    "runs": "Runs of this issue",
+    "supersedes": "replaces",
+    "supersededBy": "replaced by",
+    "heads": "Commits",
+    "headCode": "Code",
+    "headVerified": "Verified",
+    "headReviewed": "Reviewed",
+    "headStale": "(old)",
+    "round": "Round {{n}}",
+    "planLanes": "Lanes"
+  },
+  "inbox": {
+    "title": "Inbox",
+    "subtitle": "Questions and approvals waiting for you.",
+    "loadFailed": "Could not load the Inbox.",
+    "empty": "Nothing is waiting for you.",
+    "filters": {
+      "project": "Project",
+      "allProjects": "All projects",
+      "priority": "Priority",
+      "allPriorities": "All priorities",
+      "reason": "Reason",
+      "allReasons": "All reasons",
+      "status": "Status"
+    },
+    "status": {
+      "open": "Open",
+      "resolved": "Resolved",
+      "superseded": "Replaced",
+      "cancelled": "Cancelled"
+    },
+    "reason": {
+      "missing_acceptance": "Missing acceptance",
+      "ambiguous_behavior": "Unclear behavior",
+      "project_mapping": "Project mapping",
+      "design_access": "Design access",
+      "policy_conflict": "Policy conflict",
+      "protected_change": "Protected change",
+      "unsupported_toolchain": "Unsupported toolchain",
+      "model_unavailable": "Model unavailable",
+      "budget_exceeded": "Budget exceeded",
+      "credential_expired": "Credential expired",
+      "review_disagreement": "Review disagreement",
+      "external_write_uncertain": "External write uncertain",
+      "dependency_unavailable": "Dependency unavailable",
+      "plan_approval": "Plan approval",
+      "publish_approval": "Publish approval"
+    },
+    "priority": {
+      "high": "High",
+      "normal": "Normal",
+      "low": "Low"
+    },
+    "columns": {
+      "reason": "Reason",
+      "question": "Question",
+      "priority": "Priority",
+      "task": "Task",
+      "stage": "Stage",
+      "age": "Opened"
+    },
+    "question": {
+      "missing_acceptance": "This issue has no acceptance criteria. What must be true when it is done?",
+      "ambiguous_requirements": "The requirements are unclear. Please clarify what should change.",
+      "contradictory_requirements": "The issue contradicts itself or its parent. Please say which applies.",
+      "untestable_acceptance": "The acceptance criteria cannot be checked automatically. Please make them testable.",
+      "needs_clarification": "Orqen cannot decide on its own whether this is safe to run. Please add what is missing.",
+      "already_addressed_confirm": "The work may already exist. Close this run, or continue anyway?",
+      "multi_repo": "This issue seems to need changes in more than one repository, which is not supported yet.",
+      "issue_inaccessible": "The issue could not be read. Check the Jira connection and permissions, then resume.",
+      "issue_in_two_projects": "Two projects match this issue. Change a project's Jira filter so only one does, then resume.",
+      "mapping_incomplete": "The project mapping is incomplete ({{blockers}}). Fix it, then resume.",
+      "no_test_command": "The project has no approved test command. Approve one, then resume.",
+      "docker_unavailable": "The approved test command needs Docker and Docker is not running. Start it, then resume.",
+      "protected_change": "The task names protected paths ({{paths}}). Proceed without changing them, or cancel.",
+      "packet_oversize": "The pinned rules and acceptance need {{critical_bytes}} bytes but the limit is {{cap}}. Raise the limit or cancel.",
+      "plan_approval": "Review the plan and approve it, ask for changes, or cancel.",
+      "credential_expired": "A credential was rejected. Replace it in Integrations, then resume.",
+      "provider_not_found": "A repository or branch could not be found. Check the project mapping, then resume.",
+      "clone_host_not_allowed": "The repository clone address ({{host}}) is not on this connection's host. Add the host to the connection's allowed hosts, then resume.",
+      "target_branch_missing": "The target branch was not found in the repository. Fix the mapping, then resume.",
+      "primary_repo_missing": "The project has no primary repository. Map one, then resume.",
+      "disk_low": "There is not enough free disk space for a workspace. Free some space, then resume.",
+      "git_unavailable": "git 2.30 or newer is required. Install it, then resume.",
+      "architect_plan_approval": "The architect made a plan. Review it and approve it, or ask for changes.",
+      "branch_rewritten": "The branch {{branch}} was rewritten on the remote. Orqen will not overwrite it.",
+      "catherd_land_refused": "catherd refused to land the change. Check the verification and review, then try again.",
+      "ci_timeout": "The pipeline did not finish in time. Check GitLab, then resume.",
+      "dispatch_cap": "This run reached its limit of {{cap}} role dispatches. Allow another one, or cancel.",
+      "env_guard_refused": "This build may only write to local addresses, so the write was refused.",
+      "external_write_failed": "A write to GitLab failed. Check the connection and the write credential, then try again.",
+      "external_write_uncertain": "It is not known whether a write reached GitLab. Orqen looked and could not tell. Check GitLab, then resume.",
+      "fix_rounds_exhausted": "The change did not pass after {{rounds}} rounds. Allow another round, accept it anyway, or cancel.",
+      "lane_owns_protected": "The plan gives a lane a protected path. Change the plan or cancel.",
+      "plan_invalid": "The architect plan is not valid ({{plan_error}}). Try again or cancel.",
+      "protected_paths_changed": "The coder changed protected paths. Send it back, accept, or cancel.",
+      "publish_approval": "Operations are waiting for your approval on the task.",
+      "review_unparseable": "The reviewer {{name}} gave an answer Orqen could not read. Review again or cancel.",
+      "reviewer_not_independent": "The review would not be independent of the coder. Change the model profile.",
+      "role_dispatch_uncertain": "It is not known whether a role started. Try again or cancel.",
+      "test_weakening_suspected": "The change may weaken the tests. Send it back, accept it, or cancel.",
+      "verification_incomplete": "Some checks could not run. Fix the cause and try again, or cancel.",
+      "verifier_blocked": "The verifier did not pass the change.",
+      "write_credential_expired": "GitLab rejected the write credential. Replace it in Settings, Publishing, then resume."
+    },
+    "option": {
+      "provide_acceptance": "Provide acceptance criteria",
+      "clarify": "Clarify",
+      "cancel": "Cancel the run",
+      "cancel_run": "Cancel the run",
+      "close": "Close the run",
+      "continue": "Continue anyway",
+      "proceed_without_protected": "Proceed without changing protected paths",
+      "raise_limit": "Raise the context limit",
+      "approve": "Approve the plan",
+      "request_changes": "Request changes",
+      "resume": "Resume",
+      "retry_dispatch": "Try again",
+      "retry_review": "Review again",
+      "waive": "Accept the findings",
+      "adopt_remote": "Use the remote branch",
+      "reject": "Reject and keep dry-run",
+      "retry_write": "Try the write again",
+      "accept": "Accept anyway",
+      "another_round": "Allow another round",
+      "send_back": "Send back to the coder",
+      "approve_all": "Approve all"
+    },
+    "effect": {
+      "add_acceptance": "Your text becomes the acceptance criteria of this run only.",
+      "add_clarification": "Your text is added to this run only; it never becomes a rule.",
+      "cancel_run": "The run ends and its workspace is cleaned up.",
+      "close_run": "The run ends as already addressed.",
+      "continue_anyway": "The run goes on to planning.",
+      "proceed_without_protected": "The run records that protected paths must not change.",
+      "raise_context_limit": "The context limit follows the current policy for this run.",
+      "approve_plan": "The run moves to the start gate.",
+      "request_plan_changes": "Your text is added and the plan is made again.",
+      "resume": "The run continues from where it stopped.",
+      "accept_weakening": "The change is accepted as it is and verified once more.",
+      "adopt_remote": "The remote branch becomes the run's head and is verified.",
+      "hold_dry_run": "The run goes on in dry-run; nothing is written.",
+      "raise_dispatch_cap": "One more role may be dispatched for this run.",
+      "raise_fix_cap": "One more fix round is allowed.",
+      "replan": "The plan is made again.",
+      "retry_dispatch": "The role is dispatched again.",
+      "retry_land": "Landing is tried again.",
+      "retry_review": "The review runs again.",
+      "retry_write": "The write is tried again.",
+      "send_back": "The coder gets another round with a reminder.",
+      "use_approval_dialog": "Use the approval dialog on the task.",
+      "waive_findings": "Blocking findings are accepted and the run goes on."
+    },
+    "evidence": "Evidence",
+    "noEvidence": "No evidence was attached.",
+    "evidenceOpen": "Open",
+    "evidenceKind": {
+      "jira_summary": "Summary",
+      "jira_description": "Description",
+      "jira_acceptance": "Acceptance",
+      "jira_parent": "Parent",
+      "plan_brief": "Plan"
+    },
+    "sheetTitle": "Question",
+    "sheetHelp": "Answer to continue the run; the same run resumes where it stopped.",
+    "options": "Choose an answer",
+    "textLabel": "Your answer",
+    "answerResume": "Answer and resume",
+    "submitApproval": "Submit",
+    "openApproval": "Open the approval dialog",
+    "answering": "Sending…",
+    "answered": "Answer sent",
+    "resolveHelp": "Fix the cause elsewhere, then resume the run, or cancel it.",
+    "resolveResume": "Resume the run",
+    "resolveCancel": "Cancel the run",
+    "approvalHint": "This run needs your approval before it can go on.",
+    "stale": "This question was replaced",
+    "staleBody": "The run moved on or the issue changed, so this question is no longer current. Your text is kept below.",
+    "staleLink": "Open the current task",
+    "yourText": "Your text",
+    "copy": "Copy",
+    "showCurrent": "Show the current state",
+    "closed": {
+      "resolved": "Answered.",
+      "superseded": "Replaced by a newer run.",
+      "cancelled": "Cancelled with the run."
+    },
+    "openCount": "{{count}} open"
+  },
+  "context": {
+    "title": "Context packet",
+    "sections": {
+      "critical_rules": "Critical rules",
+      "goal_acceptance": "Goal and acceptance",
+      "repo_rules": "Repository rules",
+      "design_refs": "Design references",
+      "code_context": "Code context",
+      "task_discussion": "Task discussion",
+      "knowledge": "Knowledge",
+      "experience": "Experience"
+    },
+    "excluded": {
+      "budget": "Over the limit",
+      "out_of_scope": "Out of scope",
+      "stale": "Stale",
+      "adapter_unavailable": "Adapter not available",
+      "module_unavailable": "Module not available",
+      "empty": "Empty",
+      "title": "Excluded"
+    },
+    "bytes": "Size",
+    "critical": "critical",
+    "truncated": "shortened from {{original}} bytes",
+    "included": "Included",
+    "notBuilt": "The packet has not been built yet.",
+    "loadFailed": "Could not load the packet.",
+    "meter": "Packet size against the limit",
+    "meterText": "{{bytes}} of {{cap}} bytes",
+    "freshness": "Issue revision {{revision}}, HEAD",
+    "openPacket": "Open the packet",
+    "hidePacket": "Hide the packet",
+    "sectionEmpty": "Nothing in this section.",
+    "rolePackets": "Role packets",
+    "pickRole": "Pick a role to see its packet manifest.",
+    "roleNotBuilt": "No packet was built for this role in this run.",
+    "packetOversize": "Critical context did not fit: the run stopped",
+    "role": {
+      "architect": "Architect",
+      "worker": "Worker",
+      "verifier": "Verifier",
+      "reviewer": "Reviewer",
+      "writer": "Writer"
+    },
+    "showJson": "Show JSON",
+    "hideJson": "Hide JSON",
+    "consumption": {
+      "title": "Consumption",
+      "packetBytes": "Packet bytes / cap",
+      "estTokens": "Estimated tokens",
+      "actual": "Actual input tokens",
+      "notReported": "Not reported by the host",
+      "overhead": "Host overhead"
+    },
+    "trust": {
+      "user": "User content",
+      "external": "External content",
+      "verified": "Verified",
+      "draft": "Draft"
+    },
+    "freshnessState": {
+      "fresh": "Fresh",
+      "stale": "Stale"
+    }
+  },
+  "workspace": {
+    "title": "Managed workspace",
+    "state": {
+      "preparing": "Preparing",
+      "ready": "Ready",
+      "retained": "Retained",
+      "preserved": "Preserved",
+      "removed": "Removed",
+      "failed": "Failed"
+    },
+    "branch": "Branch",
+    "base": "Base",
+    "head": "HEAD",
+    "path": "Path",
+    "created": "Created",
+    "dirty": "Has changes",
+    "none": "No workspace was prepared for this run.",
+    "discard": "Discard…",
+    "discardStarted": "Discard started",
+    "discardDialog": {
+      "title": "Discard this workspace?",
+      "first": "A snapshot of the changes is saved first, then the worktree and branch are deleted.",
+      "second": "This cannot be undone. Discard the workspace now?",
+      "continue": "Continue",
+      "confirm": "Discard workspace"
+    },
+    "snapshotKept": "A snapshot of the changes was saved before removal.",
+    "preservedBody": "This workspace has changes, so it was kept. Orqen never deletes it by itself."
+  },
+  "intake": {
+    "title": "Jira intake",
+    "loadFailed": "Could not load intake status.",
+    "notEnabled": "Automation is not enabled for this project, so it is not polled.",
+    "mode": "New issues",
+    "modes": {
+      "auto": "Start runs automatically",
+      "manual": "Wait for Evaluate"
+    },
+    "lastPoll": "Last successful poll",
+    "nextPoll": "Next poll",
+    "counts": "Last poll: {{seen}} seen, {{changed}} changed, {{left}} left the filter",
+    "sprints": "Active sprints",
+    "noSprints": "none",
+    "pollNow": "Poll now",
+    "polling": "Polling…",
+    "waitingNetwork": "Waiting for the network",
+    "blocked": {
+      "title": "Intake is blocked",
+      "body": "The Jira credential was rejected. Replace it in Integrations; polling resumes by itself."
+    },
+    "error": {
+      "rate_limited": "Jira is rate limiting Orqen",
+      "network_unavailable": "Jira could not be reached",
+      "credential_expired": "The Jira credential was rejected",
+      "jql_invalid": "The Jira filter is invalid",
+      "invalid_request": "Jira rejected the request"
+    }
+  },
+  "rules": {
+    "orgTitle": "Pinned rules",
+    "projectTitle": "Project rules",
+    "subtitle": "Rules you write go into the context packet of every run in their scope. Answers to questions never become rules.",
+    "titleLabel": "Title",
+    "bodyLabel": "Rule",
+    "bodyHint": "Up to 16 KiB.",
+    "critical": "Critical",
+    "criticalHelp": "A critical rule is never shortened. If the critical rules and the acceptance do not fit the packet limit, the run asks you instead of cutting them.",
+    "criticalBadge": "Critical",
+    "add": "Add rule",
+    "saved": "Rule saved",
+    "empty": "No rules yet.",
+    "loadFailed": "Could not load rules.",
+    "listLabel": "Rules",
+    "edit": "Edit rule",
+    "archiveLabel": "Archive {{title}}",
+    "conflict": "This rule was changed elsewhere. Close and reopen it."
+  },
+  "automation": {
+    "paused": "Automation is paused",
+    "pause": "Pause automation",
+    "resume": "Resume automation",
+    "help": "While paused, nothing is polled and runs hold at their next stage boundary; a running step finishes.",
+    "loadFailed": "Could not load the automation state."
+  },
+  "publishing": {
+    "loadFailed": "Could not load the publishing settings",
+    "badge": {
+      "dry_run": "DRY-RUN",
+      "dry_runHint": "Writes to GitLab are simulated.",
+      "live": "LIVE",
+      "liveHint": "Approved writes go to GitLab.",
+      "paused": "PAUSED",
+      "pausedHint": "All external writes are paused."
+    },
+    "mode": {
+      "title": "Write mode",
+      "dryHelp": "Dry-run: nothing is written to GitLab. The merge request and its exact payload are simulated and recorded.",
+      "liveHelp": "Live: approved operations on allowlisted projects are written to GitLab.",
+      "enableLive": "Enable live writes...",
+      "backToDry": "Back to dry-run",
+      "liveEnabled": "Live writes enabled"
+    },
+    "liveDialog": {
+      "title": "Enable live writes",
+      "description": "This lets Orqen push branches and create merge requests on GitLab, one approved operation at a time.",
+      "pointAllowlist": "Only allowlisted projects are written.",
+      "pointCredential": "A separate write credential that you enter is required.",
+      "pointApproval": "Every operation shows its exact payload and waits for your approval.",
+      "phraseLabel": "Type {{phrase}} to confirm",
+      "phraseMismatch": "The phrase does not match.",
+      "confirm": "Enable live writes"
+    },
+    "allowlist": {
+      "title": "Write allowlist",
+      "help": "Only these projects can ever be written to.",
+      "empty": "No project is allowlisted.",
+      "remove": "Remove",
+      "connection": "GitLab connection",
+      "chooseConnection": "Choose a connection",
+      "search": "Search projects",
+      "candidates": "Projects",
+      "add": "Add"
+    },
+    "pause": {
+      "title": "Pause all external writes",
+      "help": "A kill switch: while paused, nothing is written even if approved."
+    },
+    "guard": {
+      "title": "Environment guard",
+      "help": "Development and test builds can only write to local addresses.",
+      "channel": "Build channel",
+      "env": "ORQEN_ENV",
+      "scope": "Write scope",
+      "killSwitch": "Kill switch",
+      "loopbackOnly": "This build can only write to loopback addresses."
+    }
+  },
+  "writeCredential": {
+    "title": "Write credentials",
+    "noGitlab": "There is no GitLab connection.",
+    "help": "A separate token used only to publish. Orqen never creates it, and workers never receive it.",
+    "set": "Set",
+    "none": "Not set",
+    "secret": "Write token",
+    "secretHint": "Stored in the Keychain; never shown again.",
+    "saved": "Write credential saved",
+    "save": "Save",
+    "replace": "Replace",
+    "checkNow": "Check (read only)",
+    "checking": "Checking...",
+    "remove": "Remove",
+    "check": {
+      "ok": "Checked: can write",
+      "refused": "Checked: refused",
+      "insufficient": "Checked: insufficient access",
+      "unchecked": "Not checked"
+    }
+  },
+  "host": {
+    "title": "Codex host",
+    "subtitle": "Runs coding roles. Needs Codex {{version}} or newer.",
+    "available": "Available",
+    "unavailable": "Unavailable",
+    "version": "Codex version",
+    "fake": "(test host)",
+    "login": "Login",
+    "loginState": {
+      "ok": "Logged in",
+      "missing": "Not logged in"
+    },
+    "checkedAt": "Probed at",
+    "notProbed": "The host has not been probed.",
+    "probe": "Probe host",
+    "probing": "Probing...",
+    "loadFailed": "Could not load the host",
+    "spikeTitle": "Real-host spike",
+    "spikeHelp": "Run the spike yourself (docs/LIVE-TRIAL.md), then attest it. Orqen never runs it.",
+    "spikeDone": "Attested on {{date}}",
+    "spikeCodex": "Codex version used",
+    "spikeCatherd": "catherd version used",
+    "attest": "Attest spike",
+    "attested": "Spike attested"
+  },
+  "roles": {
+    "loadFailed": "Could not load the roles",
+    "hostSession": "Codex host session",
+    "model": "Model",
+    "codex": "Codex",
+    "thread": "Thread",
+    "hostTokens": "{{n}} host tokens",
+    "none": "No role has run yet.",
+    "role": "Role",
+    "state": "State",
+    "rung": "Model rung",
+    "round": "Round",
+    "reply": "Reply",
+    "failover": "(failover)",
+    "states": {
+      "planned": "Planned",
+      "dispatching": "Dispatching",
+      "dispatched": "Running",
+      "finished": "Finished",
+      "collected": "Collected",
+      "cancel_requested": "Cancelling",
+      "cancelled": "Cancelled",
+      "failed": "Failed",
+      "ambiguous": "Unclear"
+    }
+  },
+  "verification": {
+    "loadFailed": "Could not load the verification",
+    "none": "Nothing has been verified yet.",
+    "round": "Round {{n}}",
+    "commands": "Commands",
+    "weakening": "The change may weaken the tests",
+    "verifier": "Verifier",
+    "waived": "Accepted by you",
+    "sandbox": {
+      "sandboxed": "sandboxed",
+      "unsandboxed": "not sandboxed",
+      "docker": "Docker"
+    },
+    "gate": {
+      "pass": "Passed",
+      "fail": "Failed",
+      "blocked": "Blocked",
+      "waived": "Accepted",
+      "incomplete": "Incomplete",
+      "pending": "Pending"
+    },
+    "outcome": {
+      "pass": "Passed",
+      "fail": "Failed",
+      "new_failure": "New failure",
+      "baseline_failure": "Already failing",
+      "incomplete": "Incomplete"
+    },
+    "reasons": {
+      "new_failure": "A check fails that passed before:",
+      "baseline_unknown": "The baseline is unknown for",
+      "baseline_failure": "Already failing before the change:",
+      "incomplete": "A check could not run:",
+      "test_weakening_suspected": "The change may weaken the tests.",
+      "no_commands": "There are no commands to run.",
+      "verifier_pending": "The verifier has not answered yet.",
+      "verifier_blocked": "The verifier could not decide.",
+      "verifier_fail": "The verifier did not pass the change."
+    },
+    "signals": {
+      "test_deleted": "A test file was deleted:",
+      "test_count_decreased": "Fewer tests than before:",
+      "skip_marker_added": "A test was skipped in",
+      "test_config_changed": "A check configuration changed:",
+      "command_target_changed": "A test command now points elsewhere:"
+    }
+  },
+  "diff": {
+    "none": "There are no changes yet.",
+    "loadFailed": "Could not load the changes",
+    "file": "File",
+    "status": "Change",
+    "kind": {
+      "added": "Added",
+      "modified": "Modified",
+      "deleted": "Deleted",
+      "renamed": "Renamed"
+    }
+  },
+  "review": {
+    "none": "The change has not been reviewed yet.",
+    "loadFailed": "Could not load the findings",
+    "noFindings": "The reviewer found nothing to report.",
+    "findings": "Findings",
+    "round": "Round {{n}}",
+    "blockingOpen": "{{n}} blocking open",
+    "summaryOnly": "In the summary note only",
+    "waive": "Accept this finding",
+    "waiveTitle": "Accept a blocking finding",
+    "waiveHelp": "The finding stops blocking this change. Your reason is recorded.",
+    "waiveReason": "Why is this acceptable?",
+    "waived": "Finding accepted",
+    "waiveStale": "The finding changed. Reload and try again.",
+    "waivedBecause": "Accepted because",
+    "verdict": {
+      "approved": "Approved",
+      "changes_requested": "Changes requested",
+      "approved_with_scope": "Approved with a scope note"
+    },
+    "independence": {
+      "independent": "Independent review",
+      "same_model": "Same model as the coder",
+      "unknown": "Independence unknown",
+      "partial": "Partly independent"
+    },
+    "severity": {
+      "blocker": "Blocker",
+      "major": "Major",
+      "minor": "Minor",
+      "nit": "Nit"
+    },
+    "status": {
+      "open": "Open",
+      "fixed": "Fixed",
+      "waived": "Accepted",
+      "superseded": "Replaced"
+    }
+  },
+  "mr": {
+    "none": "There is no merge request yet.",
+    "loadFailed": "Could not load the merge request",
+    "mode": {
+      "live": "LIVE",
+      "dry_run": "DRY-RUN"
+    },
+    "state": {
+      "opened": "Open",
+      "merged": "Merged",
+      "closed": "Closed"
+    },
+    "draft": "Draft",
+    "branches": "Branches",
+    "head": "Head",
+    "verified": "Verified head",
+    "reviewed": "Reviewed head",
+    "pipeline": "Pipeline",
+    "noPipeline": "No pipeline",
+    "open": "Open in GitLab",
+    "simulated": "This merge request is simulated. Nothing was written to GitLab.",
+    "readiness": "Ready to merge",
+    "ready": "Ready",
+    "notReady": "Not ready",
+    "checksLabel": "Checks",
+    "check": {
+      "pass": "Pass",
+      "fail": "Fail",
+      "pending": "Waiting",
+      "stale": "Out of date"
+    },
+    "pipelineStatus": {
+      "success": "Passed",
+      "failed": "Failed",
+      "running": "Running",
+      "pending": "Pending",
+      "canceled": "Cancelled",
+      "created": "Created",
+      "skipped": "Skipped"
+    },
+    "checkCodes": {
+      "remote_mr": "The merge request exists on GitLab",
+      "head_match": "The current commit is verified and reviewed",
+      "pipeline_head": "The pipeline ran on the current commit",
+      "pipeline_success": "The pipeline passed",
+      "required_jobs": "The required jobs passed",
+      "blocking_findings": "No blocking finding is open",
+      "discussions": "All discussions are resolved",
+      "conflicts": "There are no conflicts",
+      "mr_open": "The merge request is open",
+      "verification": "Verification passed",
+      "review": "The review approved the change",
+      "independence": "The review was independent",
+      "run_state": "The run is waiting for you"
+    }
+  },
+  "xop": {
+    "loadFailed": "Could not load the operations",
+    "none": "Nothing has been published yet.",
+    "dryRunTitle": "Dry-run",
+    "dryRunBody": "These operations are simulated. Each one records exactly what would have been sent.",
+    "review": "Review {{n}} operation(s) waiting for approval",
+    "action": "Action",
+    "target": "Target",
+    "state": "State",
+    "round": "Round",
+    "details": "Details",
+    "dialogTitle": "Approve this write",
+    "dialogHelp": "This is exactly what will be sent. It cannot be edited; if anything changes you must approve again.",
+    "host": "Host",
+    "project": "Project",
+    "branch": "Branch",
+    "refspec": "Refspec",
+    "intent": "Intent",
+    "commits": "Commits",
+    "decision": "Why",
+    "next": "Next operation",
+    "approve": "Approve and send",
+    "approved": "Approved",
+    "stale": "This operation changed after you opened it. Reload and review it again.",
+    "actions": {
+      "git_push": "Push the branch",
+      "mr_create": "Create the merge request",
+      "mr_update": "Update the merge request",
+      "mr_note": "Add a summary note",
+      "mr_discussion": "Add a discussion",
+      "jira_comment": "Jira comment",
+      "jira_transition": "Jira transition"
+    },
+    "states": {
+      "planned": "Planned",
+      "dry_run": "Simulated",
+      "awaiting_approval": "Waiting for approval",
+      "executing": "Sending",
+      "succeeded": "Done",
+      "failed": "Failed",
+      "outcome_unknown": "Outcome unknown",
+      "reconciled": "Checked",
+      "superseded": "Replaced",
+      "cancelled": "Cancelled",
+      "refused": "Refused"
+    },
+    "reasons": {
+      "mode_dry_run": "Writes are in dry-run mode",
+      "not_allowlisted": "The project is not on the write allowlist",
+      "write_credential_missing": "No write credential is set",
+      "needs_approval": "Your approval is required",
+      "awaiting_approval": "Waiting for your approval",
+      "approved": "Approved by you",
+      "policy_auto": "Policy allows it automatically",
+      "policy_off": "Policy turns this write off",
+      "paused": "Writes are paused",
+      "kill_switch": "The kill switch is on",
+      "env_guard": "This build may only write to local addresses",
+      "bad_target": "The target is not valid",
+      "action_not_supported": "This action is not supported"
+    }
+  },
+  "mrPage": {
+    "title": "Merge Requests",
+    "subtitle": "Every merge request Orqen prepared, simulated or real.",
+    "readyOnly": "Ready only",
+    "mode": "Mode",
+    "allModes": "All modes",
+    "empty": "There are no merge requests yet.",
+    "columns": {
+      "title": "Merge request",
+      "mode": "Mode",
+      "state": "State",
+      "pipeline": "Pipeline",
+      "ready": "Ready",
+      "updated": "Updated"
+    },
+    "sheetTitle": "Merge request",
+    "sheetHelp": "State, heads and readiness checks.",
+    "refresh": "Refresh from GitLab",
+    "refreshing": "Refresh started",
+    "readyCount": "{{count}} ready to merge"
+  },
+  "knowledgePage": {
+    "title": "Knowledge",
+    "subtitle": "Verified knowledge your agents may use. MongoDB is the source of truth; the Wiki is a rebuildable index.",
+    "wiki": {
+      "fallback": "Search is using the database fallback",
+      "wiki": "Search is using the Wiki index",
+      "degraded": "Degraded: {{reason}}",
+      "pending_one": "{{count}} change waiting for the index",
+      "pending_other": "{{count}} changes waiting for the index",
+      "code": {
+        "wiki_not_configured": "The Wiki index is not configured",
+        "wiki_unavailable": "The Wiki index could not start",
+        "wiki_failed": "The Wiki index command failed",
+        "wiki_timeout": "The Wiki index timed out",
+        "wiki_invalid_output": "The Wiki index returned invalid output",
+        "wiki_bad_vault": "The Wiki vault path is not allowed",
+        "wiki_vault_busy": "Another writer holds the Wiki vault",
+        "unknown": "Unknown problem ({{code}})"
+      }
+    },
+    "search": "Search verified knowledge",
+    "searchPlaceholder": "Search by title, claim or text",
+    "hits": "{{count}} results",
+    "noHits": "Nothing found.",
+    "records": "Records",
+    "none": "No knowledge yet. Drafts appear here after a merge and wait for your review.",
+    "type": "Type",
+    "status": "Status",
+    "version": "Version {{n}}",
+    "claims": "Claims",
+    "evidence": "Evidence",
+    "noEvidence": "No evidence",
+    "stale": "Evidence changed",
+    "pinned": "Pinned",
+    "critical": "Critical",
+    "statusValues": {
+      "draft": "Draft",
+      "verified": "Verified",
+      "conflicted": "Conflicted",
+      "superseded": "Superseded",
+      "archived": "Archived"
+    },
+    "verdict": {
+      "unchecked": "Not checked",
+      "supported": "Supported",
+      "unsupported": "Unsupported",
+      "stale": "Stale"
+    },
+    "actions": {
+      "verify": "Verify",
+      "reject": "Reject draft",
+      "rollback": "Roll back to this version",
+      "archive": "Archive",
+      "pin": "Pin as critical",
+      "unpin": "Unpin",
+      "note": "Note",
+      "attest": "Your attestation for the claim without proof: {{claim}}"
+    },
+    "verified": "Verified",
+    "rejected": "Draft rejected",
+    "rolledBack": "Rolled back",
+    "archived": "Archived",
+    "versions": "Versions",
+    "conflicts": "Conflicts",
+    "noConflicts": "No open conflicts.",
+    "conflictHelp": "Two pieces of knowledge disagree. Choose which one stays.",
+    "resolve": {
+      "keep_existing": "Keep the verified one",
+      "accept_new": "Accept the new one",
+      "archive_both": "Archive both",
+      "note": "Why (required to accept the new one)"
+    },
+    "proposals": "Proposals from runs",
+    "origin": {
+      "deterministic": "Written by Orqen from evidence",
+      "user": "Written by you",
+      "role": "Written by a role",
+      "rollback": "Rollback copy"
+    }
+  },
+  "graphPage": {
+    "title": "Organization graph",
+    "subtitle": "Repositories, services and docs, with the evidence behind every edge.",
+    "rebuild": "Rebuild graph",
+    "rebuildStarted": "Graph rebuild started",
+    "nodes": "Nodes",
+    "search": "Search nodes",
+    "noNodes": "No nodes yet. Rebuild the graph after repositories are mapped.",
+    "pick": "Pick a node to see its neighborhood.",
+    "depth": "Depth",
+    "truncated": "Truncated to the first 200 nodes",
+    "edges": "Edges",
+    "noEdges": "No edges around this node.",
+    "confirm": "Confirm",
+    "reject": "Reject",
+    "confirmed": "Edge confirmed",
+    "rejected": "Edge rejected",
+    "status": {
+      "inferred": "Inferred",
+      "verified": "Verified",
+      "rejected": "Rejected"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gitnexus",
+  "version": "1.0.0",
+  "source": "https://github.com/abhigyanpatwari/GitNexus",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "PolyForm-Noncommercial-1.0.0", "gate": "acceptance_required", "notice_key": "extensions.license.notice.gitnexus"},
+  "transport": "cli",
+  "runtime": {"kind": "node", "min_version": "0.1.0"},
+  "config_schema": {"type":"object","properties":{"depth":{"type":"integer","minimum":1,"maximum":2}}},
+  "credential_fields": [],
+  "capabilities": ["analyze","impact","context"],
+  "read_tools": ["impact","context"],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "code_graph",
+  "integration": "integrated",
+  "install_guidance": {"text_key": "extensions.install.gitnexus.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": false}
+}

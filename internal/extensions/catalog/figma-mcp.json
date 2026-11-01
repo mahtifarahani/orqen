@@ -1,0 +1,21 @@
+{
+  "id": "figma-mcp",
+  "version": "1.0.0",
+  "source": "https://github.com/GLips/Figma-Context-MCP",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "MIT", "gate": "none", "notice_key": "extensions.license.notice.figma-mcp"},
+  "transport": "remote_mcp",
+  "runtime": {"kind": "remote", "min_version": ""},
+  "config_schema": null,
+  "credential_fields": [],
+  "capabilities": ["design_context"],
+  "read_tools": [],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "design",
+  "integration": "detect_only",
+  "install_guidance": {"text_key": "extensions.install.figma-mcp.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": false}
+}

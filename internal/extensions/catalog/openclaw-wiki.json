@@ -1,0 +1,21 @@
+{
+  "id": "openclaw-wiki",
+  "version": "1.0.0",
+  "source": "https://github.com/openclaw/openclaw",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "MIT", "gate": "none", "notice_key": "extensions.license.notice.openclaw-wiki"},
+  "transport": "cli",
+  "runtime": {"kind": "native", "min_version": "0.1.0"},
+  "config_schema": null,
+  "credential_fields": [],
+  "capabilities": ["ingest","compile","lint","search","get"],
+  "read_tools": ["search","get"],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "knowledge_index",
+  "integration": "integrated",
+  "install_guidance": {"text_key": "extensions.install.openclaw-wiki.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": false}
+}

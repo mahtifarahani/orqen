@@ -1,0 +1,1 @@
+{"type":"object","required":["files","symbols"],"properties":{"files":{"type":"integer","minimum":0},"symbols":{"type":"integer","minimum":0},"bytes":{"type":"integer","minimum":0}}}

@@ -1,0 +1,12 @@
+{
+  "summary": {"id": "r-0001", "title": "ORQ-1: demo", "milestones": ["M1"], "live": [], "totals": {"runs": 2, "ok": 2, "notOk": []}},
+  "records": [
+    {"schema": 1, "runId": "r-0001", "dispatchId": "d-0001", "name": "worker-M1.L1", "role": "worker", "lane": "M1.L1", "backend": "codex", "rung": "codex:gpt-6-sol#medium", "attempt": 1, "failoverFrom": null, "thread": "00000001-0000-4000-8000-000000000001", "status": "ok", "startedAt": "2026-10-19T10:00:00.000Z", "endedAt": "2026-10-19T10:03:00.000Z", "secs": 180, "exitCode": 0, "signal": null, "cliVersion": "0.160.0", "tokens": {"input": 1000, "cached": 400, "output": 200}, "costUsd": null, "changedOwned": ["src/feature.txt"], "violations": [], "replyStatus": "complete", "replyWhy": "implemented", "threadHeavy": false, "access": "workspace-write", "isolated": false, "images": [], "error": null, "replyPath": "roles/worker-M1.L1/d-0001/reply.md", "host": "codex", "futureField": {"a": 1}},
+    {"schema": 1, "runId": "r-0001", "dispatchId": "d-0002", "name": "reviewer-M1-r1", "role": "reviewer", "lane": null, "backend": "codex", "rung": "codex:gpt-6.1-sol#high", "attempt": 1, "failoverFrom": "codex:gpt-6-sol#high", "thread": null, "status": "limit", "startedAt": "2026-10-19T10:04:00.000Z", "endedAt": "2026-10-19T10:05:00.000Z", "secs": 60, "exitCode": 1, "signal": null, "cliVersion": null, "tokens": {"input": 10, "cached": 0, "output": 1}, "costUsd": 0.12, "changedOwned": [], "violations": ["src/other.txt"], "replyStatus": null, "replyWhy": null, "threadHeavy": false, "access": "read-only", "isolated": true, "images": [], "error": {"code": "usage_limit", "message": "limit reached"}, "replyPath": "roles/reviewer-M1-r1/d-0002/reply.md"}
+  ],
+  "dispatches": [
+    {"name": "worker-M1.L1", "dispatchId": "d-0001", "rung": "codex:gpt-6-sol#medium", "admittedAt": "2026-10-19T10:00:00.000Z", "record": null, "exit": {"code": 0, "signal": null, "reason": "exited", "endedAt": "2026-10-19T10:03:00.000Z"}, "deliveries": [], "stderrTail": [], "eventsTail": [], "supervisorTail": []},
+    {"name": "reviewer-M1-r1", "dispatchId": "d-0002", "rung": "codex:gpt-6.1-sol#high", "admittedAt": "2026-10-19T10:04:00.000Z", "record": null, "exit": null, "deliveries": [], "stderrTail": [], "eventsTail": [], "supervisorTail": []},
+    {"name": "verifier-M1", "dispatchId": "d-0003", "rung": "codex:gpt-6-luna#medium", "admittedAt": "2026-10-19T10:06:00.000Z", "record": null, "exit": null, "deliveries": [], "stderrTail": [], "eventsTail": [], "supervisorTail": []}
+  ]
+}

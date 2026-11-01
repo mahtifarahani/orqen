@@ -1,0 +1,1 @@
+{"type":"object","required":["version","schema"],"properties":{"version":{"type":"string","maxLength":64},"schema":{"type":"string","enum":["v1"]}}}

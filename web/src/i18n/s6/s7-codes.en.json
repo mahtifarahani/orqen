@@ -1,0 +1,299 @@
+{
+  "context": {
+    "excluded": {
+      "below_rank": "Ranked below the items that fit",
+      "expired": "Expired",
+      "index_missing": "No code index for this commit",
+      "index_stale": "The code index is for an older commit",
+      "not_for_role": "Not meant for this role",
+      "not_synced": "Not synced yet",
+      "not_verified": "Not verified"
+    }
+  },
+  "extensions": {
+    "unusable": {
+      "binary_changed": "The registered file changed; detect and test it again",
+      "config_invalid": "The configuration is not valid",
+      "credential_missing": "A required credential is not set",
+      "disabled": "Disabled",
+      "license_acceptance_required": "The license has not been accepted",
+      "license_revoked": "The license acceptance was revoked",
+      "not_detected": "Not detected yet",
+      "project_not_bound": "This project is not bound to the extension"
+    }
+  },
+  "knowledgePage": {
+    "author": {
+      "state": {
+        "queued": "Queued",
+        "starting": "Starting",
+        "writer_dispatching": "Sending to the writer",
+        "writer_running": "Writer is drafting",
+        "writer_done": "Draft written",
+        "kverify_dispatching": "Sending to the verifier",
+        "kverify_running": "Verifier is checking",
+        "kverify_done": "Check finished",
+        "applied": "Drafts created",
+        "failed": "Failed",
+        "cancel_requested": "Cancelling",
+        "cancelled": "Cancelled"
+      },
+      "code": {
+        "cancelled": "Cancelled by a person",
+        "catherd_unavailable": "catherd or the run profile is not available",
+        "dispatch_uncertain": "It is not known whether the role was started; nothing was sent again",
+        "host_unavailable": "The Codex host is not available",
+        "origin_missing": "The merged run no longer exists",
+        "reply_unparseable": "The role answered in a form Orqen could not read",
+        "restored_incomplete": "The session was interrupted by a restore",
+        "role_failed": "The role did not finish successfully",
+        "timeout": "The role took longer than the time limit",
+        "verifier_role_disabled": "The verifier role is disabled in the model profile",
+        "writer_role_disabled": "The writer role is disabled in the model profile"
+      }
+    },
+    "neverAuto": {
+      "business_claim_without_canonical_source": "A business claim has no canonical source",
+      "claim_contradicted": "A claim is contradicted by its evidence",
+      "claim_unsupported": "A claim is not supported by its evidence",
+      "claim_without_evidence": "A claim cites no evidence",
+      "compaction_requires_review": "Merged records always need a person to review them",
+      "conflict_detected": "It conflicts with existing knowledge",
+      "conflict_open": "An open conflict involves this record",
+      "critical_or_pinned": "The record is critical or pinned",
+      "evidence_stale": "The evidence changed after it was cited",
+      "fact_missing": "A claim has no structured fact",
+      "injection_suspect": "The text looks like an instruction to a model",
+      "policy_not_auto": "Policy does not allow automatic promotion for this type",
+      "roles_authored_needs_review": "Written by the roles author: a person must verify it",
+      "supersedes_user_verified": "It would replace text a person verified"
+    }
+  },
+  "policy": {
+    "keys": {
+      "ci_max_wait_secs": {
+        "label": "Longest wait for CI (seconds)",
+        "help": "The longest Orqen waits for CI to finish before it stops waiting and flags the run."
+      },
+      "ci_no_pipeline_grace_secs": {
+        "label": "Wait for a pipeline to appear (seconds)",
+        "help": "How long Orqen waits for a pipeline to appear after a push before it treats the branch as having none."
+      },
+      "ci_poll_interval_secs": {
+        "label": "CI poll interval (seconds)",
+        "help": "How often Orqen checks the pipeline status while waiting for CI."
+      },
+      "docs_linked_pages_per_run": {
+        "label": "Linked pages read per run",
+        "help": "How many pages linked from the issue Orqen reads for each run. 0 reads none."
+      },
+      "docs_max_page_bytes": {
+        "label": "Largest page read (bytes)",
+        "help": "The largest size of a single document page Orqen will read; bigger pages are skipped."
+      },
+      "docs_sync_interval_secs": {
+        "label": "Document sync interval (seconds, 0 = off)",
+        "help": "How often linked documents are refreshed. 0 turns document sync off."
+      },
+      "graph_inferred_retention_days": {
+        "label": "Keep stale inferred links (days)",
+        "help": "How long inferred links that are no longer confirmed are kept before they are removed."
+      },
+      "host_idle_stop_secs": {
+        "label": "Stop the idle host after (seconds)",
+        "help": "How long the orchestrator host may sit idle before Orqen stops it to free resources."
+      },
+      "host_orchestrator_effort": {
+        "label": "Orchestrator effort",
+        "help": "How much effort the orchestrator model puts into each turn: low, medium or high."
+      },
+      "host_orchestrator_model": {
+        "label": "Orchestrator model",
+        "help": "The model the orchestrator uses. Leave empty to use the host's default."
+      },
+      "host_turn_timeout_secs": {
+        "label": "Host turn time limit (seconds)",
+        "help": "The time limit for one orchestrator turn; a turn that runs longer is cut off."
+      },
+      "knowledge_author": {
+        "label": "Knowledge author",
+        "help": "Who writes knowledge drafts: a deterministic template or the roles author."
+      },
+      "knowledge_compaction_threshold": {
+        "label": "Records needed before merging",
+        "help": "How many related records must pile up before Orqen proposes merging them into one."
+      },
+      "knowledge_learn_on_merge": {
+        "label": "Draft knowledge when a merge request merges",
+        "help": "Whether Orqen drafts knowledge from the work once its merge request has merged."
+      },
+      "knowledge_promotion_business": {
+        "label": "Business knowledge promotion",
+        "help": "Whether business knowledge drafts are promoted automatically, on request only, or never."
+      },
+      "knowledge_promotion_experience": {
+        "label": "Experience promotion",
+        "help": "Whether experience notes are promoted automatically, on request only, or never."
+      },
+      "knowledge_promotion_project": {
+        "label": "Project knowledge promotion",
+        "help": "Whether project knowledge drafts are promoted automatically, on request only, or never."
+      },
+      "knowledge_promotion_sprint": {
+        "label": "Sprint knowledge promotion",
+        "help": "Whether sprint knowledge drafts are promoted automatically, on request only, or never."
+      },
+      "knowledge_promotion_task": {
+        "label": "Task knowledge promotion",
+        "help": "Whether task knowledge drafts are promoted automatically, on request only, or never."
+      },
+      "knowledge_retrieval_cache_ttl_secs": {
+        "label": "Search cache lifetime (seconds)",
+        "help": "How long a knowledge search result is reused before the search runs again. 0 turns the cache off."
+      },
+      "knowledge_retrieval_include_stale": {
+        "label": "Include stale knowledge in searches",
+        "help": "Whether knowledge marked stale can still appear in search results."
+      },
+      "knowledge_retrieval_max_age_days": {
+        "label": "Oldest knowledge returned (days)",
+        "help": "Knowledge older than this is left out of searches. 0 means no age limit."
+      },
+      "knowledge_retrieval_max_source_bytes": {
+        "label": "Largest source quoted (bytes)",
+        "help": "The most text quoted from a single knowledge source in a search result."
+      },
+      "knowledge_retrieval_strategy": {
+        "label": "Retrieval strategy",
+        "help": "How knowledge is found for a run: scoped text search, pinned records only, or off."
+      },
+      "knowledge_retrieval_top_k": {
+        "label": "Results per search",
+        "help": "How many results a knowledge search returns at most."
+      },
+      "knowledge_wiki_sandbox": {
+        "label": "Wiki sandbox",
+        "help": "Whether the wiki reader must run inside the sandbox (enforce) or may run without it when unavailable (best_effort)."
+      },
+      "publish_commit_author_email": {
+        "label": "Commit author email",
+        "help": "The email address Orqen puts on the commits it publishes."
+      },
+      "publish_commit_author_name": {
+        "label": "Commit author name",
+        "help": "The author name Orqen puts on the commits it publishes."
+      },
+      "retention_derived_cache_days": {
+        "label": "Keep derived caches (days)",
+        "help": "How long derived caches are kept before they are cleaned up."
+      },
+      "retention_outbox_days": {
+        "label": "Keep processed index rows (days)",
+        "help": "How long already processed index rows are kept before they are cleaned up."
+      },
+      "review_on_foreign_push": {
+        "label": "When someone else pushes",
+        "help": "What happens when someone other than Orqen pushes to the branch: verify again, or ask a person in the Inbox."
+      },
+      "roles_max_dispatches_per_run": {
+        "label": "Most role dispatches per run",
+        "help": "The most role dispatches one run may use; the run stops asking for more after this."
+      },
+      "roles_max_wall_secs": {
+        "label": "Role time limit (seconds)",
+        "help": "The total time limit for the roles in one run."
+      },
+      "roles_poll_interval_secs": {
+        "label": "Role poll interval (seconds)",
+        "help": "How often Orqen checks on running roles."
+      },
+      "verification_allow_baseline_failures": {
+        "label": "Allow failures that already existed",
+        "help": "Whether failures that already existed before the change are tolerated instead of blocking the run."
+      },
+      "verification_max_output_bytes": {
+        "label": "Largest command output kept (bytes)",
+        "help": "The most output kept from a verification command; the rest is cut."
+      },
+      "verification_sandbox": {
+        "label": "Verification sandbox",
+        "help": "Whether verification commands must run inside the sandbox (enforce) or may run without it when unavailable (best_effort)."
+      }
+    },
+    "values": {
+      "deterministic": "Deterministic",
+      "inbox": "Ask in the inbox",
+      "pinned_only": "Pinned only",
+      "reverify": "Verify again",
+      "roles": "Writer and verifier roles",
+      "scoped_text": "Scoped text"
+    }
+  },
+  "problems": {
+    "conflict_not_open": "That conflict is no longer open",
+    "evidence_ref_invalid": "A cited reference does not exist or is outside this organization",
+    "graph_edge_invalid": "That link is not valid",
+    "internal": "Something went wrong inside Orqen",
+    "kas_active": "The session is still running",
+    "kas_not_failed": "Only a failed session can be retried",
+    "kas_terminal": "The session has already finished",
+    "knowledge_key_taken": "That key is already used in this scope",
+    "knowledge_not_verified": "Only verified knowledge can do that",
+    "knowledge_pin_type_invalid": "Only project, business and sprint knowledge can be pinned",
+    "knowledge_scope_invalid": "That scope is not valid for this type",
+    "rollback_target_invalid": "That version cannot be restored"
+  },
+  "readiness": {
+    "reasons": {
+      "bound_profile_missing_in_catherd": "The bound model profile is not in catherd",
+      "catherd_doctor_failing": "The catherd health check is failing",
+      "catherd_doctor_missing": "The catherd health check has not run",
+      "catherd_unavailable": "catherd is not available",
+      "command_not_approved": "A verification command is not approved",
+      "confluence_ref_unreachable": "A Confluence page could not be fetched",
+      "confluence_refs_unverified": "Confluence references are not verified yet",
+      "contract_not_imported": "The contract has not been imported",
+      "contract_not_reviewed": "The contract has not been reviewed",
+      "docs_evidence_stale": "Verified knowledge cites a document that changed",
+      "docs_not_synced": "Documents have not been synced yet",
+      "doctor_warnings": "The catherd health check has warnings",
+      "host_adapter_unavailable": "The Codex host is not available",
+      "host_not_probed": "The Codex host has not been probed",
+      "host_spike_unverified": "The Codex host test has not been confirmed",
+      "jev_key_missing": "The Jev key is not set",
+      "jev_key_refused": "The Jev key was refused",
+      "jira_connection_not_ready": "The Jira connection is not ready",
+      "jira_filter_missing": "The Jira board or filter is not set",
+      "jira_mapping_missing": "The Jira mapping is missing",
+      "knowledge_index_fallback": "The knowledge index is degraded and searches use the database",
+      "mapping_check_failed": "A mapping check failed",
+      "mapping_check_stale": "The mapping changed after it was checked",
+      "mapping_not_checked": "The mapping has not been checked",
+      "primary_repo_missing": "There is no primary repository",
+      "profile_host_mismatch": "The model profile is for a different host",
+      "profile_not_automation_ready": "The model profile is not ready for automation",
+      "profile_not_bound": "No model profile is bound",
+      "profile_version_not_published": "The model profile version is not published",
+      "publishing_dry_run": "Publishing is in dry-run mode",
+      "read_credential_has_write_scope": "The read credential can also write",
+      "repo_archived": "The repository is archived",
+      "repo_connection_not_ready": "The repository connection is not ready",
+      "repo_not_in_catalog": "The repository is not in the catalog",
+      "target_branch_missing": "The target branch is not set",
+      "test_command_missing": "There is no test command",
+      "write_credential_missing": "The write credential is not set",
+      "write_credential_unchecked": "The write credential has not been checked"
+    }
+  },
+  "security": {
+    "completion": {
+      "complete": "Complete",
+      "failed": "Failed",
+      "incomplete": "Incomplete",
+      "invalid_output": "Invalid output",
+      "stopped_budget": "Stopped at the budget",
+      "stopped_turns": "Stopped at the turn limit",
+      "timeout": "Timed out"
+    }
+  }
+}

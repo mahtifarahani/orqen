@@ -1,0 +1,12 @@
+{
+  "id": "fixture-v1",
+  "description": "Six sequential tasks. Each needs facts that exist only after an earlier task's learning step.",
+  "tasks": [
+    {"id": "t1", "title": "Add the health endpoint", "needs": [], "teaches": ["build_cmd", "lint_cmd"]},
+    {"id": "t2", "title": "Add request logging", "needs": ["build_cmd"], "teaches": ["log_format"]},
+    {"id": "t3", "title": "Add retry to the gateway client", "needs": ["build_cmd", "log_format"], "teaches": ["retry_policy"]},
+    {"id": "t4", "title": "Expose retry metrics", "needs": ["lint_cmd", "retry_policy"], "teaches": ["metrics_prefix"]},
+    {"id": "t5", "title": "Document the gateway", "needs": ["log_format", "metrics_prefix"], "teaches": ["doc_layout"]},
+    {"id": "t6", "title": "Add the admin report", "needs": ["build_cmd", "doc_layout"], "teaches": []}
+  ]
+}

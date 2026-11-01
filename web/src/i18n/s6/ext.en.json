@@ -1,0 +1,161 @@
+{
+  "extensions": {
+    "title": "Extensions",
+    "subtitle": "Optional tools Orqen can use. Orqen never downloads or installs them: you register a binary you already have.",
+    "manage": "Manage",
+    "sheetHelp": "Register, detect, test and enable this extension.",
+    "status": "Status",
+    "names": {
+      "openclaw-wiki": "OpenClaw Wiki",
+      "gitlab-mcp": "GitLab MCP",
+      "strix": "Strix",
+      "figma-mcp": "Figma MCP",
+      "gitnexus": "GitNexus",
+      "mcp-atlassian": "Atlassian MCP"
+    },
+    "state": {
+      "absent": "Not registered",
+      "registered": "Registered",
+      "license_required": "License required",
+      "detected": "Detected",
+      "detect_failed": "Detection failed",
+      "tested": "Tested",
+      "test_failed": "Test failed",
+      "enabled": "Enabled",
+      "disabled": "Disabled",
+      "changed": "Binary changed"
+    },
+    "kind": {
+      "knowledge_index": "Knowledge index",
+      "code_graph": "Code graph",
+      "security_scan": "Security scan",
+      "mcp_connector": "MCP connector",
+      "design": "Design"
+    },
+    "integration": {
+      "integrated": "Integrated",
+      "detect_only": "Detect only"
+    },
+    "healthStatus": {
+      "ok": "Healthy",
+      "changed": "Binary changed",
+      "missing": "Binary missing",
+      "failed": "Check failed"
+    },
+    "unusable": {
+      "license_required": "Accept the license first.",
+      "not_enabled": "Not enabled.",
+      "not_registered": "No binary registered.",
+      "not_tested": "Not tested yet.",
+      "changed": "The binary changed; test it again.",
+      "unhealthy": "The last health check failed."
+    },
+    "detectOnlyNote": "This entry is detect-only: Orqen can find and test it but never runs it, so it has no Enable.",
+    "detectNeedsLicense": "Detect is unavailable until the license is accepted.",
+    "detectNeedsBinary": "Detect is unavailable until a binary is registered.",
+    "detected": "Detected",
+    "testOk": "Last test passed",
+    "testFailed": "Last test failed",
+    "guidance": {
+      "title": "How to get it",
+      "generic": "Install it yourself, then register its path here.",
+      "noDownload": "Orqen never downloads or installs anything."
+    },
+    "install": {
+      "openclaw-wiki": {
+        "text": "Install the OpenClaw Wiki command-line tool yourself and register the path to its binary."
+      },
+      "gitlab-mcp": {
+        "text": "Install a GitLab MCP server yourself and register the path to its binary."
+      },
+      "strix": {
+        "text": "Install Strix yourself (it needs Docker) and register the path to its binary."
+      },
+      "figma-mcp": {
+        "text": "Install a Figma MCP server yourself and register the path to its binary."
+      },
+      "gitnexus": {
+        "text": "Install GitNexus yourself after reading its license, then register the path to its binary."
+      },
+      "mcp-atlassian": {
+        "text": "Install an Atlassian MCP server yourself and register the path to its binary."
+      }
+    },
+    "binary": {
+      "title": "Binary",
+      "path": "Absolute path to the binary",
+      "hint": "The file is never copied; Orqen records its path and checksum.",
+      "register": "Register",
+      "find": "Find candidates",
+      "candidates": "Candidate paths",
+      "noCandidates": "No candidates were found on this machine."
+    },
+    "license": {
+      "section": "License",
+      "title": "License for {{name}}",
+      "spdx": "License:",
+      "required": "This extension needs a license acceptance before it can be used.",
+      "acceptedOn": "Accepted on {{date}}, basis: {{basis}}.",
+      "review": "Review and accept",
+      "revoke": "Revoke acceptance",
+      "basis": "Basis for your use",
+      "note": "Note",
+      "noteHint": "Why this use is covered. It is stored with the acceptance.",
+      "phrase": "Type {{id}} to confirm",
+      "accept": "Accept license",
+      "bases": {
+        "noncommercial_use": "My use is noncommercial",
+        "commercial_license_obtained": "I obtained a commercial license",
+        "other_compatible": "Another compatible basis"
+      }
+    },
+    "actions": {
+      "title": "Actions",
+      "detect": "Detect",
+      "detecting": "Detecting...",
+      "test": "Test",
+      "testing": "Testing...",
+      "health": "Check health",
+      "enable": "Enable",
+      "disable": "Disable"
+    },
+    "config": {
+      "title": "Configuration",
+      "saved": "Configuration saved.",
+      "fields": {
+        "strix": {
+          "llm_api_base": "LLM API base URL",
+          "docker_host": "Docker host"
+        },
+        "gitnexus": {
+          "depth": "Impact depth"
+        }
+      }
+    },
+    "credentials": {
+      "title": "Credentials",
+      "help": "Secrets are write-only: they are stored in the OS credential store and are never shown again.",
+      "isSet": "A value is stored.",
+      "notSet": "No value stored.",
+      "set": "Set",
+      "none": "Not set",
+      "save": "Save",
+      "replace": "Replace"
+    },
+    "credential": {
+      "strix": {
+        "llm_api_key": "LLM API key"
+      }
+    },
+    "installs": {
+      "title": "Install history",
+      "active": "Active",
+      "rollback": "Roll back to this"
+    },
+    "projects": {
+      "title": "Projects",
+      "needsEnabled": "Enable the extension before binding projects.",
+      "toggle": "Use for {{name}}"
+    }
+  }
+}

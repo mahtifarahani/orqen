@@ -1,0 +1,3223 @@
+{
+ "catherd": "1.5.0",
+ "cases": [
+  {
+   "profile_key": "budget",
+   "patch": {
+    "budget": {
+     "usd": 5
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v0",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v0",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {
+     "usd": 5
+    },
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "budget",
+   "patch": {
+    "budget": {
+     "tokens": 100000,
+     "minutes": 30
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v1",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v1",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {
+     "minutes": 30,
+     "tokens": 100000
+    },
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "roles",
+   "patch": {
+    "roles": {
+     "worker": {
+      "access": "read-only"
+     }
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v2",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v2",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "roles",
+   "patch": {
+    "roles": {
+     "reviewer": {
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium"
+      ],
+      "defaultRung": "codex:gpt-6-luna#high"
+     }
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v3",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v3",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium"
+      ],
+      "defaultRung": "codex:gpt-6-luna#high"
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "roles",
+   "patch": {
+    "roles": {
+     "architect": {
+      "rungs": [
+       "codex:gpt-6.1-sol#high"
+      ]
+     }
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v4",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v4",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6.1-sol#high"
+      ]
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "failover",
+   "patch": {
+    "failover": {
+     "codex:gpt-6-luna#high": null
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v5",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v5",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "failover",
+   "patch": {
+    "failover": {
+     "codex:gpt-6-sol#high": "opencode:opencode-go/gpt-6-luna#high"
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v6",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v6",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max",
+     "codex:gpt-6-sol#high": "opencode:opencode-go/gpt-6-luna#high"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "billing",
+   "patch": {
+    "billing": {
+     "opencode": "subscription",
+     "cursor": "metered"
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v7",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v7",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "subscription",
+     "cursor": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "notify",
+   "patch": {
+    "notify": [
+     "finish"
+    ]
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v8",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v8",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "finish"
+    ]
+   }
+  },
+  {
+   "profile_key": "lock",
+   "patch": {
+    "lock": {
+     "heavy": 2
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v9",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v9",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": 2
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "timeouts",
+   "patch": {
+    "timeouts": {
+     "idleMin": 20
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v10",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v10",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 20,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "harness",
+   "patch": {
+    "harness": {
+     "codex": {
+      "isolated": false
+     }
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v11",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v11",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "jev",
+   "patch": {
+    "jev": {
+     "use": "off"
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v12",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v12",
+    "objective": "cost",
+    "jev": {
+     "use": "off"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "objective",
+   "patch": {
+    "objective": "speed"
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v13",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v13",
+    "objective": "speed",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  },
+  {
+   "profile_key": "preflight",
+   "patch": {
+    "preflight": {
+     "confirm": true
+    }
+   },
+   "exit": 0,
+   "before": {
+    "schema": 1,
+    "name": "v14",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": false
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   },
+   "after": {
+    "schema": 1,
+    "name": "v14",
+    "objective": "cost",
+    "jev": {
+     "use": "auto"
+    },
+    "billing": {
+     "codex": "chatgpt-plan",
+     "claude": "claude-plan",
+     "claude-code": "claude-plan",
+     "opencode-go": "subscription",
+     "opencode": "metered"
+    },
+    "roles": {
+     "architect": {
+      "enabled": true,
+      "access": "read-only"
+     },
+     "verifier": {
+      "enabled": true,
+      "access": "full"
+     },
+     "worker": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high",
+       "codex:gpt-6-sol#medium",
+       "codex:gpt-6-sol#high",
+       "codex:gpt-6-sol#xhigh"
+      ],
+      "defaultRung": "codex:gpt-6-sol#medium"
+     },
+     "reviewer": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-sol#high"
+      ]
+     },
+     "ui-reviewer": {
+      "enabled": true,
+      "access": "full",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "artist": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-sol#medium"
+      ]
+     },
+     "writer": {
+      "enabled": true,
+      "access": "workspace-write",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     },
+     "researcher": {
+      "enabled": true,
+      "access": "read-only",
+      "rungs": [
+       "codex:gpt-6-luna#high"
+      ]
+     }
+    },
+    "harness": {
+     "codex": {
+      "isolated": false
+     },
+     "claude-code": {
+      "isolated": false
+     },
+     "opencode": {
+      "isolated": false
+     }
+    },
+    "failover": {
+     "codex:gpt-6-luna#high": "opencode:opencode-go/gpt-6-luna#high",
+     "codex:gpt-6-sol#medium": "opencode:opencode-go/kimi-k3#max"
+    },
+    "budget": {},
+    "timeouts": {
+     "idleMin": 15,
+     "wallMin": 90
+    },
+    "preflight": {
+     "confirm": true
+    },
+    "lock": {
+     "heavy": "cpus/2"
+    },
+    "notify": [
+     "milestone",
+     "finish",
+     "blocked"
+    ]
+   }
+  }
+ ]
+}

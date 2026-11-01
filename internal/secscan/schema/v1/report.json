@@ -1,0 +1,13 @@
+{"type":"object","required":["status","scope","findings"],"properties":{
+ "status":{"type":"string","enum":["completed","budget_exceeded","max_turns","error"]},
+ "scope":{"type":"object","required":["target"],"properties":{"target":{"type":"string","maxLength":1000}}},
+ "turns":{"type":"integer","minimum":0},
+ "cost_usd":{"type":"number","minimum":0},
+ "findings":{"type":"array","maxItems":500,"items":{"type":"object","required":["title","severity"],"properties":{
+   "title":{"type":"string","maxLength":2000},
+   "severity":{"type":"string","enum":["critical","high","medium","low","info"]},
+   "cwe":{"type":"string","maxLength":40},
+   "file":{"type":"string","maxLength":500},
+   "line":{"type":"integer","minimum":0},
+   "description":{"type":"string","maxLength":20000},
+   "proof":{"type":"string","maxLength":20000}}}}}}

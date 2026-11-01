@@ -1,0 +1,20 @@
+"""Sprint 5 WP85: org graph routes. Run: python3 scripts/oas_s5_graph.py"""
+import oas
+oas.load()
+oas.idschema('GraphEdgeId')
+oas.schema('GraphNode', {'id': 's', 'kind': 's', 'label': 's'})
+oas.schema('GraphEvidence', {'kind': 's', 'path': 's', 'commit_sha': 's', 'excerpt': 's', 'source_version_id': '?s'}, ['kind'])
+oas.schema('GraphEdge', {'id': '$GraphEdgeId', 'from': 's', 'to': 's', 'relation': 's', 'status': 'enum:verified|inferred|stale|rejected', 'confidence': 'num', 'evidence': '[$GraphEvidence]',
+  'commit_sha': '?s', 'created_by': 'enum:system|user', 'observed_at': 's', 'revision': 'i64'})
+oas.schema('GraphNodeList', {'items': '[$GraphNode]', 'next_cursor': '?s'}, ['items'])
+oas.schema('GraphNeighborhood', {'start': 's', 'depth': 'i32', 'truncated': 'b', 'nodes': '[$GraphNode]', 'edges': '[$GraphEdge]'})
+oas.schema('GraphQueued', {'queued': 'b'})
+oas.schema('CreateGraphEdgeRequest', {'from': 's', 'to': 's', 'relation': 's', 'note': 's'}, ['from', 'to', 'relation'])
+E = ('gedId', 'GraphEdgeId')
+oas.op('post', '/graph/rebuild', 'rebuild_graph', 'graph', ok=202, resp='$GraphQueued')
+oas.op('get', '/graph/nodes', 'list_graph_nodes', 'graph', resp='$GraphNodeList', query=[('kind', 's', ''), ('q', 's', '')])
+oas.op('get', '/graph/neighborhood', 'get_graph_neighborhood', 'graph', resp='$GraphNeighborhood', query=[('node', 's', ''), ('depth', 'i32', ''), ('limit', 'i32', ''), ('relation', '[s]', ''), ('status', '[s]', '')])
+oas.op('post', '/graph/edges', 'create_graph_edge', 'graph', body='CreateGraphEdgeRequest', ok=201, resp='$GraphEdge')
+oas.op('post', '/graph/edges/{gedId}/confirm', 'confirm_graph_edge', 'graph', params=[E], ifmatch=True, resp='$GraphEdge')
+oas.op('post', '/graph/edges/{gedId}/reject', 'reject_graph_edge', 'graph', params=[E], ifmatch=True, resp='$GraphEdge')
+oas.save()

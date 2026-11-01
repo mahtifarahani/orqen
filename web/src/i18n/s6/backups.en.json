@@ -1,0 +1,111 @@
+{
+  "orgs": {
+    "settings": {
+      "tabs": {
+        "backups": "Backups",
+        "maintenance": "Maintenance"
+      }
+    }
+  },
+  "backups": {
+    "title": "Backups",
+    "subtitle": "Orqen copies its own data into a folder on this machine. Backups hold no passwords or tokens; those stay in the system credential store and have to be entered again after a restore.",
+    "credentialKind": {
+      "connection": "Connection credential",
+      "publisher_credential": "Publishing credential",
+      "catherd_secret": "catherd secret",
+      "extension": "Extension credential"
+    },
+    "runState": {
+      "running": "Running",
+      "succeeded": "Succeeded",
+      "failed": "Failed"
+    },
+    "trigger": {
+      "manual": "Manual",
+      "schedule": "Scheduled"
+    },
+    "settings": {
+      "enabled": "Back up on a schedule",
+      "interval": "Every (hours)",
+      "intervalHint": "1 to 168.",
+      "keepLast": "Keep the last",
+      "keepDays": "Keep for (days)",
+      "keepDaysHint": "0 means no age limit.",
+      "dir": "Backup folder",
+      "dirHint": "Leave as is to use {{dir}}.",
+      "pattern": "If a secret-like value is found in the data",
+      "saved": "Backup settings saved.",
+      "patterns": {
+        "fail": "Stop the backup and tell me",
+        "exclude_artifact": "Leave that file out and continue"
+      }
+    },
+    "list": {
+      "title": "Backups on disk",
+      "nextDue": "next due {{when}}",
+      "now": "Back up now",
+      "running": "Backing up...",
+      "failed": "The last backup failed.",
+      "none": "No backups yet.",
+      "valid": "Intact",
+      "invalid": "Damaged",
+      "bytes": "{{bytes}} bytes",
+      "verify": "Verify and preview",
+      "runs": "Recent backup runs"
+    },
+    "prune": {
+      "open": "Clean up",
+      "title": "Remove old backups",
+      "help": "Removes the backups outside your retention settings. This cannot be undone.",
+      "summary": "Remove {{remove}}, keep {{keep}}.",
+      "confirm_one": "Remove {{count}} backup",
+      "confirm_other": "Remove {{count}} backups",
+      "done": "Old backups removed."
+    },
+    "preview": {
+      "title": "Restore preview",
+      "integrityOk": "Files intact",
+      "integrityBad": "Files damaged",
+      "schemaOk": "Compatible",
+      "schemaBad": "Incompatible version",
+      "targetEmpty": "This install is empty",
+      "targetNotEmpty": "This install has data",
+      "firstFailed": "First damaged file:",
+      "nonEmpty": "Already holding data:",
+      "orgs": "Organizations",
+      "counts": "Documents",
+      "afterRestore": "After a restore",
+      "heldRuns_one": "{{count}} run would be held until you resume it.",
+      "heldRuns_other": "{{count}} runs would be held until you resume them.",
+      "missingCreds_one": "{{count}} credential must be entered again.",
+      "missingCreds_other": "{{count}} credentials must be entered again.",
+      "republish_one": "{{count}} model profile must be published again.",
+      "republish_other": "{{count}} model profiles must be published again.",
+      "cliTitle": "Restoring is a command",
+      "cliHelp": "Restoring replaces an install, so it runs from the command line with Orqen stopped. Try it first with --dry-run.",
+      "cannot": "A restore of this backup is not possible as things stand."
+    }
+  },
+  "maintenance": {
+    "bundle": {
+      "title": "Support bundle",
+      "help": "A JSON file with versions, preflight and health results, extension states and recent job failures. It contains no secrets and no home folder names.",
+      "download": "Download support bundle"
+    },
+    "restore": {
+      "title": "Restore",
+      "howTitle": "How to restore",
+      "how": "Stop Orqen, then run the restore command against an empty install. Runs that were in progress come back held.",
+      "none": "This install has not been restored from a backup.",
+      "when": "Last restore: {{when}}",
+      "heldRuns_one": "{{count}} run is held until you resume it.",
+      "heldRuns_other": "{{count}} runs are held until you resume them.",
+      "blobs_one": "{{count}} file copied.",
+      "blobs_other": "{{count}} files copied.",
+      "missing": "Credentials to enter again",
+      "noMissing": "No credentials are missing.",
+      "republish": "Model profiles to publish again"
+    }
+  }
+}

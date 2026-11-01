@@ -1,0 +1,21 @@
+{
+  "id": "mcp-atlassian",
+  "version": "1.0.0",
+  "source": "https://github.com/sooperset/mcp-atlassian",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "MIT", "gate": "none", "notice_key": "extensions.license.notice.mcp-atlassian"},
+  "transport": "mcp_stdio",
+  "runtime": {"kind": "python", "min_version": "0.1.0"},
+  "config_schema": null,
+  "credential_fields": [],
+  "capabilities": ["jira","confluence"],
+  "read_tools": [],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "mcp_connector",
+  "integration": "detect_only",
+  "install_guidance": {"text_key": "extensions.install.mcp-atlassian.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": false}
+}

@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "model": "jev-1.13.0",
+  "questions": {
+    "clarity": {
+      "type": "choice",
+      "instructions": "A software task was written by a product owner. `acceptance` and `description` say what must change. Is the required behavior specified clearly enough to implement and test without asking anyone?",
+      "criteria": {
+        "clear": "The required behavior is specific and consistent; an engineer could start work",
+        "ambiguous": "The required behavior is vague, missing or open to several readings",
+        "contradictory": "The task contradicts itself or its parent"
+      }
+    },
+    "scope": {
+      "type": "choice",
+      "instructions": "How many code repositories must change to complete this task?",
+      "criteria": {
+        "single_repo": "One repository",
+        "multi_repo": "More than one repository",
+        "unclear": "The text does not say"
+      }
+    },
+    "testable": {
+      "type": "noul",
+      "instructions": "Can the acceptance criteria be checked by an automated test or a command?",
+      "criteria": { "true": "Yes, they can be verified automatically", "false": "No, they need human judgement or are not stated" }
+    },
+    "touches_auth": {
+      "type": "noul",
+      "instructions": "Does this task change authentication, authorization, sessions or permissions?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "touches_payment": {
+      "type": "noul",
+      "instructions": "Does this task change payment, charging or refund behavior?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "touches_migration": {
+      "type": "noul",
+      "instructions": "Does this task change a database schema or migrate stored data?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "touches_data_deletion": {
+      "type": "noul",
+      "instructions": "Does this task delete or purge user or business data?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "touches_ci_config": {
+      "type": "noul",
+      "instructions": "Does this task change CI, build pipeline or deployment configuration?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "cross_service": {
+      "type": "noul",
+      "instructions": "Does this task change a contract between services or require coordinated changes in several services?",
+      "criteria": { "true": "Yes", "false": "No" }
+    },
+    "already_done": {
+      "type": "noul",
+      "instructions": "Does the text suggest the requested behavior already exists or the work is already finished?",
+      "criteria": { "true": "Yes", "false": "No" }
+    }
+  }
+}

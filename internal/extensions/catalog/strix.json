@@ -1,0 +1,21 @@
+{
+  "id": "strix",
+  "version": "1.0.0",
+  "source": "https://github.com/usestrix/strix",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "Apache-2.0", "gate": "none", "notice_key": "extensions.license.notice.strix"},
+  "transport": "cli",
+  "runtime": {"kind": "python", "min_version": "0.1.0"},
+  "config_schema": {"type":"object","properties":{"llm_api_base":{"type":"string","maxLength":300},"docker_host":{"type":"string","maxLength":300}}},
+  "credential_fields": [{"field":"llm_api_key","env":"LLM_API_KEY","label_key":"extensions.credential.strix.llm_api_key","required":true}],
+  "capabilities": ["scan"],
+  "read_tools": ["report"],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "security_scan",
+  "integration": "integrated",
+  "install_guidance": {"text_key": "extensions.install.strix.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": true}
+}

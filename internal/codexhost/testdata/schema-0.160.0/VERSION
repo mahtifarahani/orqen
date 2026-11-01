@@ -1,0 +1,3 @@
+codex-cli 0.160.0
+generated with: env -i HOME=<tmp> CODEX_HOME=<tmp> codex app-server generate-json-schema --out <tmp>  (offline, no session, nothing spent)
+subset: only the files the schema test reads are kept

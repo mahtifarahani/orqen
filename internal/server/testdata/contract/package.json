@@ -1,0 +1,11 @@
+{
+  "name": "demo",
+  "scripts": {
+    "build": "vite build",
+    "lint": "oxlint",
+    "test": "vitest run",
+    "type-check": "tsc -b",
+    "tsc": "tsc",
+    "start": "node ."
+  }
+}

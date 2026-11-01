@@ -1,0 +1,155 @@
+{
+  "taskDetail": {
+    "tabs": {
+      "security": "Security"
+    }
+  },
+  "mr": {
+    "checkCodes": {
+      "security_scan": "The security scan of this commit is clean"
+    }
+  },
+  "security": {
+    "title": "Security",
+    "subtitle": "Security scans of the code a run changed. A scan runs only on a person's request or under the policy you set; no model or budget is ever chosen for you.",
+    "severity": {
+      "blocker": "Blocker",
+      "major": "Major",
+      "minor": "Minor",
+      "nit": "Nit"
+    },
+    "budgetMode": {
+      "unset": "Not set",
+      "capped": "Capped",
+      "unlimited": "Unlimited"
+    },
+    "status": {
+      "usable": "Ready to scan",
+      "unusable": "Not ready"
+    },
+    "policy": {
+      "scan": "Automatic scan",
+      "gate": "Merge gate",
+      "severity": "Blocking severity",
+      "model": "Model",
+      "modelSet": "Chosen",
+      "modelUnset": "Not chosen yet",
+      "budget": "Budget mode",
+      "where": "Change these in",
+      "settingsLink": "Settings, Policy"
+    },
+    "counts": {
+      "running": "Scans running",
+      "openBlocking": "Open blocking findings"
+    },
+    "scans": {
+      "title": "Scans",
+      "none": "No scans yet.",
+      "open": "Open",
+      "detail": "Scan",
+      "cancel": "Cancel scan",
+      "blocking_one": "{{count}} blocking",
+      "blocking_other": "{{count}} blocking",
+      "treeModified": "Tree changed",
+      "treeModifiedHelp": "The scanner changed files in its clone. The change is kept as an artifact and was not applied to your code.",
+      "config": "Model {{model}}, budget {{mode}}, up to {{turns}} turns.",
+      "state": {
+        "queued": "Queued",
+        "running": "Running",
+        "finished": "Finished",
+        "cancelled": "Cancelled"
+      },
+      "completion": {
+        "complete": "Complete",
+        "stopped_budget": "Stopped: budget reached",
+        "stopped_turns": "Stopped: turn limit",
+        "timeout": "Timed out",
+        "failed": "Failed",
+        "incomplete": "Incomplete",
+        "invalid_output": "Invalid output"
+      }
+    },
+    "checkDetail": {
+      "other": "See the scan",
+      "no_scan": "No scan yet",
+      "a_scan_is_running": "A scan is running",
+      "open_blocking_findings": "Blocking findings are open"
+    },
+    "findings": {
+      "title": "Security findings",
+      "none": "No security findings.",
+      "blocking": "Blocking",
+      "locationUnverified": "location not verified",
+      "status": {
+        "open": "Open",
+        "waived": "Waived",
+        "superseded": "Superseded"
+      }
+    },
+    "waive": {
+      "action": "Waive",
+      "title": "Waive this finding",
+      "reason": "Why is this acceptable?",
+      "hint": "Kept with the finding. A waiver applies to this commit only.",
+      "submit": "Waive finding",
+      "done": "Finding waived."
+    },
+    "draft": {
+      "action": "Issue draft",
+      "title": "Issue draft",
+      "help": "Text you can paste into an issue. Orqen never creates the issue for you.",
+      "copy": "Copy",
+      "copied": "Copied."
+    },
+    "run": {
+      "scan": "Scan reviewed code",
+      "scanning": "Scanning...",
+      "needsReview": "The run has no reviewed commit to scan yet.",
+      "help": "Scans the reviewed commit in a local clone. It uses the model and budget set in policy."
+    }
+  },
+  "codeGraph": {
+    "title": "Code graph",
+    "subtitle": "What changes if you change a file or symbol, from an index of each repository. Read only.",
+    "available": "Available",
+    "unavailable": "Not available",
+    "readyCount_one": "{{count}} ready index",
+    "readyCount_other": "{{count}} ready indexes",
+    "project": "Project",
+    "pickProject": "Choose a project",
+    "index": "Build index",
+    "indexing": "Indexing...",
+    "indexNeedsGraph": "Enable and test the code graph extension first.",
+    "indexes": "Indexes",
+    "noIndexes": "No code indexes yet.",
+    "remove": "Remove",
+    "size": "{{files}} files, {{bytes}} bytes",
+    "state": {
+      "queued": "Queued",
+      "indexing": "Indexing",
+      "ready": "Ready",
+      "failed": "Failed",
+      "license_revoked": "License revoked",
+      "removed": "Removed"
+    },
+    "retention": {
+      "preview": "Preview cleanup",
+      "result_one": "{{count}} index would be removed ({{bytes}} bytes).",
+      "result_other": "{{count}} indexes would be removed ({{bytes}} bytes)."
+    },
+    "impact": {
+      "title": "Impact",
+      "index": "Index",
+      "kind": "Kind",
+      "file": "File",
+      "symbol": "Symbol",
+      "target": "Path or symbol",
+      "depth": "Depth",
+      "ask": "Ask",
+      "none": "Nothing depends on it.",
+      "results": "Impact results",
+      "depthN": "depth {{depth}}",
+      "truncated": "More results were left out"
+    }
+  }
+}

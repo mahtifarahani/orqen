@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "extensions": "Extensions"
+  },
+  "run": {
+    "hold": {
+      "restored": "Restored from a backup"
+    },
+    "holdBody": {
+      "restored": "This run was restored from a backup and is held. Check the credentials and the environment, un-pause automation, then press Resume."
+    }
+  },
+  "readiness": {
+    "reasons": {
+      "credential_missing": "The stored credential could not be found in this install; enter it again."
+    }
+  },
+  "problems": {
+    "extension_not_registered": "The extension has no registered binary yet.",
+    "extension_not_detected": "Detect the extension first.",
+    "extension_not_tested": "Test the extension first.",
+    "extension_not_enabled": "The extension is not enabled.",
+    "extension_state_invalid": "The extension is not in a state that allows this.",
+    "extension_detect_only": "This extension is detect-only and cannot be enabled.",
+    "extension_binary_changed": "The binary changed since it was tested. Detect and test it again, or roll back.",
+    "license_acceptance_required": "Accept the license of this extension first.",
+    "license_not_required": "This extension has no license gate.",
+    "license_revoked": "The license of this extension was revoked.",
+    "credential_missing": "A required credential is not set.",
+    "license_notice_mismatch": "The license notice changed. Reload and read it again.",
+    "license_input_invalid": "The license acceptance is incomplete.",
+    "extension_path_invalid": "This path is not a usable executable.",
+    "extension_config_invalid": "The configuration is not valid.",
+    "credential_field_unknown": "This extension has no such credential field.",
+    "extension_not_usable": "The extension is not usable right now.",
+    "skill_draft_exists": "This skill already has a draft version.",
+    "skill_slug_builtin": "This name belongs to a built-in skill.",
+    "skill_version_not_draft": "Only a draft version can be approved.",
+    "skill_bindings_not_empty": "Remove the bindings of this skill first.",
+    "skill_invalid": "The skill file is not valid.",
+    "skill_too_large": "The skill file is too large.",
+    "skill_flags_unacknowledged": "Acknowledge every flag before approving.",
+    "skill_lint_blocked": "The skill has a blocking lint finding.",
+    "skill_binding_invalid": "The skill bindings are not valid.",
+    "project_not_bound": "Enable the extension for this project first.",
+    "index_not_ready": "The code index is not ready.",
+    "scan_head_unreviewed": "The run has no reviewed head to scan yet.",
+    "docker_unavailable": "Docker is not available on this machine.",
+    "security_model_unset": "Set the security scan model in the policy first.",
+    "security_budget_unset": "Set the security scan budget in the policy first.",
+    "scan_target_unsupported": "This scan target is not supported.",
+    "backup_dir_invalid": "This backup directory is not allowed.",
+    "confirm_required": "Confirm this action first.",
+    "support_bundle_secret_detected": "The support bundle was withheld because it contained something that looks like a secret.",
+    "restore_integrity_failed": "The backup failed its integrity check."
+  },
+  "policy": {
+    "keys": {
+      "automation_security_scan": {
+        "label": "Security scan",
+        "help": "Whether a security scan starts by itself, only on request, or never."
+      },
+      "security_gate": {
+        "label": "Security gate",
+        "help": "Off ignores scans; advisory shows them; required blocks merge readiness until no blocking finding is open."
+      },
+      "security_blocking_severity": {
+        "label": "Blocking severity",
+        "help": "Findings at or above this severity block a required gate."
+      },
+      "security_model": {
+        "label": "Scan model",
+        "help": "The model the scanner uses. There is no default; a scan will not start without one."
+      },
+      "security_budget_mode": {
+        "label": "Scan budget mode",
+        "help": "Unset blocks scans. Capped uses the amount below; unlimited needs a deliberate choice."
+      },
+      "security_budget_usd": {
+        "label": "Scan budget (USD)",
+        "help": "The most one scan may spend when the mode is capped."
+      },
+      "security_max_turns": {
+        "label": "Scan turn limit",
+        "help": "The most agent turns one scan may take."
+      },
+      "security_timeout_secs": {
+        "label": "Scan time limit (seconds)",
+        "help": "A scan that runs longer is stopped and never counts as a pass."
+      },
+      "codegraph_auto_index": {
+        "label": "Automatic code index",
+        "help": "Index the base commit of a run before coding or review."
+      },
+      "codegraph_impact_max_bytes": {
+        "label": "Impact section size",
+        "help": "The most bytes of the code impact section in a role packet."
+      },
+      "codegraph_keep_indexes_per_repo": {
+        "label": "Indexes kept per repository",
+        "help": "Older indexes of a repository are offered for removal."
+      },
+      "skills_max_bytes_per_role": {
+        "label": "Skill guidance size",
+        "help": "The most bytes of skill guidance added to a role brief."
+      },
+      "extensions_sandbox": {
+        "label": "Extension sandbox",
+        "help": "Enforce refuses an extension when the sandbox cannot be applied; best effort runs it anyway."
+      }
+    },
+    "values": {
+      "advisory": "Advisory",
+      "required": "Required",
+      "critical": "Critical",
+      "high": "High",
+      "unset": "Not set",
+      "capped": "Capped",
+      "unlimited": "Unlimited",
+      "on_run": "When a run starts",
+      "enforce": "Enforce",
+      "best_effort": "Best effort"
+    }
+  }
+}

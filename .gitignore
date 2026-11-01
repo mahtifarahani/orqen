@@ -1,0 +1,14 @@
+target/
+web/node_modules/
+web/dist/*
+!web/dist/.gitkeep
+.orqen-dev/
+.env
+bin/
+coverage.out
+/crates/
+
+# Local test reports and environment overrides
+web/.vitest/
+.env.*
+!.env.example

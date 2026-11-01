@@ -1,0 +1,21 @@
+{
+  "id": "gitlab-mcp",
+  "version": "1.0.0",
+  "source": "https://github.com/zereight/gitlab-mcp",
+  "integrity": {"mode": "user_pinned"},
+  "license": {"spdx": "MIT", "gate": "none", "notice_key": "extensions.license.notice.gitlab-mcp"},
+  "transport": "mcp_stdio",
+  "runtime": {"kind": "node", "min_version": "0.1.0"},
+  "config_schema": null,
+  "credential_fields": [],
+  "capabilities": ["gitlab"],
+  "read_tools": [],
+  "write_tools": [],
+  "healthcheck": {"args": ["--version"]},
+  "supported_hosts": ["darwin-arm64", "darwin-amd64"],
+  "kind": "mcp_connector",
+  "integration": "detect_only",
+  "install_guidance": {"text_key": "extensions.install.gitlab-mcp.text", "commands": []},
+  "detect": {"args": ["--version"]},
+  "requires": {"docker": false}
+}

@@ -1,0 +1,113 @@
+{
+  "projects": {
+    "tabs": {
+      "skills": "Skills"
+    }
+  },
+  "models": {
+    "tabs": {
+      "skills": "Skills"
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Short instruction files that Orqen adds to a role's brief. Imported skills are linted and need your approval before any role uses them.",
+    "sheetHelp": "Read the skill, check its lint result, then approve or retire a version.",
+    "review": "Review",
+    "versions": "Versions",
+    "details": "Details",
+    "license": "License:",
+    "body": "Text",
+    "updateAvailable": "A newer built-in version is available as a draft.",
+    "origin": {
+      "builtin": "Built in",
+      "imported": "Imported"
+    },
+    "state": {
+      "draft": "Draft",
+      "approved": "Approved",
+      "retired": "Retired"
+    },
+    "roles": {
+      "architect": "Architect",
+      "worker": "Worker",
+      "verifier": "Verifier",
+      "reviewer": "Reviewer",
+      "researcher": "Researcher",
+      "writer": "Writer"
+    },
+    "import": {
+      "open": "Import skill",
+      "title": "Import a skill",
+      "help": "Choose a SKILL.md file or paste its text. It is stored as a draft; nothing runs until you approve it.",
+      "file": "SKILL.md file",
+      "filename": "File name",
+      "content": "Skill text",
+      "contentHint": "Front matter (name, description, roles, when) followed by the instructions.",
+      "submit": "Import",
+      "done": "Skill imported as a draft."
+    },
+    "lint": {
+      "title": "Lint",
+      "clean": "No findings.",
+      "blocking": "Blocking",
+      "flag": "Flag",
+      "line": "line {{line}}",
+      "blockedHelp": "A blocking finding (for example a secret-like value) cannot be approved. Remove it and import again.",
+      "codes": {
+        "orchestrator_instruction": "Tries to instruct the orchestrator",
+        "tool_or_credential": "Asks for a tool or credential",
+        "policy_change": "Pushes a policy change (approve, publish, merge, skip review)",
+        "network_fetch": "Fetches from the network",
+        "injection_suspect": "Looks like prompt injection",
+        "secret_like": "Contains a secret-like value",
+        "unknown_key": "Unknown front matter key"
+      }
+    },
+    "approve": {
+      "title": "Approve",
+      "ackHelp": "Acknowledge each flag to confirm you read it.",
+      "ack": "I reviewed: {{flag}}",
+      "action": "Approve version",
+      "done": "Version approved."
+    },
+    "retire": {
+      "action": "Retire version",
+      "done": "Version retired."
+    },
+    "excluded": {
+      "skill_budget": "over the size budget",
+      "not_approved": "not approved",
+      "disabled_by_project": "disabled by the project",
+      "not_fix_round": "fix rounds only",
+      "not_for_role": "not for this role"
+    },
+    "bindings": {
+      "title": "Role bindings",
+      "orgTitle": "Organization bindings",
+      "projectTitle": "Project bindings",
+      "orgHelp": "The skills each role gets in every project that has no set of its own.",
+      "projectHelp": "When this project has bindings, they replace the organization set.",
+      "none": "No skills are bound.",
+      "recommended": "Bind the recommended set",
+      "recommendedDone": "Recommended skills bound.",
+      "role": "Role",
+      "skill": "Skill",
+      "pick": "Choose a skill",
+      "add": "Add",
+      "enabled": "Use {{name}}",
+      "up": "Move {{name}} up",
+      "down": "Move {{name}} down",
+      "remove": "Remove {{name}}",
+      "discard": "Discard changes",
+      "saved": "Bindings saved.",
+      "resolved": "Resolved for this project",
+      "budget": "{{bytes}} of {{budget}} bytes"
+    },
+    "manifest": {
+      "title": "Skills pinned for this run",
+      "fingerprint": "Fingerprint",
+      "fix": "fix round:"
+    }
+  }
+}

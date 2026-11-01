@@ -1,0 +1,83 @@
+{
+  "knowledgePage": {
+    "origin": {
+      "roles": "Written by the roles author"
+    },
+    "author": {
+      "title": "Roles author",
+      "help": "The writer and verifier roles draft knowledge from a merged run. Everything they write is a draft: a person must verify it.",
+      "none": "No roles author sessions yet.",
+      "attempt": "Attempt {{n}}",
+      "needsReview": "Drafts were created. Review and verify them in the records list.",
+      "retry": "Retry",
+      "fallback": "Use deterministic draft",
+      "cancel": "Cancel",
+      "why": {
+        "retry": "Only a failed session can be retried.",
+        "fallback": "Available once the session has finished.",
+        "cancel": "A finished session cannot be cancelled."
+      },
+      "fallbackTitle": "Use the deterministic draft?",
+      "fallbackBody": "Orqen writes the draft from the run's evidence without the roles. This happens at most once per run.",
+      "fallbackConfirm": "Use deterministic draft",
+      "fallbackDone": "The deterministic draft was created."
+    },
+    "proposalsSection": {
+      "title": "Proposals",
+      "none": "No proposals yet.",
+      "trigger": {
+        "merge": "After a merge",
+        "merge_roles": "After a merge (roles)",
+        "manual": "Requested",
+        "source_changed": "A source changed"
+      },
+      "state": {
+        "empty": "Nothing drafted",
+        "awaiting_review": "Waiting for review",
+        "applied": "Applied"
+      },
+      "outcome": {
+        "draft": "Draft",
+        "verified": "Verified",
+        "awaiting_review": "Waiting for review",
+        "conflicted": "Conflicted",
+        "exists": "Already exists",
+        "skipped": "Skipped"
+      }
+    }
+  },
+  "tasks": {
+    "columns": {
+      "security": "Security"
+    },
+    "security": {
+      "clean": "Clean",
+      "blocking": "{{count}} blocking",
+      "running": "Scanning",
+      "queued": "Queued",
+      "incomplete": "Incomplete",
+      "stale": "Older commit",
+      "notScanned": "Not scanned",
+      "label": "Security scan {{sha}}"
+    }
+  },
+  "overviewPage": {
+    "securityCard": "Security",
+    "securityBlocking": "Open blocking findings",
+    "securityRunning": "Scans running"
+  },
+  "security": {
+    "scans": {
+      "trigger": {
+        "auto": "Automatic",
+        "manual": "Manual"
+      }
+    }
+  },
+  "codeGraph": {
+    "trigger": {
+      "auto": "Automatic",
+      "manual": "Manual"
+    }
+  }
+}

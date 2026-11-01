@@ -1,0 +1,22 @@
+# Product default MongoDB (single-node replica set). Pin the image digest at release.
+services:
+  mongo:
+    # TODO(user): pin digest. Replace with mongo:8@sha256:<digest> (docs/RELEASE-CHECKLIST.md); the digest is supplied by you, it is never pulled by the build.
+    image: mongo:8
+    command: ["--replSet", "orqen-rs", "--bind_ip_all", "--port", "27017"]
+    ports:
+      - "127.0.0.1:27018:27017"
+    volumes:
+      - orqen-mongo:/data/db
+    healthcheck:
+      test:
+        - CMD
+        - mongosh
+        - --quiet
+        - --eval
+        - "try{rs.status().ok}catch(e){rs.initiate({_id:'orqen-rs',members:[{_id:0,host:'127.0.0.1:27017'}]}).ok}"
+      interval: 5s
+      timeout: 10s
+      retries: 10
+volumes:
+  orqen-mongo:

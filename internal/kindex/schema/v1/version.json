@@ -1,0 +1,1 @@
+{"$schema":"http://json-schema.org/draft-07/schema#","title":"wiki version (assumed contract v1)","type":"object","required":["version","schema"],"additionalProperties":false,"properties":{"version":{"type":"string"},"schema":{"type":"string"}}}
