@@ -1,5 +1,6 @@
 target/
 web/node_modules/
+web/.vitest/
 web/dist/*
 !web/dist/.gitkeep
 .orqen-dev/
