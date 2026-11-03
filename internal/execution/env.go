@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"os/user"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 
@@ -13,7 +15,10 @@ import (
 
 // HostConfig describes the app-server of one organization.
 type HostConfig struct {
+	// Host is the orchestration host: catherd.HostCodex (default) or catherd.HostClaudeCode.
+	Host       string
 	CodexBin   string
+	ClaudeBin  string
 	CatherdBin string
 	DataDir    string
 	OrgID      string
@@ -30,6 +35,9 @@ type HostConfig struct {
 func HostHome(dataDir, orgID string) string { return filepath.Join(dataDir, "host-home", orgID) }
 func CodexHome(dataDir, orgID string) string {
 	return filepath.Join(dataDir, "codex", orgID, "home")
+}
+func ClaudeConfigDir(dataDir, orgID string) string {
+	return filepath.Join(dataDir, "claude", orgID, "config")
 }
 func GitConfigPath(dataDir, orgID string) string {
 	return filepath.Join(HostHome(dataDir, orgID), "gitconfig")
@@ -55,7 +63,7 @@ const hostGitConfig = `# Written by Orqen. Any push a role attempts from the hos
 
 // EnsureHostTree creates the isolated directories (0700) and the host gitconfig.
 func EnsureHostTree(dataDir, orgID string) error {
-	for _, d := range []string{HostHome(dataDir, orgID), CodexHome(dataDir, orgID)} {
+	for _, d := range []string{HostHome(dataDir, orgID), CodexHome(dataDir, orgID), ClaudeConfigDir(dataDir, orgID)} {
 		if err := os.MkdirAll(d, 0o700); err != nil {
 			return err
 		}
@@ -70,13 +78,51 @@ func EnsureHostTree(dataDir, orgID string) error {
 	return os.WriteFile(p, []byte(hostGitConfig), 0o600)
 }
 
+// EnsureClaudeKeychain lets Claude Code find its login on macOS. It keeps the login in the user's keychain, and the
+// keychain is found through HOME, which Orqen points at the isolated host home. A symlink to the user's keychain
+// directory gives the Claude host the same login keychain and nothing else of the real home. Each organization still
+// has its own login: Claude names the keychain item after its CLAUDE_CONFIG_DIR. Only the Claude host gets this link.
+func EnsureClaudeKeychain(dataDir, orgID string) error {
+	if runtime.GOOS != "darwin" {
+		return nil
+	}
+	real, err := os.UserHomeDir()
+	if err != nil {
+		return nil
+	}
+	src := filepath.Join(real, "Library", "Keychains")
+	if st, err := os.Stat(src); err != nil || !st.IsDir() {
+		return nil
+	}
+	lib := filepath.Join(HostHome(dataDir, orgID), "Library")
+	if err := os.MkdirAll(lib, 0o700); err != nil {
+		return err
+	}
+	dst := filepath.Join(lib, "Keychains")
+	if cur, err := os.Readlink(dst); err == nil && cur == src {
+		return nil
+	}
+	_ = os.Remove(dst)
+	return os.Symlink(src, dst)
+}
+
 // HostEnvNames lists every variable BuildHostEnv sets (the secrets come on top, by their own names).
 var HostEnvNames = []string{"HOME", "CODEX_HOME", "CATHERD_HOME", "CATHERD_CLAUDE_AGENTS_DIR", "CATHERD_ORCHESTRATION_HOST", "PATH", "LANG", "TMPDIR",
+	"GIT_CONFIG_NOSYSTEM", "GIT_CONFIG_GLOBAL", "GIT_SSH_COMMAND", "GIT_TERMINAL_PROMPT"}
+
+// ClaudeHostEnvNames is HostEnvNames for the Claude Code host: CLAUDE_CONFIG_DIR instead of CODEX_HOME.
+var ClaudeHostEnvNames = []string{"HOME", "CLAUDE_CONFIG_DIR", "USER", "LOGNAME", "CATHERD_HOME", "CATHERD_CLAUDE_AGENTS_DIR", "CATHERD_ORCHESTRATION_HOST", "PATH", "LANG", "TMPDIR",
 	"GIT_CONFIG_NOSYSTEM", "GIT_CONFIG_GLOBAL", "GIT_SSH_COMMAND", "GIT_TERMINAL_PROMPT"}
 
 // BuildHostEnv is the complete environment of the app-server and everything under it. Nothing is inherited:
 // no SSH agent, no CODEX_* or CLAUDE_* of Orqen's own process, no proxy and no provider credential.
 func BuildHostEnv(rt *catherd.Runtime, org *catherd.OrgEnv, dataDir string, sec catherd.SecretEnv) ([]string, error) {
+	return BuildHostEnvFor(catherd.HostCodex, rt, org, dataDir, sec)
+}
+
+// BuildHostEnvFor is BuildHostEnv for one orchestration host. The Codex host gets CODEX_HOME, the Claude Code host
+// gets CLAUDE_CONFIG_DIR: each has its own isolated login per organization.
+func BuildHostEnvFor(host string, rt *catherd.Runtime, org *catherd.OrgEnv, dataDir string, sec catherd.SecretEnv) ([]string, error) {
 	orgID := filepath.Base(org.Root())
 	if err := EnsureHostTree(dataDir, orgID); err != nil {
 		return nil, err
@@ -90,10 +136,9 @@ func BuildHostEnv(rt *catherd.Runtime, org *catherd.OrgEnv, dataDir string, sec 
 	}
 	env := []string{
 		"HOME=" + HostHome(dataDir, orgID),
-		"CODEX_HOME=" + CodexHome(dataDir, orgID),
 		"CATHERD_HOME=" + org.Home(),
 		"CATHERD_CLAUDE_AGENTS_DIR=" + org.Agents(),
-		"CATHERD_ORCHESTRATION_HOST=codex",
+		"CATHERD_ORCHESTRATION_HOST=" + hostName(host),
 		"PATH=" + rt.ChildPath,
 		"LANG=" + lang,
 		"TMPDIR=" + org.Tmp(),
@@ -101,6 +146,15 @@ func BuildHostEnv(rt *catherd.Runtime, org *catherd.OrgEnv, dataDir string, sec 
 		"GIT_CONFIG_GLOBAL=" + GitConfigPath(dataDir, orgID),
 		"GIT_SSH_COMMAND=false",
 		"GIT_TERMINAL_PROMPT=0",
+	}
+	if host == catherd.HostClaudeCode {
+		env = append(env, "CLAUDE_CONFIG_DIR="+ClaudeConfigDir(dataDir, orgID))
+		// The keychain is looked up under the account name; without USER and LOGNAME Claude does not see its login.
+		if u := currentUser(); u != "" {
+			env = append(env, "USER="+u, "LOGNAME="+u)
+		}
+	} else {
+		env = append(env, "CODEX_HOME="+CodexHome(dataDir, orgID))
 	}
 	names := make([]string, 0, len(sec))
 	for k := range sec {
@@ -122,6 +176,34 @@ func BuildHostEnv(rt *catherd.Runtime, org *catherd.OrgEnv, dataDir string, sec 
 	return env, nil
 }
 
+// currentUser is the account Orqen runs as.
+func currentUser() string {
+	if u, err := user.Current(); err == nil {
+		return u.Username
+	}
+	return os.Getenv("USER")
+}
+
+// hostName is the value catherd takes in CATHERD_ORCHESTRATION_HOST.
+func hostName(host string) string {
+	if host == catherd.HostClaudeCode {
+		return catherd.HostClaudeCode
+	}
+	return catherd.HostCodex
+}
+
+// CatherdMCPEnv is the explicit environment of the catherd MCP server a host starts (CATHERD_NO_SYNC and a quiet log
+// are fixed: a host session must never trigger a catalog sync).
+func CatherdMCPEnv(host string, org *catherd.OrgEnv) map[string]string {
+	return map[string]string{
+		"CATHERD_HOME":               org.Home(),
+		"CATHERD_CLAUDE_AGENTS_DIR":  org.Agents(),
+		"CATHERD_ORCHESTRATION_HOST": hostName(host),
+		"CATHERD_NO_SYNC":            "1",
+		"CATHERD_LOG":                "warn",
+	}
+}
+
 func tomlString(s string) string {
 	b, _ := json.Marshal(s) // a JSON string is a valid TOML basic string
 	return string(b)
@@ -132,13 +214,7 @@ func tomlString(s string) string {
 func HostArgs(catherdBin string, org *catherd.OrgEnv, cfg HostConfig) []string {
 	orgID := filepath.Base(org.Root())
 	dataDir := cfg.DataDir
-	fixed := map[string]string{
-		"CATHERD_HOME":               org.Home(),
-		"CATHERD_CLAUDE_AGENTS_DIR":  org.Agents(),
-		"CATHERD_ORCHESTRATION_HOST": "codex",
-		"CATHERD_NO_SYNC":            "1",
-		"CATHERD_LOG":                "warn",
-	}
+	fixed := CatherdMCPEnv(catherd.HostCodex, org)
 	keys := make([]string, 0, len(fixed))
 	for k := range fixed {
 		keys = append(keys, k)

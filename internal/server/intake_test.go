@@ -308,6 +308,39 @@ func (e *projectEnv) setSinceFull(n int) {
 	}
 }
 
+func TestIntakeManualRefreshAfterLabelFilterChange(t *testing.T) {
+	e := newIntakeEnv(t, intakeOpts{Intake: "manual", NoEnable: true})
+	e.poll()
+	e.publishPolicy("/api/v1/orgs/"+e.org+"/policy", map[string]any{"intake.label": ""})
+	e.poll()
+	queries := e.jf.JQLs()
+	query := queries[len(queries)-1]
+	if strings.Contains(query, "labels =") || strings.Contains(query, "updated >=") || !strings.Contains(query, "assignee = currentUser()") {
+		t.Fatal("manual refresh must include older assigned issues without a label", query)
+	}
+	if e.count("runs", bson.M{"org_id": e.org}) != 0 {
+		t.Fatal("refresh on a disabled project must not start runs")
+	}
+}
+
+func TestIntakeUnresolvedDoneCategoryOptIn(t *testing.T) {
+	e := newIntakeEnv(t, intakeOpts{NoEnable: true})
+	e.poll()
+	queries := e.jf.JQLs()
+	if strings.Contains(queries[len(queries)-1], "OR resolution = Unresolved") {
+		t.Fatal("Done-category intake must be opt-in")
+	}
+	e.publishPolicy("/api/v1/orgs/"+e.org+"/policy", map[string]any{"intake.include_unresolved_done": true})
+	e.poll()
+	queries = e.jf.JQLs()
+	if !strings.Contains(queries[len(queries)-1], "AND (statusCategory != Done OR resolution = Unresolved)") {
+		t.Fatal("published intake policy did not reach the Jira query", queries)
+	}
+	if e.count("runs", bson.M{"org_id": e.org}) != 0 {
+		t.Fatal("importing issues must not start runs on a disabled project")
+	}
+}
+
 func TestIntakeManualModeCandidatesAndEvaluate(t *testing.T) {
 	e := newIntakeEnv(t, intakeOpts{Intake: "manual"})
 	e.poll()

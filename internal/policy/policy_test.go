@@ -14,7 +14,7 @@ func TestRegistry(t *testing.T) {
 			t.Errorf("default of %s does not validate: %v %s", k.Key, v, msg)
 		}
 	}
-	if !sort.StringsAreSorted(keys) || len(keys) != 77 {
+	if !sort.StringsAreSorted(keys) || len(keys) != 78 {
 		t.Fatal(keys)
 	}
 	locked, orgOnly := 0, 0
@@ -41,10 +41,10 @@ func TestValidateOverrides(t *testing.T) {
 		"automation.jira_write":          "must be one of",
 		"intake.poll_interval_secs":      "between 30 and 3600",
 		"review.max_fix_rounds":          "between 0 and 5",
-		"intake.label":                   "1 to 255",
+		"intake.label":                   "0 to 255",
 		"ci.require_pipeline":            "true or false",
 	}
-	in := map[string]any{"nope.key": 1, "review.require_different_model": false, "automation.jira_write": "yes", "intake.poll_interval_secs": float64(5), "review.max_fix_rounds": float64(2.5), "intake.label": "", "ci.require_pipeline": "no"}
+	in := map[string]any{"nope.key": 1, "review.require_different_model": false, "automation.jira_write": "yes", "intake.poll_interval_secs": float64(5), "review.max_fix_rounds": float64(2.5), "intake.label": strings.Repeat("x", 256), "ci.require_pipeline": "no"}
 	_, es = ValidateOverrides(LayerOrg, in)
 	got := map[string]string{}
 	for _, e := range es {
@@ -68,6 +68,12 @@ func TestValidateOverrides(t *testing.T) {
 	}
 	if _, es = ValidateOverrides(LayerProject, map[string]any{"review.max_fix_rounds": int64(3)}); len(es) != 0 {
 		t.Fatal(es)
+	}
+	for _, layer := range []string{LayerOrg, LayerProject} {
+		out, es := ValidateOverrides(layer, map[string]any{"intake.label": ""})
+		if len(es) != 0 || out["intake.label"] != "" {
+			t.Fatal("empty label disables the label filter", out, es)
+		}
 	}
 }
 func find(e Effective, key string) Entry {

@@ -22,7 +22,7 @@ export function IntakeTab({ orgId, project }: { orgId: string; project: ProjectD
   if (intake.isPending) return <LoadingBlock />
   if (intake.isError) return <LoadFailed title={t('intake.loadFailed')} error={intake.error} onRetry={() => void intake.refetch()} />
   const s = intake.data
-  const disabled = !s.enabled || s.paused || poll.isPending || runner.running
+  const disabled = !project.mapping?.jira || s.paused || poll.isPending || runner.running
   return (
     <div className="flex max-w-3xl flex-col gap-4">
       {s.paused && (

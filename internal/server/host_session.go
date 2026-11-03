@@ -37,7 +37,7 @@ type hostRun struct {
 	run     RunDoc
 	env     *catherd.OrgEnv
 	cfg     execution.HostConfig
-	client  *codexhost.Client
+	client  codexhost.Host
 	thread  string
 	session HostSessionDoc
 	timeout time.Duration
@@ -100,7 +100,7 @@ func (a *App) hostConfig(ctx context.Context, run RunDoc) (execution.HostConfig,
 	if err != nil {
 		return execution.HostConfig{}, nil, err
 	}
-	return execution.HostConfig{CodexBin: a.Config.CodexBin, CatherdBin: a.CatherdRT.Bin, DataDir: a.Config.DataDir, OrgID: run.OrgID, Org: env, RT: a.CatherdRT, Secrets: sec,
+	return execution.HostConfig{Host: a.orgHost(ctx, run.OrgID), CodexBin: a.Config.CodexBin, ClaudeBin: a.claudeBin(), CatherdBin: a.CatherdRT.Bin, DataDir: a.Config.DataDir, OrgID: run.OrgID, Org: env, RT: a.CatherdRT, Secrets: sec,
 		Model: pv.Str("host.orchestrator_model"), Effort: pv.Str("host.orchestrator_effort")}, env, nil
 }
 
@@ -117,7 +117,7 @@ func (a *App) liveSession(ctx context.Context, org, run string) (HostSessionDoc,
 func (s *stageCtx) openHost(ctx context.Context, run RunDoc) (*hostRun, error) {
 	a := s.a
 	if a.HostSupervisor == nil || !a.hostAvailable(ctx, run.OrgID) {
-		return nil, &JobFailure{Code: "host_unavailable", Message: "the Codex host is not available", Retryable: true}
+		return nil, &JobFailure{Code: "host_unavailable", Message: "the orchestration host is not available", Retryable: true}
 	}
 	cfg, env, err := a.hostConfig(ctx, run)
 	if err != nil {
@@ -125,10 +125,10 @@ func (s *stageCtx) openHost(ctx context.Context, run RunDoc) (*hostRun, error) {
 	}
 	client, err := a.HostSupervisor.Client(ctx, run.OrgID, cfg)
 	if errors.Is(err, execution.ErrHostBusy) {
-		return nil, &JobFailure{Code: "host_busy", Message: "another runner holds the Codex host", Retryable: true}
+		return nil, &JobFailure{Code: "host_busy", Message: "another runner holds the orchestration host", Retryable: true}
 	}
 	if err != nil {
-		return nil, &JobFailure{Code: "host_unavailable", Message: "the Codex host could not be started", Retryable: true}
+		return nil, &JobFailure{Code: "host_unavailable", Message: "the orchestration host could not be started", Retryable: true}
 	}
 	a.HostSupervisor.Pin(run.OrgID)
 	h := &hostRun{s: s, run: run, env: env, cfg: cfg, client: client, unpin: func() { a.HostSupervisor.Unpin(run.OrgID) }}
@@ -185,7 +185,7 @@ func (h *hostRun) ensureThread(ctx context.Context) error {
 		} else {
 			var rpc *codexhost.RPCError
 			if !errors.As(err, &rpc) {
-				return &JobFailure{Code: "host_unavailable", Message: "the Codex thread could not be resumed", Retryable: true}
+				return &JobFailure{Code: "host_unavailable", Message: "the host thread could not be resumed", Retryable: true}
 			}
 			// The thread is gone: start another one; the catherd run is unchanged.
 			if e := a.fenced(ctx, s.lease, func(tx context.Context) error {
@@ -197,7 +197,7 @@ func (h *hostRun) ensureThread(ctx context.Context) error {
 	}
 	th, err := h.client.StartThread(ctx, codexhost.ThreadParams{Model: h.cfg.Model, Effort: h.cfg.Effort, Cwd: h.cfg.Org.Tmp()})
 	if err != nil {
-		return &JobFailure{Code: "host_unavailable", Message: "a Codex thread could not be started", Retryable: true}
+		return &JobFailure{Code: "host_unavailable", Message: "a host thread could not be started", Retryable: true}
 	}
 	err = a.fenced(ctx, s.lease, func(tx context.Context) error {
 		now := time.Now().UTC()

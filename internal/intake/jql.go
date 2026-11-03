@@ -10,14 +10,15 @@ import (
 
 // JQLInput describes one poll. WindowMinutes 0 means a full scan (no updated clause).
 type JQLInput struct {
-	ProjectID         string
-	UserJQL           *string
-	BoardScrum        bool
-	SprintIDs         []string
-	RequireOpenSprint bool
-	Label             string
-	AssignedToMe      bool
-	WindowMinutes     int
+	ProjectID             string
+	UserJQL               *string
+	BoardScrum            bool
+	SprintIDs             []string
+	RequireOpenSprint     bool
+	IncludeUnresolvedDone bool
+	Label                 string
+	AssignedToMe          bool
+	WindowMinutes         int
 }
 
 var orderByRe = regexp.MustCompile(`(?is)(^|\s+)ORDER\s+BY\s+.*$`)
@@ -66,7 +67,11 @@ func ComposeJQL(in JQLInput) string {
 	if in.AssignedToMe {
 		b.WriteString(" AND assignee = currentUser()")
 	}
-	b.WriteString(" AND statusCategory != Done")
+	if in.IncludeUnresolvedDone {
+		b.WriteString(" AND (statusCategory != Done OR resolution = Unresolved)")
+	} else {
+		b.WriteString(" AND statusCategory != Done")
+	}
 	if in.WindowMinutes > 0 {
 		b.WriteString(" AND updated >= -" + strconv.Itoa(in.WindowMinutes) + "m")
 	}

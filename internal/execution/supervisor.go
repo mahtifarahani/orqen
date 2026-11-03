@@ -13,6 +13,8 @@ import (
 	"syscall"
 	"time"
 
+	"orqen/internal/catherd"
+	"orqen/internal/claudehost"
 	"orqen/internal/codexhost"
 )
 
@@ -34,19 +36,28 @@ type Supervisor struct {
 	IdleStop time.Duration
 	// ClientVersion is reported to the app-server.
 	ClientVersion string
+	// StartClaude starts one claude turn. Nil means the real claude CLI; tests return a scripted stream.
+	StartClaude claudehost.StartFunc
 
 	mu    sync.Mutex
 	hosts map[string]*host
 }
 
 type host struct {
-	client *codexhost.Client
+	client codexhost.Host
 	proc   Proc
 	unlock func()
 	pins   int
 	timer  *time.Timer
 	gen    int
+	kind   string // the orchestration host the client talks to
 }
+
+// noProc is the process of a host that has none.
+type noProc struct{}
+
+func (noProc) Kill()                 {}
+func (noProc) Done() <-chan struct{} { return nil }
 
 func (s *Supervisor) init() {
 	if s.hosts == nil {
@@ -75,7 +86,7 @@ func flockNB(path string) (func(), error) {
 
 // Client returns the organization's connected client, starting the app-server when needed. A second supervisor
 // (another Orqen process) on the same Codex home gets ErrHostBusy. The caller must Pin the host while a run uses it.
-func (s *Supervisor) Client(ctx context.Context, orgKey string, cfg HostConfig) (*codexhost.Client, error) {
+func (s *Supervisor) Client(ctx context.Context, orgKey string, cfg HostConfig) (codexhost.Host, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
 	s.init()
@@ -84,10 +95,13 @@ func (s *Supervisor) Client(ctx context.Context, orgKey string, cfg HostConfig) 
 		case <-h.client.Done():
 			s.stopLocked(orgKey) // the process died: start a new one
 		default:
-			return h.client, nil
+			if h.kind == hostName(cfg.Host) {
+				return h.client, nil
+			}
+			s.stopLocked(orgKey) // the organization switched its orchestration host
 		}
 	}
-	if s.Spawn == nil {
+	if s.Spawn == nil && cfg.Host != catherd.HostClaudeCode {
 		return nil, ErrHostUnavailable
 	}
 	if err := EnsureHostTree(cfg.DataDir, cfg.OrgID); err != nil {
@@ -97,10 +111,26 @@ func (s *Supervisor) Client(ctx context.Context, orgKey string, cfg HostConfig) 
 	if err != nil {
 		return nil, err
 	}
-	env, err := BuildHostEnv(cfg.RT, cfg.Org, cfg.DataDir, cfg.Secrets)
+	env, err := BuildHostEnvFor(cfg.Host, cfg.RT, cfg.Org, cfg.DataDir, cfg.Secrets)
 	if err != nil {
 		unlock()
 		return nil, err
+	}
+	if cfg.Host == catherd.HostClaudeCode {
+		// Claude Code has no app-server: a turn is one `claude -p` process, so there is nothing to supervise but the
+		// lock and the pin.
+		if cfg.ClaudeBin == "" {
+			unlock()
+			return nil, fmt.Errorf("%w: claude was not found", ErrHostUnavailable)
+		}
+		if err := EnsureClaudeKeychain(cfg.DataDir, cfg.OrgID); err != nil {
+			unlock()
+			return nil, fmt.Errorf("%w: %v", ErrHostUnavailable, err)
+		}
+		client := claudehost.New(claudehost.Config{Bin: cfg.ClaudeBin, Env: env, Cwd: cfg.Org.Tmp(), ConfigDir: ClaudeConfigDir(cfg.DataDir, cfg.OrgID),
+			CatherdBin: cfg.CatherdBin, CatherdEnv: CatherdMCPEnv(cfg.Host, cfg.Org), Model: cfg.Model, Start: s.StartClaude})
+		s.hosts[orgKey] = &host{client: client, proc: noProc{}, unlock: unlock, kind: cfg.Host}
+		return client, nil
 	}
 	rwc, proc, err := s.Spawn(ctx, cfg, env, HostArgs(cfg.CatherdBin, cfg.Org, cfg))
 	if err != nil {
@@ -119,7 +149,7 @@ func (s *Supervisor) Client(ctx context.Context, orgKey string, cfg HostConfig) 
 		unlock()
 		return nil, fmt.Errorf("%w: %v", ErrHostUnavailable, err)
 	}
-	s.hosts[orgKey] = &host{client: client, proc: proc, unlock: unlock}
+	s.hosts[orgKey] = &host{client: client, proc: proc, unlock: unlock, kind: catherd.HostCodex}
 	return client, nil
 }
 

@@ -10,6 +10,7 @@ import { Ltr } from '@/components/ltr'
 import { LoadFailed, LoadingBlock } from '@/components/query-state'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
+import { NativeSelect } from '@/components/ui/native-select'
 import { Switch } from '@/components/ui/switch'
 import { formatNumber } from '@/lib/format'
 import { problemMessage } from '@/lib/problem-message'
@@ -17,7 +18,6 @@ import { useLocale } from '@/lib/use-locale'
 
 const ROLES = ['architect', 'worker', 'verifier', 'reviewer', 'researcher', 'writer'] as const
 type Role = (typeof ROLES)[number]
-const selectClass = 'h-9 min-w-0 rounded-md border bg-background px-2 text-sm'
 
 /**
  * Which approved skills each role gets, for one scope: `org` or `project:<id>`. A project set overrides the org set.
@@ -113,20 +113,20 @@ export function SkillBindingsEditor({ orgId, scopeKey, projectId }: { orgId: str
       <div className="flex flex-wrap items-end gap-2">
         <label className="flex flex-col gap-1 text-sm">
           {t('skills.bindings.role')}
-          <select className={selectClass} value={role} onChange={(e) => setRole(e.target.value as Role)}>
+          <NativeSelect value={role} onChange={(e) => setRole(e.target.value as Role)}>
             {ROLES.map((r) => (
               <option key={r} value={r}>{t(`skills.roles.${r}`)}</option>
             ))}
-          </select>
+          </NativeSelect>
         </label>
         <label className="flex min-w-0 flex-col gap-1 text-sm">
           {t('skills.bindings.skill')}
-          <select className={selectClass} value={skillId} onChange={(e) => setSkillId(e.target.value)}>
+          <NativeSelect value={skillId} onChange={(e) => setSkillId(e.target.value)}>
             <option value="">{t('skills.bindings.pick')}</option>
             {approvable.map((s) => (
               <option key={s.id} value={s.id}>{s.title}</option>
             ))}
-          </select>
+          </NativeSelect>
         </label>
         <Button variant="outline" disabled={!skillId} onClick={add}>
           {t('skills.bindings.add')}

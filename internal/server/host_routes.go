@@ -12,6 +12,7 @@ import (
 	"go.mongodb.org/mongo-driver/v2/bson"
 	"go.mongodb.org/mongo-driver/v2/mongo"
 	"orqen/internal/catherd"
+	"orqen/internal/claudehost"
 	"orqen/internal/codexhost"
 	"orqen/internal/execution"
 )
@@ -91,13 +92,27 @@ func versionAtLeast(have, min string) bool {
 
 // evaluateProbe turns what the app-server reported into the stored probe.
 func evaluateProbe(res codexhost.ProbeResult) HostProbe {
+	return evaluateHostProbe(catherd.HostCodex, res)
+}
+
+// evaluateHostProbe is evaluateProbe for one orchestration host. For Claude Code the stored version field carries the
+// Claude Code version (the field keeps its name so the stored shape and the API stay the same).
+func evaluateHostProbe(host string, res codexhost.ProbeResult) HostProbe {
 	p := HostProbe{Status: "ok", CodexVersion: res.Version(), CheckedAt: time.Now().UTC(), Login: "missing", Reasons: []string{}}
-	p.Fake = strings.HasPrefix(res.UserAgent, "orqen_fake_codex")
+	p.Fake = strings.HasPrefix(res.UserAgent, "orqen_fake_codex") || strings.HasPrefix(res.UserAgent, "orqen_fake_claude")
 	if res.LoggedIn {
 		p.Login = "ok"
 	}
-	if p.CodexVersion == "" || !versionAtLeast(p.CodexVersion, codexhost.MinCodexVersion) {
-		p.Reasons = append(p.Reasons, "host_codex_too_old")
+	minVersion := codexhost.MinCodexVersion
+	if host == catherd.HostClaudeCode {
+		minVersion = claudehost.MinClaudeVersion
+	}
+	if p.CodexVersion == "" || !versionAtLeast(p.CodexVersion, minVersion) {
+		if host == catherd.HostClaudeCode {
+			p.Reasons = append(p.Reasons, "host_claude_too_old")
+		} else {
+			p.Reasons = append(p.Reasons, "host_codex_too_old")
+		}
 	}
 	if !res.LoggedIn {
 		p.Reasons = append(p.Reasons, "host_login_missing")
@@ -137,7 +152,7 @@ func (a *App) hostProbeConfig(ctx context.Context, org string) (execution.HostCo
 	if err != nil {
 		sec = catherd.SecretEnv{}
 	}
-	return execution.HostConfig{CodexBin: a.Config.CodexBin, CatherdBin: a.CatherdRT.Bin, DataDir: a.Config.DataDir, OrgID: org, Org: env, RT: a.CatherdRT, Secrets: sec}, nil
+	return execution.HostConfig{Host: a.orgHost(ctx, org), CodexBin: a.Config.CodexBin, ClaudeBin: a.claudeBin(), CatherdBin: a.CatherdRT.Bin, DataDir: a.Config.DataDir, OrgID: org, Org: env, RT: a.CatherdRT, Secrets: sec}, nil
 }
 
 // runHostProbe starts the app-server (or reuses the running one), reads its state, and records the result. It creates
@@ -145,6 +160,10 @@ func (a *App) hostProbeConfig(ctx context.Context, org string) (execution.HostCo
 func (a *App) runHostProbe(ctx context.Context, job JobDoc, lease Lease) error {
 	org := job.OrgID
 	probe := HostProbe{Status: "failed", CheckedAt: time.Now().UTC(), Login: "missing", Reasons: []string{"host_codex_missing"}}
+	hostName := a.orgHost(ctx, org)
+	if hostName == catherd.HostClaudeCode {
+		probe.Reasons = []string{"host_claude_missing"}
+	}
 	if a.HostSupervisor != nil {
 		cfg, err := a.hostProbeConfig(ctx, org)
 		if err != nil {
@@ -155,7 +174,7 @@ func (a *App) runHostProbe(ctx context.Context, job JobDoc, lease Lease) error {
 		switch {
 		case errors.Is(err, execution.ErrHostBusy):
 			cancel()
-			return &JobFailure{Code: "host_busy", Message: "another runner holds the Codex host"}
+			return &JobFailure{Code: "host_busy", Message: "another runner holds the orchestration host"}
 		case err != nil:
 			// Not started: codex is missing or refused to initialize.
 		default:
@@ -163,7 +182,9 @@ func (a *App) runHostProbe(ctx context.Context, job JobDoc, lease Lease) error {
 			res, perr := client.Probe(pctx)
 			a.HostSupervisor.Unpin(org)
 			if perr == nil {
-				probe = evaluateProbe(res)
+				probe = evaluateHostProbe(hostName, res)
+			} else if hostName == catherd.HostClaudeCode {
+				probe.Reasons = []string{"host_claude_missing"}
 			} else {
 				probe.Reasons = []string{"host_codex_missing"}
 			}

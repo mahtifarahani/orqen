@@ -41,7 +41,7 @@ type kasRunner struct {
 
 	env     *catherd.OrgEnv
 	cfg     execution.HostConfig
-	client  *codexhost.Client
+	client  codexhost.Host
 	thread  string
 	timeout time.Duration
 	unpin   func()
@@ -79,7 +79,7 @@ func (r *kasRunner) set(ctx context.Context, from []string, set bson.M) (bool, e
 func (r *kasRunner) openHost(ctx context.Context) error {
 	a := r.a
 	if a.HostSupervisor == nil || !a.hostAvailable(ctx, r.kas.OrgID) {
-		return &JobFailure{Code: "host_unavailable", Message: "the Codex host is not available", Retryable: true}
+		return &JobFailure{Code: "host_unavailable", Message: "the orchestration host is not available", Retryable: true}
 	}
 	cfg, env, err := a.hostConfig(ctx, r.origin)
 	if err != nil {
@@ -87,10 +87,10 @@ func (r *kasRunner) openHost(ctx context.Context) error {
 	}
 	client, err := a.HostSupervisor.Client(ctx, r.kas.OrgID, cfg)
 	if errors.Is(err, execution.ErrHostBusy) {
-		return &JobFailure{Code: "host_busy", Message: "another runner holds the Codex host", Retryable: true}
+		return &JobFailure{Code: "host_busy", Message: "another runner holds the orchestration host", Retryable: true}
 	}
 	if err != nil {
-		return &JobFailure{Code: "host_unavailable", Message: "the Codex host could not be started", Retryable: true}
+		return &JobFailure{Code: "host_unavailable", Message: "the orchestration host could not be started", Retryable: true}
 	}
 	a.HostSupervisor.Pin(r.kas.OrgID)
 	r.unpin = func() { a.HostSupervisor.Unpin(r.kas.OrgID) }

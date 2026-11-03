@@ -53,8 +53,8 @@ func canonRaw(raw json.RawMessage) (string, error) {
 	return canon.JSON(v), nil
 }
 
-// argsMatch compares the directive's arguments with what the host sent.
-func (d Directive) argsMatch(raw json.RawMessage) bool {
+// ArgsMatch compares the directive's arguments with what the host sent.
+func (d Directive) ArgsMatch(raw json.RawMessage) bool {
 	got, err := canonRaw(raw)
 	if err != nil {
 		return false

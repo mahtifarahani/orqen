@@ -123,6 +123,7 @@ func (a *App) runIntakePoll(ctx context.Context, job JobDoc, lease Lease) error 
 		return err
 	}
 	in := intake.JQLInput{ProjectID: jm.ProjectID, UserJQL: jm.JQL, Label: pv.Str("intake.label"), AssignedToMe: pv.Bool("intake.require_assigned_to_me"), RequireOpenSprint: pv.Bool("intake.require_open_sprint")}
+	in.IncludeUnresolvedDone = pv.Bool("intake.include_unresolved_done")
 	var sprints []string
 	if jm.Board != nil && jm.JQL == nil && in.RequireOpenSprint {
 		board, berr := src.GetBoard(ctx, jm.Board.ID)
@@ -145,6 +146,10 @@ func (a *App) runIntakePoll(ctx context.Context, job JobDoc, lease Lease) error 
 		}
 	}
 	minutes, full := intake.Window(state.LastSuccessStartedAt, start, state.PollsSinceFull, pv.Int("intake.reconcile_every_polls"))
+	// A user-requested refresh must also find older issues newly included by a changed filter.
+	if manual, _ := job.Payload["manual"].(bool); manual {
+		minutes, full = 0, true
+	}
 	in.WindowMinutes = minutes
 	jql := intake.ComposeJQL(in)
 	maxIssues := pv.Int("intake.max_issues_per_poll")

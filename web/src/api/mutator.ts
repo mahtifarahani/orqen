@@ -14,14 +14,17 @@ export const ifMatch = (revision: number) => `"${revision}"`
  * `ApiProblem` (thrown, so TanStack Query sees an error), response headers kept (ETag,
  * Idempotent-Replayed).
  */
-export const orqenFetch = async <T>(url: string, init: RequestInit = {}): Promise<T> => {
+export type OrqenRequestInit = RequestInit & { responseType?: 'text' }
+
+export const orqenFetch = async <T>(url: string, init: OrqenRequestInit = {}): Promise<T> => {
+  const { responseType, ...requestInit } = init
   const method = (init.method ?? 'GET').toUpperCase()
   const headers = new Headers(init.headers)
   if (method !== 'GET' && method !== 'HEAD' && csrf) headers.set('X-CSRF-Token', csrf)
 
   let res: Response
   try {
-    res = await fetch(url, { ...init, headers, credentials: 'same-origin' })
+    res = await fetch(url, { ...requestInit, headers, credentials: 'same-origin' })
   } catch (e) {
     if (e instanceof DOMException && e.name === 'AbortError') throw e
     throw new ApiProblem({ status: 0, code: 'network_error', detail: '' })
@@ -31,7 +34,7 @@ export const orqenFetch = async <T>(url: string, init: RequestInit = {}): Promis
   let data: unknown = undefined
   if (text) {
     const ct = res.headers.get('content-type') ?? ''
-    if (ct.includes('json')) {
+    if (ct.includes('json') && (responseType !== 'text' || !res.ok)) {
       try {
         data = JSON.parse(text)
       } catch {

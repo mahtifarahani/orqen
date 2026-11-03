@@ -7,7 +7,7 @@ import "errors"
 
 var (
 	// ErrHostBusy means another runner holds the organization's host lock.
-	ErrHostBusy = errors.New("execution: the organization's Codex host is busy")
+	ErrHostBusy = errors.New("execution: the organization's orchestration host is busy")
 	// ErrHostUnavailable means the host cannot be started.
-	ErrHostUnavailable = errors.New("execution: the Codex host cannot be started")
+	ErrHostUnavailable = errors.New("execution: the orchestration host cannot be started")
 )

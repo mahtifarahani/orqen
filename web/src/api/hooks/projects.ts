@@ -117,7 +117,7 @@ export function useContractSnapshot(orgId: string, projectId: string, rcsId: str
 }
 /** File content of a contract snapshot (an artifact); text. */
 export function useArtifactText(orgId: string, artifactId: string | undefined) {
-  return useGetArtifactContent(orgId, artifactId ?? '', { query: { enabled: !!artifactId, select: (res) => res.data as unknown as string } })
+  return useGetArtifactContent(orgId, artifactId ?? '', { request: { responseType: 'text' }, query: { enabled: !!artifactId, select: (res) => res.data as unknown as string } })
 }
 
 /** One page of up to 200 projects, enough for the Overview counters. */

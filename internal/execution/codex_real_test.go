@@ -12,6 +12,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"io/fs"
 	"os"
 	"os/exec"
@@ -193,7 +194,7 @@ func TestCodexCatherdSpikeReal(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	call := func(client *codexhost.Client, tool string, args map[string]any) codexhost.ToolCall {
+	call := func(client codexhost.Host, tool string, args map[string]any) codexhost.ToolCall {
 		t.Helper()
 		c, err := client.RunDirective(ctx, th.ID, codexhost.NewDirective(tool, args), 5*time.Minute)
 		if err != nil {
@@ -243,11 +244,11 @@ func TestCodexCatherdSpikeReal(t *testing.T) {
 	_ = client
 
 	// 5. a worker `git push` is blocked: the isolated gitconfig rewrites every push URL.
-	cmd := exec.Command("git", "push", "file://"+bare, "main")
+	cmd := exec.Command("git", "push", "https://git.invalid/spike.git", "main")
 	cmd.Dir = repo
 	cmd.Env = []string{"PATH=" + os.Getenv("PATH"), "HOME=" + HostHome(data, realOrgID), "GIT_CONFIG_NOSYSTEM=1", "GIT_CONFIG_GLOBAL=" + GitConfigPath(data, realOrgID), "GIT_TERMINAL_PROMPT=0"}
-	if out, err := cmd.CombinedOutput(); err == nil {
-		t.Fatalf("a push from the host's environment succeeded:\n%s", out)
+	if out, err := cmd.CombinedOutput(); err == nil || !strings.Contains(string(out), "orqen-blocked") {
+		t.Fatalf("a push from the host's environment was not blocked by the host gitconfig (err=%v):\n%s", err, out)
 	}
 	if n := strings.TrimSpace(gitIn(t, data, "-C", bare, "count-objects", "-v")); !strings.Contains(n, "count: 0") && !strings.Contains(n, "in-pack: 0") {
 		t.Logf("remote objects: %s", n)
@@ -270,13 +271,13 @@ func TestCodexCatherdSpikeReal(t *testing.T) {
 
 // catherdRunID reads the run id out of run_start's structured result.
 func catherdRunID(raw []byte) string {
-	s := string(raw)
-	for _, key := range []string{`"runId":"`, `"run":"`, `"id":"`} {
-		if i := strings.Index(s, key); i >= 0 {
-			rest := s[i+len(key):]
-			if j := strings.Index(rest, `"`); j > 0 {
-				return rest[:j]
-			}
+	var m map[string]any
+	if json.Unmarshal(raw, &m) != nil {
+		return ""
+	}
+	for _, k := range []string{"runId", "run", "id"} {
+		if s, ok := m[k].(string); ok && s != "" {
+			return s
 		}
 	}
 	return ""

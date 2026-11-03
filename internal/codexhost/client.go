@@ -257,7 +257,7 @@ func (c *Client) RunDirective(ctx context.Context, threadID string, d Directive,
 	result := func() (ToolCall, error) {
 		tc := ToolCall{ThreadID: threadID, TurnID: turnID, ItemID: call.ID, Server: call.Server, Tool: call.Tool, Arguments: call.Arguments}
 		if call.Error != nil {
-			if te := parseToolError([]byte(call.Error.Message)); te != nil {
+			if te := ParseToolError([]byte(call.Error.Message)); te != nil {
 				return tc, te
 			}
 			return tc, &ToolError{Code: "E_HOST_TOOL", Message: call.Error.Message}
@@ -268,11 +268,11 @@ func (c *Client) RunDirective(ctx context.Context, threadID string, d Directive,
 		if call.Result != nil {
 			payload, text := resultPayload(call.Result)
 			tc.Result, tc.Text = payload, text
-			if te := parseToolError(payload); te != nil {
+			if te := ParseToolError(payload); te != nil {
 				return tc, te
 			}
 			if payload == nil {
-				if te := parseToolError([]byte(text)); te != nil {
+				if te := ParseToolError([]byte(text)); te != nil {
 					return tc, te
 				}
 			}
@@ -329,7 +329,7 @@ func (c *Client) RunDirective(ctx context.Context, threadID string, d Directive,
 				if call != nil && call.ID != it.ID {
 					return deviate("a second tool call")
 				}
-				if !d.argsMatch(it.Arguments) {
+				if !d.ArgsMatch(it.Arguments) {
 					interrupt()
 					c := it
 					call = &c
@@ -460,8 +460,8 @@ func resultPayload(r *McpResult) (json.RawMessage, string) {
 	return nil, ""
 }
 
-// parseToolError recognizes catherd's {code, message, fix} error object.
-func parseToolError(raw []byte) *ToolError {
+// ParseToolError recognizes catherd's {code, message, fix} error object.
+func ParseToolError(raw []byte) *ToolError {
 	var e struct {
 		Code    string `json:"code"`
 		Message string `json:"message"`

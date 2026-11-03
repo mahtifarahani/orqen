@@ -14,6 +14,14 @@ variables are set:
 | `TestCodexHostProbeReal` | `ORQEN_TEST_CODEX_HOST=1`, `ORQEN_TEST_CODEX_HOME`, `ORQEN_TEST_CODEX_BIN` | No (initialize, `model/list`, `mcpServerStatus/list`) |
 | `TestCodexCatherdSpikeReal` | `ORQEN_TEST_CODEX_SPIKE=1`, `ORQEN_TEST_SPIKE_RUNG`, `ORQEN_TEST_CODEX_HOME`, `ORQEN_TEST_CODEX_BIN`, `ORQEN_TEST_CATHERD_BIN` | **Yes**, on the cheap rung you choose |
 
+| `TestClaudeCatherdSpikeReal` | `ORQEN_TEST_CLAUDE_SPIKE=1`, `ORQEN_TEST_SPIKE_RUNG`, `ORQEN_TEST_CLAUDE_BIN`, `ORQEN_TEST_CATHERD_BIN`, `ORQEN_TEST_CLAUDE_DATA_DIR`, `ORQEN_TEST_CLAUDE_ORG` | **Yes**, on the cheap `claude-code:` rung you choose |
+
+The Claude spike is the same Spike 0 for the Claude Code host (`internal/claudehost`). The Claude login lives in the keychain under the
+name of the organization's `CLAUDE_CONFIG_DIR`, so `ORQEN_TEST_CLAUDE_DATA_DIR`/`_ORG` point at the data directory and organization
+that ran `claude auth login`; the catherd home, the repository and the run are in a temporary directory. Instead of killing an
+app-server it cuts one `dispatch` turn short and checks that the session history and catherd agree on whether the dispatch happened.
+Example rung: `claude-code:claude-haiku-4-5-20251001#default`.
+
 `ORQEN_TEST_CODEX_HOME` is an **isolated** `CODEX_HOME` that you logged in yourself (`CODEX_HOME=<dir> codex login`); never your
 everyday `~/.codex`. Run: `go test ./internal/execution -run Real -v -count=1`.
 

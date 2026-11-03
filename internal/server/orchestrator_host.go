@@ -6,6 +6,9 @@ import (
 	"log/slog"
 	"net/http"
 	"orqen/internal/catherd"
+	"os"
+	"os/exec"
+	"path/filepath"
 )
 
 const hostPolicyKey = "orchestrator.host"
@@ -36,9 +39,31 @@ func (a *App) orgHost(ctx context.Context, org string) string {
 	return h
 }
 
-// hostAdapterAvailable says whether Orqen has an execution adapter for the host. Its host is the Codex App Server
-// (SPEC section 3); there is no Claude Code host adapter, so selecting claude-code is allowed but never ready.
-func hostAdapterAvailable(host string) bool { return host == catherd.HostCodex }
+// hostAdapterAvailable says whether Orqen has an execution adapter for the host: the Codex App Server (SPEC
+// section 3) and headless Claude Code (internal/claudehost). Whether the host actually works on this machine is the
+// probe's business (hostAvailable), not the adapter's.
+func hostAdapterAvailable(host string) bool {
+	return host == catherd.HostCodex || host == catherd.HostClaudeCode
+}
+
+// claudeBin is the claude executable: the configured path, else the first `claude` on the host's PATH.
+func (a *App) claudeBin() string {
+	if a.Config.ClaudeBin != "" {
+		return a.Config.ClaudeBin
+	}
+	if a.CatherdRT != nil {
+		for _, dir := range filepath.SplitList(a.CatherdRT.ChildPath) {
+			p := filepath.Join(dir, "claude")
+			if st, err := os.Stat(p); err == nil && !st.IsDir() && st.Mode()&0o111 != 0 {
+				return p
+			}
+		}
+	}
+	if p, err := exec.LookPath("claude"); err == nil {
+		return p
+	}
+	return ""
+}
 
 func doctorDTO(d *DoctorSummary) any {
 	if d == nil {

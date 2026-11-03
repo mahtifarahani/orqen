@@ -45,6 +45,19 @@ describe('orqenFetch', () => {
     expect(r.data).toBeUndefined()
   })
 
+  it('preserves JSON artifact source text, including formatting', async () => {
+    const source = '{\n  "name": "hamrahtel-website",\n  "scripts": { "test": "vitest run" }\n}\n'
+    const fetchMock = stubFetch(() => new Response(source, { headers: { 'content-type': 'application/json' } }))
+    const r = await orqenFetch<{ data: string }>('/api/artifacts/package/content', { responseType: 'text' })
+    expect(r.data).toBe(source)
+    expect(fetchMock.mock.calls[0][1]).not.toHaveProperty('responseType')
+  })
+
+  it('still parses structured errors when reading artifact text', async () => {
+    stubFetch(() => Response.json({ code: 'not_found', status: 404 }, { status: 404 }))
+    await expect(orqenFetch('/api/artifacts/missing/content', { responseType: 'text' })).rejects.toMatchObject({ name: 'ApiProblem', code: 'not_found' })
+  })
+
   it('throws ApiProblem for problem+json errors', async () => {
     stubFetch(
       () =>

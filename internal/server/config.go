@@ -27,7 +27,9 @@ type Config struct {
 	ArtifactMaxBytes                                      int64
 	CatherdBin, CatherdPath, PersonalCatherdHome          string
 	// CodexBin is the codex executable (ORQEN_CODEX_BIN); CodingSlots is the system-wide number of runs that may code at once.
-	CodexBin    string
+	CodexBin string
+	// ClaudeBin is the claude executable (ORQEN_CLAUDE_BIN); empty means the first `claude` on the host PATH.
+	ClaudeBin   string
 	CodingSlots int
 	// RestoreFrom, RestoreDryRun and RestoreYes are the flags of `orqen restore`.
 	RestoreFrom               string
@@ -62,7 +64,7 @@ func ParseConfig(args []string) (Config, string, error) {
 	for _, pair := range []struct {
 		key string
 		dst *string
-	}{{"MONGO_URI", &c.MongoURI}, {"DB_NAME", &c.DBName}, {"DATA_DIR", &c.DataDir}, {"CREDENTIAL_STORE", &c.CredentialStore}, {"LOG_FORMAT", &c.LogFormat}, {"CATHERD_BIN", &c.CatherdBin}, {"CODEX_BIN", &c.CodexBin}, {"CATHERD_PATH", &c.CatherdPath}, {"PERSONAL_CATHERD_HOME", &c.PersonalCatherdHome}} {
+	}{{"MONGO_URI", &c.MongoURI}, {"DB_NAME", &c.DBName}, {"DATA_DIR", &c.DataDir}, {"CREDENTIAL_STORE", &c.CredentialStore}, {"LOG_FORMAT", &c.LogFormat}, {"CATHERD_BIN", &c.CatherdBin}, {"CODEX_BIN", &c.CodexBin}, {"CLAUDE_BIN", &c.ClaudeBin}, {"CATHERD_PATH", &c.CatherdPath}, {"PERSONAL_CATHERD_HOME", &c.PersonalCatherdHome}} {
 		*pair.dst = env(pair.key, *pair.dst)
 	}
 	port, err := intEnv("PORT", int64(c.Port))
@@ -105,6 +107,7 @@ func ParseConfig(args []string) (Config, string, error) {
 	fs.IntVar(&c.WorkerConcurrency, "worker-concurrency", c.WorkerConcurrency, "concurrent jobs")
 	fs.StringVar(&c.CatherdBin, "catherd-bin", c.CatherdBin, "path of the catherd executable")
 	fs.StringVar(&c.CodexBin, "codex-bin", c.CodexBin, "path of the codex executable")
+	fs.StringVar(&c.ClaudeBin, "claude-bin", c.ClaudeBin, "path of the claude executable")
 	fs.IntVar(&c.CodingSlots, "coding-slots", c.CodingSlots, "runs that may code at once, system-wide")
 	fs.StringVar(&c.CatherdPath, "catherd-path", c.CatherdPath, "PATH catherd runs with")
 	fs.StringVar(&c.LogFormat, "log-format", c.LogFormat, "pretty or json")

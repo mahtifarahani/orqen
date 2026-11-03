@@ -162,7 +162,7 @@ describe('orchestrator host card', () => {
     const cc = screen.getByLabelText('claude-code') as HTMLInputElement
     expect(cc.checked).toBe(false)
     const option = cc.closest('[data-host]') as HTMLElement
-    expect(within(option).getByText(/no Claude Code host adapter/)).toBeInTheDocument()
+    expect(within(option).getByText(/no execution adapter for this host/)).toBeInTheDocument()
     expect(within(option).getByText('No Orqen adapter')).toBeInTheDocument()
     expect(screen.getAllByRole('button', { name: /Run doctor for this host/ })).toHaveLength(2)
   })
@@ -172,7 +172,7 @@ describe('orchestrator host card', () => {
     tab()
     await userEvent.click(await screen.findByLabelText('claude-code'))
     expect(await screen.findByText(/Change the host to claude-code\?/)).toBeInTheDocument()
-    expect(screen.getAllByText(/no Claude Code host adapter/).length).toBeGreaterThan(1)
+    expect(screen.getAllByText(/no execution adapter for this host/).length).toBeGreaterThan(1)
     expect(calls.some((c) => c.method !== 'GET')).toBe(false)
     await userEvent.click(screen.getByRole('button', { name: 'Open the policy draft' }))
     await waitFor(() => expect(screen.getByTestId('where').textContent).toBe(`/orgs/${ORG}/settings?tab=policy&prefill=orchestrator.host&value=claude-code`))

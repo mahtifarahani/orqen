@@ -150,6 +150,16 @@ Orqen can drive a Codex App Server host and catherd roles, verify the result, an
 - Settings: `ORQEN_CODING_SLOTS` (default 1), `ORQEN_CODEX_BIN`, `ORQEN_EXTERNAL_WRITES=off` (kill switch).
 - The Codex host is probed from Settings (`POST /host/probe`); the real host also needs your spike attestation (see docs/LIVE-TRIAL.md). Gated real tests stay off unless their env vars are set.
 
+### Claude Code as the orchestration host
+
+Set the organization policy `orchestrator.host` to `claude-code` and Orqen drives a headless Claude Code instead of the Codex App Server (`internal/claudehost`). There is no long-lived process: every directive is one `claude -p` turn on a persistent session (`--session-id`, then `--resume`), with the built-in tools off, only the `catherd` MCP server loaded (`catherd mcp`, `CATHERD_ORCHESTRATION_HOST=claude-code`) and only the directed tool allowed. The turn is held to the same rule as on Codex: one catherd call with exactly the directed arguments, else a deviation.
+
+- Binary: `ORQEN_CLAUDE_BIN` / `--claude-bin`, else the first `claude` on the host PATH. Claude Code 2.1.282 or newer.
+- Login is isolated per organization, like `CODEX_HOME`: Orqen runs claude with `HOME=<data>/host-home/<org>` and `CLAUDE_CONFIG_DIR=<data>/claude/<org>/config`. Log in once with those two variables set, for example `HOME=<data>/host-home/<org> CLAUDE_CONFIG_DIR=<data>/claude/<org>/config claude auth login`. Until then the probe reports `host_login_missing`.
+  On macOS Claude keeps the login in the user keychain, found through `HOME`; Orqen links `<data>/host-home/<org>/Library/Keychains` to the real one for the Claude host only (without it, login fails with "Couldn't save your login").
+- The probe (`POST /host/probe`) reads `claude --version`, `claude auth status` and the tool list of `catherd mcp`. It sends no prompt.
+- Reconciling a lost directive reads the session transcript under `CLAUDE_CONFIG_DIR/projects/*/<session>.jsonl`.
+
 ## Sprint 6: extensions, skills, security scans and backups (test-only)
 
 Orqen never downloads or installs anything. An extension is a tool you installed yourself; Orqen records the path and the checksum.

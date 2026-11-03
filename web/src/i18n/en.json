@@ -270,11 +270,13 @@
       "host_adapter_unavailable": "Orqen has no execution adapter for the selected orchestrator host.",
       "backend_key_missing": "The isolated {{arg}} harness needs its key, and none is set.",
       "backend_key_refused": "The key for the isolated {{arg}} harness was refused.",
-      "host_not_probed": "The Codex host has not been probed.",
+      "host_not_probed": "The orchestrator host has not been probed.",
       "host_codex_missing": "The Codex CLI is missing.",
       "host_codex_too_old": "The Codex CLI is too old.",
-      "host_login_missing": "Codex is not logged in.",
-      "host_catherd_mcp_missing": "The catherd MCP tools are missing in the Codex host.",
+      "host_claude_missing": "The Claude Code CLI is missing.",
+      "host_claude_too_old": "The Claude Code CLI is too old.",
+      "host_login_missing": "The orchestrator host is not logged in.",
+      "host_catherd_mcp_missing": "The catherd MCP tools are missing in the orchestrator host.",
       "host_spike_unverified": "Run the real-host spike and attest it.",
       "host_backend_unsupported": "The {{arg}} backend is not supported on the Codex host."
     },
@@ -688,11 +690,15 @@
       },
       "intake_label": {
         "label": "Intake label",
-        "help": "Only issues with this label are picked up."
+        "help": "Only issues with this label are picked up. Leave empty to include issues without a label."
       },
       "intake_require_assigned_to_me": {
         "label": "Only issues assigned to me",
         "help": "Skip issues assigned to someone else."
+      },
+      "intake_include_unresolved_done": {
+        "label": "Include unresolved issues in Done statuses",
+        "help": "Also import unresolved issues whose workflow status belongs to the Done category, such as Ready to Test. Resolved issues in that category remain excluded."
       },
       "review_max_fix_rounds": {
         "label": "Maximum fix rounds",
@@ -979,7 +985,7 @@
       "hostHelp": "The host catherd plans and routes for. It is an organization policy setting, so every change is versioned and audited when you publish it. Orqen never uses \"auto\".",
       "effective": "In use",
       "adapterUnavailable": "No Orqen adapter",
-      "claudeHostUnavailable": "Orqen runs its work on the Codex App Server and has no Claude Code host adapter. You can select claude-code, but every project will then be blocked (host adapter unavailable) until Orqen supports it.",
+      "claudeHostUnavailable": "Orqen has no execution adapter for this host, so every project would be blocked (host adapter unavailable).",
       "republishHint": "Changing the host makes every model profile version built for the old host a blocker (profile host mismatch). Each profile has a one-click \"Republish for current host\" that creates a new version and validates it again; older versions are never edited.",
       "runDoctor": "Run doctor for this host",
       "loadFailed": "Could not load the orchestrator hosts.",
@@ -2161,7 +2167,7 @@
   "intake": {
     "title": "Jira intake",
     "loadFailed": "Could not load intake status.",
-    "notEnabled": "Automation is not enabled for this project, so it is not polled.",
+    "notEnabled": "Automatic polling is off. Use Poll now to fetch Jira issues manually.",
     "mode": "New issues",
     "modes": {
       "auto": "Start runs automatically",
@@ -2288,11 +2294,11 @@
     }
   },
   "host": {
-    "title": "Codex host",
-    "subtitle": "Runs coding roles. Needs Codex {{version}} or newer.",
+    "title": "Orchestrator host",
+    "subtitle": "Runs coding roles on the selected host: Codex {{version}} or newer, or Claude Code 2.1.282 or newer.",
     "available": "Available",
     "unavailable": "Unavailable",
-    "version": "Codex version",
+    "version": "Host version",
     "fake": "(test host)",
     "login": "Login",
     "loginState": {
@@ -2307,7 +2313,7 @@
     "spikeTitle": "Real-host spike",
     "spikeHelp": "Run the spike yourself (docs/LIVE-TRIAL.md), then attest it. Orqen never runs it.",
     "spikeDone": "Attested on {{date}}",
-    "spikeCodex": "Codex version used",
+    "spikeCodex": "Host version used (Codex or Claude Code)",
     "spikeCatherd": "catherd version used",
     "attest": "Attest spike",
     "attested": "Spike attested"

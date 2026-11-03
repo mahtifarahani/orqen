@@ -118,6 +118,8 @@
     "policy.keys.host_orchestrator_model.label",
     "policy.keys.host_turn_timeout_secs.help",
     "policy.keys.host_turn_timeout_secs.label",
+    "policy.keys.intake_include_unresolved_done.help",
+    "policy.keys.intake_include_unresolved_done.label",
     "policy.keys.intake_label.help",
     "policy.keys.intake_label.label",
     "policy.keys.intake_max_issues_per_poll.help",

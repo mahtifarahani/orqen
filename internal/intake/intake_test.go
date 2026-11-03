@@ -15,6 +15,7 @@ func TestComposeJQLGolden(t *testing.T) {
 		want string
 	}{
 		{"defaults", JQLInput{ProjectID: "10000", Label: "ai-ready", AssignedToMe: true}, `project = 10000 AND labels = "ai-ready" AND assignee = currentUser() AND statusCategory != Done ORDER BY updated ASC, key ASC`},
+		{"unresolved done category keeps project and assignee scope", JQLInput{ProjectID: "10301", AssignedToMe: true, IncludeUnresolvedDone: true, UserJQL: ptr("resolution = Unresolved ORDER BY updated DESC")}, `project = 10301 AND (resolution = Unresolved) AND assignee = currentUser() AND (statusCategory != Done OR resolution = Unresolved) ORDER BY updated ASC, key ASC`},
 		{"user jql wins over sprint and loses order by", JQLInput{ProjectID: "10000", UserJQL: ptr("issuetype = Bug OR priority = High order by created DESC"), BoardScrum: true, SprintIDs: []string{"11"}, RequireOpenSprint: true, Label: "x"}, `project = 10000 AND (issuetype = Bug OR priority = High) AND labels = "x" AND statusCategory != Done ORDER BY updated ASC, key ASC`},
 		{"only order by is no jql", JQLInput{ProjectID: "10000", UserJQL: ptr("ORDER BY rank")}, `project = 10000 AND statusCategory != Done ORDER BY updated ASC, key ASC`},
 		{"scrum sprints", JQLInput{ProjectID: "10000", BoardScrum: true, SprintIDs: []string{"11", "12", "x;drop"}, RequireOpenSprint: true, WindowMinutes: 17}, `project = 10000 AND sprint in (11, 12) AND statusCategory != Done AND updated >= -17m ORDER BY updated ASC, key ASC`},

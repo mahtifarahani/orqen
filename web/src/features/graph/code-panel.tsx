@@ -12,6 +12,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { NativeSelect } from '@/components/ui/native-select'
 import { formatNumber } from '@/lib/format'
 import { problemMessage } from '@/lib/problem-message'
 import { useLocale } from '@/lib/use-locale'
@@ -64,12 +65,12 @@ function StartIndex({ orgId, enabled }: { orgId: string; enabled: boolean }) {
     <div className="flex flex-wrap items-end gap-2">
       <label className="flex min-w-0 flex-col gap-1 text-sm">
         {t('codeGraph.project')}
-        <select className="h-9 min-w-0 rounded-md border bg-background px-2 text-sm" value={prj} onChange={(e) => setPrj(e.target.value)}>
+        <NativeSelect value={prj} onChange={(e) => setPrj(e.target.value)}>
           <option value="">{t('codeGraph.pickProject')}</option>
           {projects.map((p) => (
             <option key={p.id} value={p.id}>{p.name}</option>
           ))}
-        </select>
+        </NativeSelect>
       </label>
       <Button
         variant="outline"
@@ -156,28 +157,28 @@ function ImpactQuery({ orgId, ready, selected, onSelect }: { orgId: string; read
       >
         <label className="flex flex-col gap-1 text-sm">
           {t('codeGraph.impact.index')}
-          <select className="h-9 min-w-0 rounded-md border bg-background px-2 text-sm" value={id} onChange={(e) => onSelect(e.target.value)}>
+          <NativeSelect value={id} onChange={(e) => onSelect(e.target.value)}>
             {ready.map((r) => (
               <option key={r.id} value={r.id}>{r.repo_key} {r.commit_sha.slice(0, 8)}</option>
             ))}
-          </select>
+          </NativeSelect>
         </label>
         <label className="flex flex-col gap-1 text-sm">
           {t('codeGraph.impact.kind')}
-          <select className="h-9 rounded-md border bg-background px-2 text-sm" value={kind} onChange={(e) => setKind(e.target.value as 'file' | 'symbol')}>
+          <NativeSelect value={kind} onChange={(e) => setKind(e.target.value as 'file' | 'symbol')}>
             <option value="file">{t('codeGraph.impact.file')}</option>
             <option value="symbol">{t('codeGraph.impact.symbol')}</option>
-          </select>
+          </NativeSelect>
         </label>
         <Field id="impact-target" label={t('codeGraph.impact.target')}>
           {(f) => <Input {...f} dir="ltr" value={target} onChange={(e) => setTarget(e.target.value)} />}
         </Field>
         <label className="flex flex-col gap-1 text-sm">
           {t('codeGraph.impact.depth')}
-          <select className="h-9 rounded-md border bg-background px-2 text-sm" value={depth} onChange={(e) => setDepth(Number(e.target.value))}>
+          <NativeSelect value={depth} onChange={(e) => setDepth(Number(e.target.value))}>
             <option value={1}>1</option>
             <option value={2}>2</option>
-          </select>
+          </NativeSelect>
         </label>
         <Button type="submit" variant="outline" disabled={!target.trim()}>{t('codeGraph.impact.ask')}</Button>
       </form>

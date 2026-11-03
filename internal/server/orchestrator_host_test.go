@@ -38,7 +38,7 @@ func TestOrchestratorHost(t *testing.T) {
 		t.Fatal(r)
 	}
 	h := e.hosts()
-	if len(h) != 2 || h["codex"]["effective"] != true || h["claude-code"]["effective"] != false || h["codex"]["orqen_host_adapter"] != "available" || h["claude-code"]["orqen_host_adapter"] != "unavailable" || h["codex"]["last_doctor"] == nil || h["claude-code"]["last_doctor"] != nil {
+	if len(h) != 2 || h["codex"]["effective"] != true || h["claude-code"]["effective"] != false || h["codex"]["orqen_host_adapter"] != "available" || h["claude-code"]["orqen_host_adapter"] != "available" || h["codex"]["last_doctor"] == nil || h["claude-code"]["last_doctor"] != nil {
 		t.Fatal(h)
 	}
 	v1Raw, _ := json.Marshal(pe.version(s.version))
@@ -57,10 +57,13 @@ func TestOrchestratorHost(t *testing.T) {
 	}
 	r := e.ready()
 	got := blockerCodes(r)
-	for _, want := range []string{"profile_host_mismatch", "host_adapter_unavailable", "catherd_doctor_missing"} {
+	for _, want := range []string{"profile_host_mismatch", "catherd_doctor_missing"} {
 		if !contains(got, want) {
 			t.Fatalf("missing %s in %v", want, got)
 		}
+	}
+	if contains(got, "host_adapter_unavailable") {
+		t.Fatal("claude-code has an execution adapter:", got)
 	}
 	if st := e.f.json("GET", "/api/v1/orgs/"+e.org+"/catherd/status", nil, nil, 200); st["host"] != "claude-code" || st["last_doctor"] != nil {
 		t.Fatal("no stale ready from another host's doctor:", st)
@@ -108,10 +111,10 @@ func TestOrchestratorHost(t *testing.T) {
 			t.Fatalf("no %s call ran with --host claude-code: %v", op, sawHost)
 		}
 	}
-	// Binding v2 clears the mismatch; the missing adapter remains an honest blocker.
+	// Binding v2 clears the mismatch and the missing doctor; claude-code has an adapter, so it never blocks on one.
 	s.bind(v2["id"].(string))
 	got = blockerCodes(e.ready())
-	if contains(got, "profile_host_mismatch") || contains(got, "catherd_doctor_missing") || !contains(got, "host_adapter_unavailable") {
+	if contains(got, "profile_host_mismatch") || contains(got, "catherd_doctor_missing") || contains(got, "host_adapter_unavailable") {
 		t.Fatal(got)
 	}
 	if h = e.hosts(); h["claude-code"]["effective"] != true || h["claude-code"]["last_doctor"] == nil || h["codex"]["last_doctor"] == nil {
